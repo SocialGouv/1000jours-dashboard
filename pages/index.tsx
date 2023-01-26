@@ -22,7 +22,7 @@ const Home: NextPage = (initialData) => {
           <Button onClick={() => signIn()}>Connexion</Button> Vous n&apos;êtes pas connecté
         </>}
         {session && <>
-          <Button onClick={() => signOut()}>Déconnexion</Button> Vous êtes connecté en tant que <b>{session?.user?.username}</b>
+          <Button onClick={() => signOut()}>Déconnexion</Button> Vous êtes connecté en tant que <b>{session.user.username}</b>
         </>}
       </div>
 
@@ -64,11 +64,9 @@ const Home: NextPage = (initialData) => {
 
 export async function getServerSideProps({ req }) {
   let headers = {}
-  console.log("getServerSideProps")
   const session = await getSession({ req });
 
   if (session) {
-    console.log("getServerSideProps session")
     headers = { Authorization: `Bearer ${session.jwt}` };
   }
   let articles = [];
@@ -76,10 +74,8 @@ export async function getServerSideProps({ req }) {
     let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/articles`, {
       headers: headers,
     })
-    console.log(data)
     articles = data;
   } catch (e) {
-    console.log('caught error');
     articles = [];
   }
 

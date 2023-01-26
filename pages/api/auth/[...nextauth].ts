@@ -1,11 +1,7 @@
 import NextAuth, { User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import axios from 'axios'
-
-interface StrapiUser extends User {
-  jwt: String
-  user: any
-}
+import { StrapiUser } from '../../../types/StrapiType';
 
 export default NextAuth({
   providers: [
