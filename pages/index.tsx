@@ -6,6 +6,7 @@ import { Button } from "@codegouvfr/react-dsfr/Button";
 
 import { signIn, signOut, useSession, getSession } from "next-auth/react";
 import axios from 'axios'
+import { IncomingMessage } from "http";
 
 const Home: NextPage = (initialData: any) => {
   //const [session, loading] = useSession() // strapi V4
@@ -62,7 +63,9 @@ const Home: NextPage = (initialData: any) => {
   );
 };
 
-export async function getServerSideProps({ req }) {
+export async function getServerSideProps({ req }: any) {
+  console.log("totot : " + req)
+  console.log(req)
   let headers = {}
   const session = await getSession({ req });
 
