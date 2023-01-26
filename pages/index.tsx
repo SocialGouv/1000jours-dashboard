@@ -7,7 +7,7 @@ import { Button } from "@codegouvfr/react-dsfr/Button";
 import { signIn, signOut, useSession, getSession } from "next-auth/react";
 import axios from 'axios'
 
-const Home: NextPage = (initialData) => {
+const Home: NextPage = (initialData: any) => {
   //const [session, loading] = useSession() // strapi V4
   const { data: session, status } = useSession() // strapi V3
 
@@ -49,7 +49,7 @@ const Home: NextPage = (initialData) => {
 
         <h1>Liste des articles</h1>
         <div>
-          {initialData.articles && initialData.articles.map((each, index) => {
+          {initialData.articles && initialData.articles.map((each: any, index: number) => {
             return (
               <div key={index}>
                 <h5>{each.titre}</h5>
@@ -67,7 +67,7 @@ export async function getServerSideProps({ req }) {
   const session = await getSession({ req });
 
   if (session) {
-    headers = { Authorization: `Bearer ${session.jwt}` };
+    headers = { Authorization: `Bearer ${session.token.jwt}` };
   }
   let articles = [];
   try {
