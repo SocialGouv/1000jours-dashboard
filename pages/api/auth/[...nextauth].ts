@@ -1,6 +1,11 @@
-import NextAuth from 'next-auth'
+import NextAuth, { User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import axios from 'axios'
+
+interface StrapiUser extends User {
+  jwt: String
+  user: any
+}
 
 export default NextAuth({
   providers: [
@@ -16,12 +21,9 @@ export default NextAuth({
             identifier: credentials?.email,
             password: credentials?.password
           });
-          if (data) {
-            return data;
-          }
-          else {
-            return null;
-          }
+
+          if (data) return data;
+          else return null;
         } catch (e: any) {
           const errorMessage = e.response.data.message
           // Redirecting to the login page with error message in the URL
@@ -37,7 +39,11 @@ export default NextAuth({
 
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) { 
-      if(user) token.user = user
+      const strapiUser = user as StrapiUser
+      if(strapiUser) {
+        token.user = strapiUser.user
+        token.jwt = strapiUser.jwt
+      }
       if(account) token.account = account
       if(profile) token.profile = profile
 
@@ -47,7 +53,7 @@ export default NextAuth({
       if(token) session.token = token
       
       if(user) session.user = user
-      else session.user = token.user.user
+      else session.user = token.user
 
       return session
     },
