@@ -58,6 +58,14 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 :warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
 
+##### Tests
+
+Lancer les tests en local :
+```bash
+yarn test # tests unitairs exécutés dans la console
+yarn test:e2e # tests e2e : ouverture de cypress et l'exécution est lancé dans une fenêtre chrome
+```
+
 ##### Hasura
 
 Lancer les seeds :

@@ -3,11 +3,11 @@ describe("Home page", () => {
     cy.visit("http://localhost:3000/");
     cy.title().should(
       "equal",
-      "Template | Fabrique numérique des ministères sociaux"
+      "1000 premiers jours - Dashboard"
     );
     cy.get("h1").should(
       "contain",
-      "Template de la fabrique des ministères sociaux"
+      "Gestion & visualisation des demandes de contact"
     );
   });
 });
