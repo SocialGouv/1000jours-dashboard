@@ -63,7 +63,7 @@ const Home: NextPage = (initialData: any) => {
   );
 };
 
-export async function getServerSideProps({ req }: any) {
+export async function getStaticProps({ req }: any) {
   console.log("totot : " + req)
   console.log(req)
   let headers = {}
