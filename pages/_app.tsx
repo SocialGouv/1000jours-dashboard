@@ -1,3 +1,5 @@
+import '../styles/global.css';
+
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
@@ -17,6 +19,7 @@ import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { init } from "@socialgouv/matomo-next";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 // Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
@@ -79,6 +82,11 @@ const bottomLinks = [
   },
 ];
 
+const client = new ApolloClient({
+  uri: `${process.env.NEXT_PUBLIC_API_URL}/graphql?nocache`,
+  cache: new InMemoryCache()
+});
+
 function App({ Component, pageProps }: AppProps) {
   const { css } = useStyles();
 
@@ -125,6 +133,13 @@ function App({ Component, pageProps }: AppProps) {
               isActive: router.asPath === "/",
             },
             {
+              text: "Ajouter une demande",
+              linkProps: {
+                href: "/ajout-demande",
+              },
+              isActive: router.asPath === "/ajout-demande",
+            },
+            {
               text: "DSFR playground",
               linkProps: {
                 href: "/dsfr",
@@ -151,7 +166,9 @@ function App({ Component, pageProps }: AppProps) {
           })}
         >
           <SessionProvider session={pageProps.session}>
-            <Component {...pageProps} />
+            <ApolloProvider client={client} >
+              <Component {...pageProps} />
+            </ApolloProvider>
           </SessionProvider>
         </div>
         <Footer

@@ -26,10 +26,13 @@
     "storybook:deploy:action": "npm run storybook:build && gh-pages -d .out -u \"github-actions-bot <support+actions@github.com>\"",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "postinstall": "is-ci || husky install"
+    "postinstall": "is-ci || husky install",
+    "compile": "graphql-codegen",
+    "watch": "graphql-codegen -w"
   },
   "dependencies": {
-    "@codegouvfr/react-dsfr": "^0.21.2",
+    "@apollo/client": "^3.7.5",
+    "@codegouvfr/react-dsfr": "^0.28.0",
     "@emotion/react": "^11.10.5",
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
@@ -39,14 +42,21 @@
     "@mui/x-date-pickers": "^5.0.11",
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.4.0",
+    "axios": "^1.2.4",
+    "graphql": "^16.6.0",
     "next": "13.1.6",
+    "next-auth": "^4.18.10",
     "next-seo": "^5.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "sass": "^1.57.1",
+    "ts-node": "^10.9.1",
     "tss-react": "^4.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@graphql-codegen/cli": "^2.16.4",
+    "@graphql-codegen/client-preset": "^1.2.6",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-docs": "^6.5.15",
     "@storybook/addon-essentials": "^6.4.19",
@@ -75,6 +85,6 @@
     "node-talisman": "^1.28.0",
     "start-server-and-test": "^1.14.0",
     "storybook-dark-mode": "^2.0.5",
-    "typescript": "4.9.4"
+    "typescript": "^4.9.4"
   }
 }
