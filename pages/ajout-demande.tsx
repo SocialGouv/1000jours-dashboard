@@ -13,6 +13,7 @@ import { SelectDepartment } from "../src/components/SelectDepartment";
 import { Input } from "@codegouvfr/react-dsfr/Input";
 import Select from "@codegouvfr/react-dsfr/Select";
 import Button from "@codegouvfr/react-dsfr/Button";
+import Alert from "@codegouvfr/react-dsfr/Alert";
 
 
 export default function AjoutDemande() {
@@ -65,11 +66,15 @@ export default function AjoutDemande() {
     }
 
     // TODO: branchement back
-    console.log(data)
   }
 
   return <div>
     <LoggedState showButton={false} />
+
+    <Alert
+      title="Page en cours de développement"
+      severity="info"
+    />
 
     {isLogged &&
       <form onSubmit={createNewContact}>
