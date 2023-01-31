@@ -4,7 +4,11 @@ import { Select } from "@codegouvfr/react-dsfr/Select";
 import GeoGouvApi from "../services/api/geogouv";
 import { Departement } from "../../types/geogouv";
 
-export const SelectDepartment = () => {
+interface SelectDepartmentProps {
+  setSelectedDepartment: (arg: Departement) => void
+}
+
+export const SelectDepartment = ({ setSelectedDepartment }: SelectDepartmentProps) => {
   const [departments, setDepartments] = useState<Departement[]>([])
 
   useEffect(() => {
@@ -16,9 +20,20 @@ export const SelectDepartment = () => {
       .catch(e => console.warn(e))
   }, [])
 
+  const handleChangeDepartment = (event: any) => {
+    const departmentCode = event.target.value
+    const selectedDepartment = departments.find(
+      (item) => item.code === departmentCode
+    )
+
+    if (selectedDepartment) setSelectedDepartment(selectedDepartment)
+  }
+
   return <Select
     label="Département"
-    nativeSelectProps={{}}
+    nativeSelectProps={{
+      onChange: event => handleChangeDepartment(event),
+    }}
   >
     <Fragment key=".0">
       <option
@@ -30,7 +45,7 @@ export const SelectDepartment = () => {
         Sélectionnez une option
       </option>
       {departments.map((dep) => (
-        <option key={dep.code} value="dep">{dep.code} - {dep.nom}</option>
+        <option key={dep.code} value={dep.code}>{dep.code} - {dep.nom}</option>
       ))}
     </Fragment>
   </Select>
