@@ -8,7 +8,6 @@ import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { Button } from "@codegouvfr/react-dsfr/Button";
 import { Tabs } from "@codegouvfr/react-dsfr/Tabs";
 import { Card } from "@codegouvfr/react-dsfr/Card";
-import { Accordion } from "@codegouvfr/react-dsfr/Accordion";
 
 import Stack from "@mui/material/Stack";
 
@@ -53,18 +52,6 @@ const Home: NextPage = () => {
         linkProps={{ href: "#" }}
         desc="Cette carte permet d'indiquer au lecteur des informations sur le lien à présenetr"
       />
-      <br />
-      <div className={fr.cx("fr-accordions-group")}>
-        <Accordion
-          label="Name of the Accordion 1"
-          content="Content of the Accordion 1"
-        />
-        <Accordion
-          label="Name of the Accordion 2"
-          content="Content of the Accordion 2"
-        />
-      </div>
-      <br />
       <Stack spacing={2} sx={{ mt: 5 }} direction="row">
         <Button
           title="@codegouv/react-dsfr storybook"
