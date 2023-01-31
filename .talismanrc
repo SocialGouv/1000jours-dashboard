@@ -15,10 +15,6 @@ fileignoreconfig:
   checksum: abc2a89b85d95e759866b9a7b53ba934aff7b2f65e453e3ef65954320a926b38
 - filename: pages/mui.tsx
   checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
-- filename: src/__generated__/fragment-masking.ts
-  checksum: 373d35405ea95895ab1b35093e8b05011bc92ac79edd0293d120bed4a1f55b50
-- filename: src/__generated__/graphql.ts
-  checksum: 5bf25497d8f12dc01e80718c42778d0488a6a9bfa5d7500bebfcd98ce3f081e1
 - filename: src/components/SelectDepartment.tsx
   checksum: d8074633be1f7eb9bf5fbeb4f387ea7ea087b04a5675bff25e9e252dda5f6913
 scopeconfig:
