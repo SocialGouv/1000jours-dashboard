@@ -1,35 +1,20 @@
 # template
 
-Template est une application [Next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) et qui utilise le [Système de Design de l'État](https://gouvfr.atlassian.net/wiki/spaces/DB/overview).
-
-L'application dispose de deux branches principales :
-
-- [`main`](https://github.com/SocialGouv/template) qui est un template de site statique sans la partie authentification
-- [`keycloak`](https://github.com/SocialGouv/template/tree/static) qui ajoute un serveur Next.js, hasura et KyeCloak
-
-Ce template intègre les recommendations de la [documentation technique SocialGouv](https://socialgouv.github.io/support)
+Le dashboard 1000j est une application [Next](https://nextjs.org/) développée par la [Fabrique des ministères sociaux](https://www.fabrique.social.gouv.fr/) et qui utilise le [Système de Design de l'État](https://gouvfr.atlassian.net/wiki/spaces/DB/overview).
 
 ## Description
 
 ### D'un point de vue fonctionnel
 
-Ce template est composé de page :
+Ce dashboard est composé de page :
 
 - Page principale
+
 - Politique de confidentialité
 - Mentions légales
 - Conditions générales d'utilisation
 - Statistiques d'utilisation (fonctionnant avec matomo)
 - Déclaration d'accessibilité
-- Healthz
-- Page 404
-
-#### En plus dans la branche keycloak :
-
-- Page d'authentification
-- Page d'inscription
-- Page profil
-- Interactions avec la base de données
 
 ### D'un point de vue technique
 
@@ -46,9 +31,7 @@ Ce template est composé de page :
   - intégration de [sentry](https://sentry.io/) pour gérer les erreurs
   - intégration de [matomo](https://matomo.org/) pour les statistiques d'utilisation
 
-#### En plus dans la branche keycloak :
-
-- [keycloak](https://www.keycloak.org/) qui est un serveur d'authentification (exclusive à `main`)
+- [Strapi](https://docs.strapi.io/) que l'on utilise comme BO et pour s'authentifier (via API)
 - [next-auth](https://next-auth.js.org/) qui est un wrapper pour gérer l'authentification au sein de l'application (exclusive à `main`)
 - [hasura](https://hasura.io) qui permet d'exposer une API GraphQL sur votre Postgres et de gérer les authorisations (RBAC)
 
@@ -75,7 +58,13 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 :warning: Les variables d'environnement sont publiques (utilisées durant le build), ne commitez donc pas de variables privées dans ces fichiers.
 
-#### branche KeyCloak
+##### Tests
+
+Lancer les tests en local :
+```bash
+yarn test # tests unitairs exécutés dans la console
+yarn test:e2e # tests e2e : ouverture de cypress et l'exécution est lancé dans une fenêtre chrome
+```
 
 ##### Hasura
 
@@ -90,14 +79,6 @@ Mettre à jour les metadatas et migrations :
 Lancer la console avec `yarn hasura console --project ./hasura --endpoint http://127.0.0.1:8082 --admin-secret myadminsecretkey`. Les modifs faites dans l'UI seront reportées dans les dossiers `hasura/metadata` et `hasura/migrations`
 
 Cf [migrations documentation](https://hasura.io/docs/latest/migrations-metadata-seeds/manage-migrations/)
-
-##### KeyCloak
-
-Le template intègre [Next-auth](https://next-auth.js.org/) et [KeyCloak 18](https://www.keycloak.org/) qui assure tous les workflows d'authentification.
-
-Le `realm` par défaut est dans [.kontinuous/files/realm-export.json](.kontinuous/files/realm-export.json). Pour générer realm utilisable par `docker-compose` à partir de celui-ci, utilisez `yarn keycloak`.
-
-Le thème keycloak est basé sur le design-système de l'état, cf [keycloak-dsfr](https://github.com/SocialGouv/keycloak-dsfr).
 
 ##### FranceConnect
 

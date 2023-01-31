@@ -16,6 +16,7 @@ import { Header } from "@codegouvfr/react-dsfr/Header";
 import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { init } from "@socialgouv/matomo-next";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 
 // Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
@@ -149,7 +150,9 @@ function App({ Component, pageProps }: AppProps) {
             }),
           })}
         >
-          <Component {...pageProps} />
+          <SessionProvider session={pageProps.session}>
+            <Component {...pageProps} />
+          </SessionProvider>
         </div>
         <Footer
           brandTop={brandTop}

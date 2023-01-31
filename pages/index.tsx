@@ -1,63 +1,86 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import { NextPage } from "next";
 
-import { Alert } from "@codegouvfr/react-dsfr/Alert";
 import { Button } from "@codegouvfr/react-dsfr/Button";
-import Stack from "@mui/material/Stack";
 
-const Home: NextPage = () => {
-  const onClick1 = () => {
-    throw new Error("Hello, sentry");
-  };
+import { signIn, signOut, useSession, getSession } from "next-auth/react";
+import axios from 'axios'
+import { IncomingMessage } from "http";
+
+const Home: NextPage = (initialData: any) => {
+  //const [session, loading] = useSession() // strapi V4
+  const { data: session, status } = useSession() // strapi V3
 
   return (
     <>
       <Head>
-        <title>Template | Fabrique numérique des ministères sociaux</title>
+        <title>1000 premiers jours - Dashboard</title>
       </Head>
-      <Alert
-        closable
-        description="Everything went well"
-        severity="success"
-        title="Message successfully sent"
-      />
+
+      <div>
+        {!session && <>
+          <Button onClick={() => signIn()}>Connexion</Button> Vous n&apos;êtes pas connecté
+        </>}
+        {session && <>
+          <Button onClick={() => signOut()}>Déconnexion</Button> Vous êtes connecté en tant que <b>{session.user.username}</b>
+        </>}
+      </div>
+
       <div className="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mb-8w fr-mt-8w">
         <div className="fr-col-12 fr-col-md-6">
           <h1>
-            Template
+            Dashboard
             <span className="fr-text--lead d-block fr-mt-3w">
-              <p>Template de la fabrique des ministères sociaux.</p>
+              <p>Gestion & visualisation des demandes de contact</p>
             </span>
           </h1>
+
           <p className="fr-mt-10w">
-            Pariatur veniam ipsum pariatur elit ullamco sit quis ipsum ad veniam
-            proident sunt. Qui ut irure in quis reprehenderit. Laborum anim ad
-            laboris ipsum magna ullamco consequat ex consectetur. Duis sit
-            adipisicing ipsum occaecat commodo consequat officia ea. Cupidatat
-            fugiat reprehenderit aliqua eiusmod mollit Lorem consectetur. Minim
-            elit proident eu qui exercitation mollit id esse velit et dolore
-            velit laboris. Ipsum occaecat Lorem occaecat magna excepteur veniam
-            ullamco cupidatat irure incididunt velit nulla.
+            Bienvenue sur la dashbard de 1000 premiers
           </p>
         </div>
         <div className="fr-col-12 fr-col-offset-md-1 fr-col-md-4">
-          {/* eslint-disable-next-line jsx-a11y/img-redundant-alt*/}
-          {/* eslint-disable-next-line @next/next/no-img-element*/}
           <img
             className="fr-mt-2w"
             src="https://dummyimage.com/300x300/188cf2/fff.png&amp;text=logo+1"
             alt="My description"
           />
         </div>
+
+        <h1>Liste des articles</h1>
+        <div>
+          {initialData.articles && initialData.articles.map((each: any, index: number) => {
+            return (
+              <div key={index}>
+                <h5>{each.titre}</h5>
+              </div>
+            )
+          })}
+        </div>
       </div>
-      <Stack spacing={2} sx={{ mt: 5 }} direction="row">
-        <Button title="nbla" onClick={onClick1}>
-          Trigger sentry error
-        </Button>
-      </Stack>
     </>
   );
 };
+
+export async function getStaticProps({ req }: any) {
+  let headers = {}
+  const session = await getSession({ req });
+
+  if (session) {
+    headers = { Authorization: `Bearer ${session.token.jwt}` };
+  }
+  let articles = [];
+  try {
+    let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/articles`, {
+      headers: headers,
+    })
+    articles = data;
+  } catch (e) {
+    articles = [];
+  }
+
+  return { props: { articles: articles } }
+}
 
 export default Home;
