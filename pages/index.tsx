@@ -15,7 +15,7 @@ const Home: NextPage = (initialData: any) => {
 
       <LoggedState />
 
-      {/* <div className="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mb-8w fr-mt-8w">
+      <div className="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mb-8w fr-mt-8w">
         <div className="fr-col-12 fr-col-md-6">
           <h1>
             Dashboard
@@ -42,29 +42,6 @@ const Home: NextPage = (initialData: any) => {
             return (
               <div key={index}>
                 <h5>{each.titre}</h5>
-      </div> */}
-      <div>
-        <h1>Auth Test</h1>
-
-        <div>
-          {!session && <>
-            Not signed in <br />
-            <button onClick={() => signIn()}>Sign in</button>
-          </>}
-          {session && <>
-            Signed in as {session?.user?.username} <br />
-            <button onClick={() => signOut()}>Sign out</button>
-          </>}
-        </div>
-
-        <h1>Content...</h1>
-
-        <div>
-          {initialData.articles && initialData.articles.map((each, index) => {
-            return (
-              <div key={index}>
-                <h3>{each.Title}</h3>
-                <p>{each.articles}</p>
               </div>
             )
           })}
