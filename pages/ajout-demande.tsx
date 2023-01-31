@@ -11,7 +11,6 @@ import { Departement } from "../types/geogouv";
 
 import { SelectDepartment } from "../src/components/SelectDepartment";
 import { Input } from "@codegouvfr/react-dsfr/Input";
-import { ToggleSwitch } from "@codegouvfr/react-dsfr/ToggleSwitch";
 import Select from "@codegouvfr/react-dsfr/Select";
 import Button from "@codegouvfr/react-dsfr/Button";
 
@@ -26,7 +25,7 @@ export default function AjoutDemande() {
   const [selectedDepartment, setSelectedDepartment] = useState<Departement>()
   const [selectedContactOrigin, setSelectedContactOrigin] = useState<String>()
   const [selectedContactMode, setSelectedContactMode] = useState<String>()
-  const [isContactAccompanied, setContactAccompanied] = useState<Boolean>()
+  const [selectedContactSupport, setSelectedContactSupport] = useState<String>()
 
   useEffect(() => {
     console.log("sessions : " + session)
@@ -56,7 +55,7 @@ export default function AjoutDemande() {
       contactDate: target.contactDate.value,
       contactOrigin: selectedContactOrigin,
       contactMode: selectedContactMode,
-      isContactAccompanied: isContactAccompanied,
+      contactSupport: selectedContactSupport,
       comment: target.comment.value
     }
 
@@ -124,13 +123,9 @@ export default function AjoutDemande() {
         label="Mode de prise de contact"
         setSelectedContactMode={setSelectedContactMode} />
 
-      <ToggleSwitch
+      <ContactSupportComponent
         label="La personne contactée a-t'elle été accompagnée ?"
-        inputTitle="the-title"
-        labelPosition="left"
-        showCheckedHint={false}
-        key="contactIsAccompanied"
-        onChange={(checked) => setContactAccompanied(checked)}
+        setSelectedContactSupport={setSelectedContactSupport}
       />
 
       <Input
@@ -150,6 +145,12 @@ export type ContactModeComponentProps = {
   setSelectedContactMode: (arg: string) => void
 };
 
+export type ContactSupportComponentProps = {
+  label: string;
+  setSelectedContactSupport: (arg: string) => void
+};
+
+
 // A remplacer par le composant RadioButton de la lib @codegouvfr/react-dsfr lorsqu'il sera disponible
 const ContactModeComponent = ({ label, setSelectedContactMode }: ContactModeComponentProps): JSX.Element => {
   const typeContactList = Object.values(Enum_Demandedecontact_Type_De_Contact)
@@ -167,8 +168,35 @@ const ContactModeComponent = ({ label, setSelectedContactMode }: ContactModeComp
         <div className="fr-fieldset__content" onChange={handleContactMode}>
           {typeContactList.map((type, index) => (
             <div className="fr-radio-group" key={index}>
-              <input type="radio" id={`radio-inline-${index}`} name="radio-inline" value={type} />
-              <label className="fr-label" htmlFor={`radio-inline-${index}`}>{type}
+              <input type="radio" id={`radio-mode-${index}`} name="radio-mode" value={type} />
+              <label className="fr-label" htmlFor={`radio-mode-${index}`}>{type}
+              </label>
+            </div>
+          ))}
+        </div>
+      </fieldset >
+    </div >
+  )
+}
+
+const ContactSupportComponent = ({ label, setSelectedContactSupport }: ContactSupportComponentProps): JSX.Element => {
+  const supportList = ["Orientée", "Aidée", "Petit échange initial", "Non accompagnée"]
+
+  const handleContactSupport = (event: any) => {
+    setSelectedContactSupport(event.target.value)
+  }
+
+  return (
+    <div className="fr-form-group">
+      <fieldset className="fr-fieldset fr-fieldset--inline">
+        <legend className="fr-fieldset__legend fr-text--regular" id='radio-inline-legend'>
+          {label}
+        </legend>
+        <div className="fr-fieldset__content" onChange={handleContactSupport}>
+          {supportList.map((item, index) => (
+            <div className="fr-radio-group" key={index}>
+              <input type="radio" id={`radio-support-${index}`} name="radio-support" value={item} />
+              <label className="fr-label" htmlFor={`radio-support-${index}`}>{item}
               </label>
             </div>
           ))}
