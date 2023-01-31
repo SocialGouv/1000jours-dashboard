@@ -20,6 +20,7 @@ export default function AjoutDemande() {
   const widthFitContent = css({ width: "fit-content" })
 
   const { data: session, status } = useSession()
+  const [isLogged, setLogged] = useState<Boolean>()
 
   const [widgetSources, setWidgetSources] = useState<WidgetEpdsSources[]>([])
   const [selectedDepartment, setSelectedDepartment] = useState<Departement>()
@@ -28,8 +29,12 @@ export default function AjoutDemande() {
   const [selectedContactSupport, setSelectedContactSupport] = useState<String>()
 
   useEffect(() => {
-    console.log("sessions : " + session)
-  }, [])
+    console.log(isLogged)
+  }, [isLogged])
+
+  useEffect(() => {
+    setLogged(status === "authenticated")
+  }, [status])
 
   const { loading, data, error } = useQuery(
     DatabaseApi.GET_WIDGET_SOURCES
@@ -59,84 +64,87 @@ export default function AjoutDemande() {
       comment: target.comment.value
     }
 
+    // TODO: branchement back
     console.log(data)
   }
 
   return <div>
     <LoggedState showButton={false} />
 
-    <form onSubmit={createNewContact}>
-      <Input
-        label="Prénom"
-        nativeInputProps={{
-          id: "name"
-        }} />
+    {isLogged &&
+      <form onSubmit={createNewContact}>
+        <Input
+          label="Prénom"
+          nativeInputProps={{
+            id: "name"
+          }} />
 
-      <Input
-        label="Nombre d'enfants"
-        className={widthFitContent}
-        nativeInputProps={{
-          type: "number",
-          id: "childNumber"
-        }} />
+        <Input
+          label="Nombre d'enfants"
+          className={widthFitContent}
+          nativeInputProps={{
+            type: "number",
+            id: "childNumber"
+          }} />
 
-      <Input
-        label="Date de naissance du dernier enfant"
-        className={widthFitContent}
-        nativeInputProps={{
-          type: "date",
-          id: "childBirthDate"
-        }} />
+        <Input
+          label="Date de naissance du dernier enfant"
+          className={widthFitContent}
+          nativeInputProps={{
+            type: "date",
+            id: "childBirthDate"
+          }} />
 
-      <SelectDepartment setSelectedDepartment={setSelectedDepartment} />
+        <SelectDepartment setSelectedDepartment={setSelectedDepartment} />
 
-      <Input
-        label="Date de prise de contact"
-        className={widthFitContent}
-        nativeInputProps={{
-          type: "date",
-          id: "contactDate"
-        }} />
+        <Input
+          label="Date de prise de contact"
+          className={widthFitContent}
+          nativeInputProps={{
+            type: "date",
+            id: "contactDate"
+          }} />
 
-      <Select
-        label="Provenance du contact"
-        nativeSelectProps={{
-          onChange: event => setSelectedContactOrigin(event.target.value),
-        }}
-      >
-        <Fragment key=".0">
-          <option
-            disabled
-            hidden
-            selected
-            value=""
-          >
-            Sélectionnez une option
-          </option>
-          {widgetSources.map((source, index) => (
-            <option key={index} value={source.nom}>{source.nom}</option>
-          ))}
-        </Fragment>
-      </Select>
+        <Select
+          label="Provenance du contact"
+          nativeSelectProps={{
+            onChange: event => setSelectedContactOrigin(event.target.value),
+          }}
+        >
+          <Fragment key=".0">
+            <option
+              disabled
+              hidden
+              selected
+              value=""
+            >
+              Sélectionnez une option
+            </option>
+            {widgetSources.map((source, index) => (
+              <option key={index} value={source.nom}>{source.nom}</option>
+            ))}
+          </Fragment>
+        </Select>
 
-      <ContactModeComponent
-        label="Mode de prise de contact"
-        setSelectedContactMode={setSelectedContactMode} />
+        <ContactModeComponent
+          label="Mode de prise de contact"
+          setSelectedContactMode={setSelectedContactMode} />
 
-      <ContactSupportComponent
-        label="La personne contactée a-t'elle été accompagnée ?"
-        setSelectedContactSupport={setSelectedContactSupport}
-      />
+        <ContactSupportComponent
+          label="La personne contactée a-t'elle été accompagnée ?"
+          setSelectedContactSupport={setSelectedContactSupport}
+        />
 
-      <Input
-        label="Commentaire"
-        textArea
-        nativeTextAreaProps={{
-          id: "comment"
-        }} />
+        <Input
+          label="Commentaire"
+          textArea
+          nativeTextAreaProps={{
+            id: "comment"
+          }} />
 
-      <Button type="submit" onClick={() => { }}>Créer le contact</Button>
-    </form>
+        <Button type="submit" onClick={() => { }}>Créer le contact</Button>
+      </form>
+    }
   </div>
 }
 
