@@ -1178,6 +1178,171 @@ export type ConfigInput = {
   updated_by?: InputMaybe<Scalars['ID']>;
 };
 
+export type ContactInput = {
+  commentaire?: InputMaybe<Scalars['String']>;
+  created_by?: InputMaybe<Scalars['ID']>;
+  date_naissance_dernier_enfant?: InputMaybe<Scalars['Date']>;
+  date_prise_contact?: InputMaybe<Scalars['Date']>;
+  departement_code?: InputMaybe<Scalars['String']>;
+  departement_libelle?: InputMaybe<Scalars['String']>;
+  mode?: InputMaybe<Enum_Contacts_Mode>;
+  nombre_enfants?: InputMaybe<Scalars['Int']>;
+  personne_accompagnee?: InputMaybe<Enum_Contacts_Personne_Accompagnee>;
+  prenom?: InputMaybe<Scalars['String']>;
+  provenance?: InputMaybe<Scalars['ID']>;
+  updated_by?: InputMaybe<Scalars['ID']>;
+};
+
+/** Liste des demandes de contacts (ajouté par Elise) pour permettre d'avoir un suivi plus facile */
+export type Contacts = {
+  __typename?: 'Contacts';
+  commentaire?: Maybe<Scalars['String']>;
+  created_at: Scalars['DateTime'];
+  date_naissance_dernier_enfant?: Maybe<Scalars['Date']>;
+  date_prise_contact?: Maybe<Scalars['Date']>;
+  departement_code?: Maybe<Scalars['String']>;
+  departement_libelle?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  mode?: Maybe<Enum_Contacts_Mode>;
+  nombre_enfants?: Maybe<Scalars['Int']>;
+  personne_accompagnee?: Maybe<Enum_Contacts_Personne_Accompagnee>;
+  prenom?: Maybe<Scalars['String']>;
+  provenance?: Maybe<WidgetEpdsSources>;
+  updated_at: Scalars['DateTime'];
+};
+
+export type ContactsAggregator = {
+  __typename?: 'ContactsAggregator';
+  avg?: Maybe<ContactsAggregatorAvg>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<ContactsAggregatorMax>;
+  min?: Maybe<ContactsAggregatorMin>;
+  sum?: Maybe<ContactsAggregatorSum>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type ContactsAggregatorAvg = {
+  __typename?: 'ContactsAggregatorAvg';
+  nombre_enfants?: Maybe<Scalars['Float']>;
+};
+
+export type ContactsAggregatorMax = {
+  __typename?: 'ContactsAggregatorMax';
+  nombre_enfants?: Maybe<Scalars['Float']>;
+};
+
+export type ContactsAggregatorMin = {
+  __typename?: 'ContactsAggregatorMin';
+  nombre_enfants?: Maybe<Scalars['Float']>;
+};
+
+export type ContactsAggregatorSum = {
+  __typename?: 'ContactsAggregatorSum';
+  nombre_enfants?: Maybe<Scalars['Float']>;
+};
+
+export type ContactsConnection = {
+  __typename?: 'ContactsConnection';
+  aggregate?: Maybe<ContactsAggregator>;
+  groupBy?: Maybe<ContactsGroupBy>;
+  values?: Maybe<Array<Maybe<Contacts>>>;
+};
+
+export type ContactsConnectionCommentaire = {
+  __typename?: 'ContactsConnectionCommentaire';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ContactsConnectionCreated_At = {
+  __typename?: 'ContactsConnectionCreated_at';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ContactsConnectionDate_Naissance_Dernier_Enfant = {
+  __typename?: 'ContactsConnectionDate_naissance_dernier_enfant';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ContactsConnectionDate_Prise_Contact = {
+  __typename?: 'ContactsConnectionDate_prise_contact';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ContactsConnectionDepartement_Code = {
+  __typename?: 'ContactsConnectionDepartement_code';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ContactsConnectionDepartement_Libelle = {
+  __typename?: 'ContactsConnectionDepartement_libelle';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ContactsConnectionId = {
+  __typename?: 'ContactsConnectionId';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ContactsConnectionMode = {
+  __typename?: 'ContactsConnectionMode';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ContactsConnectionNombre_Enfants = {
+  __typename?: 'ContactsConnectionNombre_enfants';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type ContactsConnectionPersonne_Accompagnee = {
+  __typename?: 'ContactsConnectionPersonne_accompagnee';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ContactsConnectionPrenom = {
+  __typename?: 'ContactsConnectionPrenom';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ContactsConnectionProvenance = {
+  __typename?: 'ContactsConnectionProvenance';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ContactsConnectionUpdated_At = {
+  __typename?: 'ContactsConnectionUpdated_at';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ContactsGroupBy = {
+  __typename?: 'ContactsGroupBy';
+  commentaire?: Maybe<Array<Maybe<ContactsConnectionCommentaire>>>;
+  created_at?: Maybe<Array<Maybe<ContactsConnectionCreated_At>>>;
+  date_naissance_dernier_enfant?: Maybe<Array<Maybe<ContactsConnectionDate_Naissance_Dernier_Enfant>>>;
+  date_prise_contact?: Maybe<Array<Maybe<ContactsConnectionDate_Prise_Contact>>>;
+  departement_code?: Maybe<Array<Maybe<ContactsConnectionDepartement_Code>>>;
+  departement_libelle?: Maybe<Array<Maybe<ContactsConnectionDepartement_Libelle>>>;
+  id?: Maybe<Array<Maybe<ContactsConnectionId>>>;
+  mode?: Maybe<Array<Maybe<ContactsConnectionMode>>>;
+  nombre_enfants?: Maybe<Array<Maybe<ContactsConnectionNombre_Enfants>>>;
+  personne_accompagnee?: Maybe<Array<Maybe<ContactsConnectionPersonne_Accompagnee>>>;
+  prenom?: Maybe<Array<Maybe<ContactsConnectionPrenom>>>;
+  provenance?: Maybe<Array<Maybe<ContactsConnectionProvenance>>>;
+  updated_at?: Maybe<Array<Maybe<ContactsConnectionUpdated_At>>>;
+};
+
 /** Lier la demande de contact avec la réponse EPDS */
 export type DemandeDeContact = {
   __typename?: 'DemandeDeContact';
@@ -1288,6 +1453,19 @@ export enum Enum_Cartographiesource_Type {
 export enum Enum_Cartographietypes_Categorie {
   Professionnel = 'professionnel',
   Structure = 'structure'
+}
+
+export enum Enum_Contacts_Mode {
+  Chat = 'chat',
+  Email = 'email',
+  Sms = 'sms'
+}
+
+export enum Enum_Contacts_Personne_Accompagnee {
+  Aidee = 'aidee',
+  EchangeInitial = 'echange_initial',
+  NonAccompagnee = 'non_accompagnee',
+  Orientee = 'orientee'
 }
 
 export enum Enum_Demandedecontact_Type_De_Contact {
@@ -2100,7 +2278,7 @@ export type LocaleInput = {
   updated_by?: InputMaybe<Scalars['ID']>;
 };
 
-export type Morph = Article | ArticleAggregator | ArticleAggregatorAvg | ArticleAggregatorMax | ArticleAggregatorMin | ArticleAggregatorSum | ArticleConnection | ArticleConnectionCreated_At | ArticleConnectionEnbref_1_Icone | ArticleConnectionEnbref_1_Texte | ArticleConnectionEnbref_2_Icone | ArticleConnectionEnbref_2_Texte | ArticleConnectionEnbref_3_Icone | ArticleConnectionEnbref_3_Texte | ArticleConnectionId | ArticleConnectionLe_Saviez_Vous | ArticleConnectionLien_1_Titre | ArticleConnectionLien_1_Url | ArticleConnectionLien_2_Titre | ArticleConnectionLien_2_Url | ArticleConnectionLien_3_Titre | ArticleConnectionLien_3_Url | ArticleConnectionLien_4_Titre | ArticleConnectionLien_4_Url | ArticleConnectionMots_Cles | ArticleConnectionNotifications | ArticleConnectionOrdre | ArticleConnectionPublished_At | ArticleConnectionResume | ArticleConnectionTexte_1 | ArticleConnectionTexte_1_Titre | ArticleConnectionTexte_2 | ArticleConnectionTexte_2_Titre | ArticleConnectionTitre | ArticleConnectionUpdated_At | ArticleConnectionVisuel | ArticleGroupBy | CartographieDsTypes | CartographieDsTypesAggregator | CartographieDsTypesConnection | CartographieDsTypesConnectionCartographie_Pois_Type | CartographieDsTypesConnectionCreated_At | CartographieDsTypesConnectionId | CartographieDsTypesConnectionIdentifiant | CartographieDsTypesConnectionUpdated_At | CartographieDsTypesGroupBy | CartographiePoi | CartographiePoiAdresse | CartographiePoiAggregator | CartographiePoiConnection | CartographiePoiConnectionCartographie_Adresses_Json | CartographiePoiConnectionCartographie_References_Json | CartographiePoiConnectionCourriel | CartographiePoiConnectionCreated_At | CartographiePoiConnectionId | CartographiePoiConnectionIdentifiant | CartographiePoiConnectionNom | CartographiePoiConnectionSite_Internet | CartographiePoiConnectionTelephone | CartographiePoiConnectionType | CartographiePoiConnectionUpdated_At | CartographiePoiGroupBy | CartographieSource | CartographieSourceAggregator | CartographieSourceAggregatorAvg | CartographieSourceAggregatorMax | CartographieSourceAggregatorMin | CartographieSourceAggregatorSum | CartographieSourceConnection | CartographieSourceConnectionChamps | CartographieSourceConnectionCreated_At | CartographieSourceConnectionDescription | CartographieSourceConnectionFichier | CartographieSourceConnectionId | CartographieSourceConnectionIdentifiant | CartographieSourceConnectionLignes_Insertion | CartographieSourceConnectionLignes_Total | CartographieSourceConnectionNom | CartographieSourceConnectionPret_A_Traiter | CartographieSourceConnectionRegles | CartographieSourceConnectionRegles_Script | CartographieSourceConnectionSource | CartographieSourceConnectionTraitement | CartographieSourceConnectionType | CartographieSourceConnectionUpdated_At | CartographieSourceConnectionVersion | CartographieSourceGroupBy | CartographieTypes | CartographieTypesAggregator | CartographieTypesConnection | CartographieTypesConnectionCategorie | CartographieTypesConnectionCreated_At | CartographieTypesConnectionDescription | CartographieTypesConnectionId | CartographieTypesConnectionIdentifiant | CartographieTypesConnectionNom | CartographieTypesConnectionUpdated_At | CartographieTypesGroupBy | CommentairesEpds | CommentairesEpdsAggregator | CommentairesEpdsAggregatorAvg | CommentairesEpdsAggregatorMax | CommentairesEpdsAggregatorMin | CommentairesEpdsAggregatorSum | CommentairesEpdsConnection | CommentairesEpdsConnectionCommentaire | CommentairesEpdsConnectionCreated_At | CommentairesEpdsConnectionId | CommentairesEpdsConnectionScore | CommentairesEpdsConnectionUpdated_At | CommentairesEpdsGroupBy | ComponentCartographieAdresse | ComponentCartographieConditionSimple | ComponentCartographieRegleChamp | ComponentCartographieRegleType | ComponentCartographieReglesChamps | ComponentCartographieSourceReference | ComponentCartographieTypes | ComponentTraductionLabel | Config | DemandeDeContact | DemandeDeContactAggregator | DemandeDeContactConnection | DemandeDeContactConnectionCreated_At | DemandeDeContactConnectionId | DemandeDeContactConnectionReponses_Epds | DemandeDeContactConnectionType_De_Contact | DemandeDeContactConnectionUpdated_At | DemandeDeContactConnectionWidget_Epds_Source | DemandeDeContactGroupBy | Etape | EtapeAggregator | EtapeAggregatorAvg | EtapeAggregatorMax | EtapeAggregatorMin | EtapeAggregatorSum | EtapeConnection | EtapeConnectionCreated_At | EtapeConnectionDebut | EtapeConnectionDescription | EtapeConnectionFin | EtapeConnectionId | EtapeConnectionNom | EtapeConnectionOrdre | EtapeConnectionPublished_At | EtapeConnectionUpdated_At | EtapeGroupBy | Evenement | EvenementAggregator | EvenementAggregatorAvg | EvenementAggregatorMax | EvenementAggregatorMin | EvenementAggregatorSum | EvenementConnection | EvenementConnectionCreated_At | EvenementConnectionDebut | EvenementConnectionDescription | EvenementConnectionFin | EvenementConnectionId | EvenementConnectionImportant | EvenementConnectionNom | EvenementConnectionPublished_At | EvenementConnectionThematique | EvenementConnectionUpdated_At | EvenementGroupBy | InformationsDemographiques | InformationsDemographiquesAggregator | InformationsDemographiquesConnection | InformationsDemographiquesConnectionAge | InformationsDemographiquesConnectionCode_Postal | InformationsDemographiquesConnectionCreated_At | InformationsDemographiquesConnectionCsp_Code | InformationsDemographiquesConnectionCsp_Libelle | InformationsDemographiquesConnectionDepartement | InformationsDemographiquesConnectionDepartement_Libelle | InformationsDemographiquesConnectionEntourage_Dispo | InformationsDemographiquesConnectionGenre | InformationsDemographiquesConnectionId | InformationsDemographiquesConnectionRegion | InformationsDemographiquesConnectionReponses_Epds | InformationsDemographiquesConnectionSituation | InformationsDemographiquesConnectionUpdated_At | InformationsDemographiquesConnectionVille | InformationsDemographiquesGroupBy | LabelsEpdsTraductions | LabelsEpdsTraductionsAggregator | LabelsEpdsTraductionsConnection | LabelsEpdsTraductionsConnectionCreated_At | LabelsEpdsTraductionsConnectionId | LabelsEpdsTraductionsConnectionLangue | LabelsEpdsTraductionsConnectionPublished_At | LabelsEpdsTraductionsConnectionUpdated_At | LabelsEpdsTraductionsGroupBy | Locale | LocaleAggregator | LocaleConnection | LocaleConnectionCreated_At | LocaleConnectionDrapeau | LocaleConnectionId | LocaleConnectionIdentifiant | LocaleConnectionLibelle_Francais | LocaleConnectionLibelle_Langue | LocaleConnectionPublished_At | LocaleConnectionSens_Lecture_Droite_Vers_Gauche | LocaleConnectionUpdated_At | LocaleGroupBy | Parcours | ParcoursAggregator | ParcoursConnection | ParcoursConnectionCreated_At | ParcoursConnectionDescription | ParcoursConnectionId | ParcoursConnectionNom | ParcoursConnectionPublished_At | ParcoursConnectionUpdated_At | ParcoursGroupBy | ParenthequeDocuments | ParenthequeDocumentsAggregator | ParenthequeDocumentsAggregatorAvg | ParenthequeDocumentsAggregatorMax | ParenthequeDocumentsAggregatorMin | ParenthequeDocumentsAggregatorSum | ParenthequeDocumentsConnection | ParenthequeDocumentsConnectionCreated_At | ParenthequeDocumentsConnectionDescription | ParenthequeDocumentsConnectionFichier | ParenthequeDocumentsConnectionId | ParenthequeDocumentsConnectionNom | ParenthequeDocumentsConnectionOrdre | ParenthequeDocumentsConnectionPublished_At | ParenthequeDocumentsConnectionThematique | ParenthequeDocumentsConnectionUpdated_At | ParenthequeDocumentsGroupBy | QuestionnaireEpds | QuestionnaireEpdsAggregator | QuestionnaireEpdsAggregatorAvg | QuestionnaireEpdsAggregatorMax | QuestionnaireEpdsAggregatorMin | QuestionnaireEpdsAggregatorSum | QuestionnaireEpdsConnection | QuestionnaireEpdsConnectionCreated_At | QuestionnaireEpdsConnectionId | QuestionnaireEpdsConnectionLibelle | QuestionnaireEpdsConnectionLocale | QuestionnaireEpdsConnectionOrdre | QuestionnaireEpdsConnectionReponse_1_Libelle | QuestionnaireEpdsConnectionReponse_1_Points | QuestionnaireEpdsConnectionReponse_2_Libelle | QuestionnaireEpdsConnectionReponse_2_Points | QuestionnaireEpdsConnectionReponse_3_Libelle | QuestionnaireEpdsConnectionReponse_3_Points | QuestionnaireEpdsConnectionReponse_4_Libelle | QuestionnaireEpdsConnectionReponse_4_Points | QuestionnaireEpdsConnectionUpdated_At | QuestionnaireEpdsGroupBy | QuestionnaireEpdsTraductions | QuestionnaireEpdsTraductionsAggregator | QuestionnaireEpdsTraductionsAggregatorAvg | QuestionnaireEpdsTraductionsAggregatorMax | QuestionnaireEpdsTraductionsAggregatorMin | QuestionnaireEpdsTraductionsAggregatorSum | QuestionnaireEpdsTraductionsConnection | QuestionnaireEpdsTraductionsConnectionCreated_At | QuestionnaireEpdsTraductionsConnectionId | QuestionnaireEpdsTraductionsConnectionLangue | QuestionnaireEpdsTraductionsConnectionLibelle | QuestionnaireEpdsTraductionsConnectionOrdre | QuestionnaireEpdsTraductionsConnectionReponse_1_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_1_Points | QuestionnaireEpdsTraductionsConnectionReponse_2_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_2_Points | QuestionnaireEpdsTraductionsConnectionReponse_3_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_3_Points | QuestionnaireEpdsTraductionsConnectionReponse_4_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_4_Points | QuestionnaireEpdsTraductionsConnectionUpdated_At | QuestionnaireEpdsTraductionsGroupBy | ReponsesEpds | ReponsesEpdsAggregator | ReponsesEpdsAggregatorAvg | ReponsesEpdsAggregatorMax | ReponsesEpdsAggregatorMin | ReponsesEpdsAggregatorSum | ReponsesEpdsConnection | ReponsesEpdsConnectionCompteur | ReponsesEpdsConnectionCreated_At | ReponsesEpdsConnectionGenre | ReponsesEpdsConnectionId | ReponsesEpdsConnectionLangue | ReponsesEpdsConnectionReponse_1 | ReponsesEpdsConnectionReponse_2 | ReponsesEpdsConnectionReponse_3 | ReponsesEpdsConnectionReponse_4 | ReponsesEpdsConnectionReponse_5 | ReponsesEpdsConnectionReponse_6 | ReponsesEpdsConnectionReponse_7 | ReponsesEpdsConnectionReponse_8 | ReponsesEpdsConnectionReponse_9 | ReponsesEpdsConnectionReponse_10 | ReponsesEpdsConnectionScore | ReponsesEpdsConnectionSource | ReponsesEpdsConnectionSource_Widget | ReponsesEpdsConnectionUpdated_At | ReponsesEpdsGroupBy | Temoignage | TemoignageAggregator | TemoignageConnection | TemoignageConnectionChiffre_Choc | TemoignageConnectionCreated_At | TemoignageConnectionId | TemoignageConnectionPublished_At | TemoignageConnectionSource | TemoignageConnectionTexte | TemoignageConnectionTitre | TemoignageConnectionUpdated_At | TemoignageGroupBy | Thematique | ThematiqueAggregator | ThematiqueConnection | ThematiqueConnectionCreated_At | ThematiqueConnectionDescription | ThematiqueConnectionId | ThematiqueConnectionNom | ThematiqueConnectionPublished_At | ThematiqueConnectionUpdated_At | ThematiqueGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Video | VideoAggregator | VideoAggregatorAvg | VideoAggregatorMax | VideoAggregatorMin | VideoAggregatorSum | VideoConnection | VideoConnectionCreated_At | VideoConnectionDescription | VideoConnectionId | VideoConnectionMiniature | VideoConnectionNom | VideoConnectionOrdre | VideoConnectionPublished_At | VideoConnectionThematique | VideoConnectionUpdated_At | VideoConnectionUrl | VideoGroupBy | WidgetEpdsSources | WidgetEpdsSourcesAggregator | WidgetEpdsSourcesConnection | WidgetEpdsSourcesConnectionCreated_At | WidgetEpdsSourcesConnectionId | WidgetEpdsSourcesConnectionNom | WidgetEpdsSourcesConnectionPublished_At | WidgetEpdsSourcesConnectionUpdated_At | WidgetEpdsSourcesGroupBy | CreateArticlePayload | CreateCartographieDsTypePayload | CreateCartographiePoiPayload | CreateCartographieSourcePayload | CreateCartographieTypePayload | CreateCommentairesEpdPayload | CreateDemandeDeContactPayload | CreateEtapePayload | CreateEvenementPayload | CreateInformationsDemographiquePayload | CreateLabelsEpdsTraductionPayload | CreateLocalePayload | CreateParcourPayload | CreateParenthequeDocumentPayload | CreateQuestionnaireEpdPayload | CreateQuestionnaireEpdsTraductionPayload | CreateReponsesEpdPayload | CreateRolePayload | CreateTemoignagePayload | CreateThematiquePayload | CreateUserPayload | CreateVideoPayload | CreateWidgetEpdsSourcePayload | DeleteArticlePayload | DeleteCartographieDsTypePayload | DeleteCartographiePoiPayload | DeleteCartographieSourcePayload | DeleteCartographieTypePayload | DeleteCommentairesEpdPayload | DeleteConfigPayload | DeleteDemandeDeContactPayload | DeleteEtapePayload | DeleteEvenementPayload | DeleteFilePayload | DeleteInformationsDemographiquePayload | DeleteLabelsEpdsTraductionPayload | DeleteLocalePayload | DeleteParcourPayload | DeleteParenthequeDocumentPayload | DeleteQuestionnaireEpdPayload | DeleteQuestionnaireEpdsTraductionPayload | DeleteReponsesEpdPayload | DeleteRolePayload | DeleteTemoignagePayload | DeleteThematiquePayload | DeleteUserPayload | DeleteVideoPayload | DeleteWidgetEpdsSourcePayload | UpdateArticlePayload | UpdateCartographieDsTypePayload | UpdateCartographiePoiPayload | UpdateCartographieSourcePayload | UpdateCartographieTypePayload | UpdateCommentairesEpdPayload | UpdateConfigPayload | UpdateDemandeDeContactPayload | UpdateEtapePayload | UpdateEvenementPayload | UpdateInformationsDemographiquePayload | UpdateLabelsEpdsTraductionPayload | UpdateLocalePayload | UpdateParcourPayload | UpdateParenthequeDocumentPayload | UpdateQuestionnaireEpdPayload | UpdateQuestionnaireEpdsTraductionPayload | UpdateReponsesEpdPayload | UpdateRolePayload | UpdateTemoignagePayload | UpdateThematiquePayload | UpdateUserPayload | UpdateVideoPayload | UpdateWidgetEpdsSourcePayload;
+export type Morph = Article | ArticleAggregator | ArticleAggregatorAvg | ArticleAggregatorMax | ArticleAggregatorMin | ArticleAggregatorSum | ArticleConnection | ArticleConnectionCreated_At | ArticleConnectionEnbref_1_Icone | ArticleConnectionEnbref_1_Texte | ArticleConnectionEnbref_2_Icone | ArticleConnectionEnbref_2_Texte | ArticleConnectionEnbref_3_Icone | ArticleConnectionEnbref_3_Texte | ArticleConnectionId | ArticleConnectionLe_Saviez_Vous | ArticleConnectionLien_1_Titre | ArticleConnectionLien_1_Url | ArticleConnectionLien_2_Titre | ArticleConnectionLien_2_Url | ArticleConnectionLien_3_Titre | ArticleConnectionLien_3_Url | ArticleConnectionLien_4_Titre | ArticleConnectionLien_4_Url | ArticleConnectionMots_Cles | ArticleConnectionNotifications | ArticleConnectionOrdre | ArticleConnectionPublished_At | ArticleConnectionResume | ArticleConnectionTexte_1 | ArticleConnectionTexte_1_Titre | ArticleConnectionTexte_2 | ArticleConnectionTexte_2_Titre | ArticleConnectionTitre | ArticleConnectionUpdated_At | ArticleConnectionVisuel | ArticleGroupBy | CartographieDsTypes | CartographieDsTypesAggregator | CartographieDsTypesConnection | CartographieDsTypesConnectionCartographie_Pois_Type | CartographieDsTypesConnectionCreated_At | CartographieDsTypesConnectionId | CartographieDsTypesConnectionIdentifiant | CartographieDsTypesConnectionUpdated_At | CartographieDsTypesGroupBy | CartographiePoi | CartographiePoiAdresse | CartographiePoiAggregator | CartographiePoiConnection | CartographiePoiConnectionCartographie_Adresses_Json | CartographiePoiConnectionCartographie_References_Json | CartographiePoiConnectionCourriel | CartographiePoiConnectionCreated_At | CartographiePoiConnectionId | CartographiePoiConnectionIdentifiant | CartographiePoiConnectionNom | CartographiePoiConnectionSite_Internet | CartographiePoiConnectionTelephone | CartographiePoiConnectionType | CartographiePoiConnectionUpdated_At | CartographiePoiGroupBy | CartographieSource | CartographieSourceAggregator | CartographieSourceAggregatorAvg | CartographieSourceAggregatorMax | CartographieSourceAggregatorMin | CartographieSourceAggregatorSum | CartographieSourceConnection | CartographieSourceConnectionChamps | CartographieSourceConnectionCreated_At | CartographieSourceConnectionDescription | CartographieSourceConnectionFichier | CartographieSourceConnectionId | CartographieSourceConnectionIdentifiant | CartographieSourceConnectionLignes_Insertion | CartographieSourceConnectionLignes_Total | CartographieSourceConnectionNom | CartographieSourceConnectionPret_A_Traiter | CartographieSourceConnectionRegles | CartographieSourceConnectionRegles_Script | CartographieSourceConnectionSource | CartographieSourceConnectionTraitement | CartographieSourceConnectionType | CartographieSourceConnectionUpdated_At | CartographieSourceConnectionVersion | CartographieSourceGroupBy | CartographieTypes | CartographieTypesAggregator | CartographieTypesConnection | CartographieTypesConnectionCategorie | CartographieTypesConnectionCreated_At | CartographieTypesConnectionDescription | CartographieTypesConnectionId | CartographieTypesConnectionIdentifiant | CartographieTypesConnectionNom | CartographieTypesConnectionUpdated_At | CartographieTypesGroupBy | CommentairesEpds | CommentairesEpdsAggregator | CommentairesEpdsAggregatorAvg | CommentairesEpdsAggregatorMax | CommentairesEpdsAggregatorMin | CommentairesEpdsAggregatorSum | CommentairesEpdsConnection | CommentairesEpdsConnectionCommentaire | CommentairesEpdsConnectionCreated_At | CommentairesEpdsConnectionId | CommentairesEpdsConnectionScore | CommentairesEpdsConnectionUpdated_At | CommentairesEpdsGroupBy | ComponentCartographieAdresse | ComponentCartographieConditionSimple | ComponentCartographieRegleChamp | ComponentCartographieRegleType | ComponentCartographieReglesChamps | ComponentCartographieSourceReference | ComponentCartographieTypes | ComponentTraductionLabel | Config | Contacts | ContactsAggregator | ContactsAggregatorAvg | ContactsAggregatorMax | ContactsAggregatorMin | ContactsAggregatorSum | ContactsConnection | ContactsConnectionCommentaire | ContactsConnectionCreated_At | ContactsConnectionDate_Naissance_Dernier_Enfant | ContactsConnectionDate_Prise_Contact | ContactsConnectionDepartement_Code | ContactsConnectionDepartement_Libelle | ContactsConnectionId | ContactsConnectionMode | ContactsConnectionNombre_Enfants | ContactsConnectionPersonne_Accompagnee | ContactsConnectionPrenom | ContactsConnectionProvenance | ContactsConnectionUpdated_At | ContactsGroupBy | DemandeDeContact | DemandeDeContactAggregator | DemandeDeContactConnection | DemandeDeContactConnectionCreated_At | DemandeDeContactConnectionId | DemandeDeContactConnectionReponses_Epds | DemandeDeContactConnectionType_De_Contact | DemandeDeContactConnectionUpdated_At | DemandeDeContactConnectionWidget_Epds_Source | DemandeDeContactGroupBy | Etape | EtapeAggregator | EtapeAggregatorAvg | EtapeAggregatorMax | EtapeAggregatorMin | EtapeAggregatorSum | EtapeConnection | EtapeConnectionCreated_At | EtapeConnectionDebut | EtapeConnectionDescription | EtapeConnectionFin | EtapeConnectionId | EtapeConnectionNom | EtapeConnectionOrdre | EtapeConnectionPublished_At | EtapeConnectionUpdated_At | EtapeGroupBy | Evenement | EvenementAggregator | EvenementAggregatorAvg | EvenementAggregatorMax | EvenementAggregatorMin | EvenementAggregatorSum | EvenementConnection | EvenementConnectionCreated_At | EvenementConnectionDebut | EvenementConnectionDescription | EvenementConnectionFin | EvenementConnectionId | EvenementConnectionImportant | EvenementConnectionNom | EvenementConnectionPublished_At | EvenementConnectionThematique | EvenementConnectionUpdated_At | EvenementGroupBy | InformationsDemographiques | InformationsDemographiquesAggregator | InformationsDemographiquesConnection | InformationsDemographiquesConnectionAge | InformationsDemographiquesConnectionCode_Postal | InformationsDemographiquesConnectionCreated_At | InformationsDemographiquesConnectionCsp_Code | InformationsDemographiquesConnectionCsp_Libelle | InformationsDemographiquesConnectionDepartement | InformationsDemographiquesConnectionDepartement_Libelle | InformationsDemographiquesConnectionEntourage_Dispo | InformationsDemographiquesConnectionGenre | InformationsDemographiquesConnectionId | InformationsDemographiquesConnectionRegion | InformationsDemographiquesConnectionReponses_Epds | InformationsDemographiquesConnectionSituation | InformationsDemographiquesConnectionUpdated_At | InformationsDemographiquesConnectionVille | InformationsDemographiquesGroupBy | LabelsEpdsTraductions | LabelsEpdsTraductionsAggregator | LabelsEpdsTraductionsConnection | LabelsEpdsTraductionsConnectionCreated_At | LabelsEpdsTraductionsConnectionId | LabelsEpdsTraductionsConnectionLangue | LabelsEpdsTraductionsConnectionPublished_At | LabelsEpdsTraductionsConnectionUpdated_At | LabelsEpdsTraductionsGroupBy | Locale | LocaleAggregator | LocaleConnection | LocaleConnectionCreated_At | LocaleConnectionDrapeau | LocaleConnectionId | LocaleConnectionIdentifiant | LocaleConnectionLibelle_Francais | LocaleConnectionLibelle_Langue | LocaleConnectionPublished_At | LocaleConnectionSens_Lecture_Droite_Vers_Gauche | LocaleConnectionUpdated_At | LocaleGroupBy | Parcours | ParcoursAggregator | ParcoursConnection | ParcoursConnectionCreated_At | ParcoursConnectionDescription | ParcoursConnectionId | ParcoursConnectionNom | ParcoursConnectionPublished_At | ParcoursConnectionUpdated_At | ParcoursGroupBy | ParenthequeDocuments | ParenthequeDocumentsAggregator | ParenthequeDocumentsAggregatorAvg | ParenthequeDocumentsAggregatorMax | ParenthequeDocumentsAggregatorMin | ParenthequeDocumentsAggregatorSum | ParenthequeDocumentsConnection | ParenthequeDocumentsConnectionCreated_At | ParenthequeDocumentsConnectionDescription | ParenthequeDocumentsConnectionFichier | ParenthequeDocumentsConnectionId | ParenthequeDocumentsConnectionNom | ParenthequeDocumentsConnectionOrdre | ParenthequeDocumentsConnectionPublished_At | ParenthequeDocumentsConnectionThematique | ParenthequeDocumentsConnectionUpdated_At | ParenthequeDocumentsGroupBy | QuestionnaireEpds | QuestionnaireEpdsAggregator | QuestionnaireEpdsAggregatorAvg | QuestionnaireEpdsAggregatorMax | QuestionnaireEpdsAggregatorMin | QuestionnaireEpdsAggregatorSum | QuestionnaireEpdsConnection | QuestionnaireEpdsConnectionCreated_At | QuestionnaireEpdsConnectionId | QuestionnaireEpdsConnectionLibelle | QuestionnaireEpdsConnectionLocale | QuestionnaireEpdsConnectionOrdre | QuestionnaireEpdsConnectionReponse_1_Libelle | QuestionnaireEpdsConnectionReponse_1_Points | QuestionnaireEpdsConnectionReponse_2_Libelle | QuestionnaireEpdsConnectionReponse_2_Points | QuestionnaireEpdsConnectionReponse_3_Libelle | QuestionnaireEpdsConnectionReponse_3_Points | QuestionnaireEpdsConnectionReponse_4_Libelle | QuestionnaireEpdsConnectionReponse_4_Points | QuestionnaireEpdsConnectionUpdated_At | QuestionnaireEpdsGroupBy | QuestionnaireEpdsTraductions | QuestionnaireEpdsTraductionsAggregator | QuestionnaireEpdsTraductionsAggregatorAvg | QuestionnaireEpdsTraductionsAggregatorMax | QuestionnaireEpdsTraductionsAggregatorMin | QuestionnaireEpdsTraductionsAggregatorSum | QuestionnaireEpdsTraductionsConnection | QuestionnaireEpdsTraductionsConnectionCreated_At | QuestionnaireEpdsTraductionsConnectionId | QuestionnaireEpdsTraductionsConnectionLangue | QuestionnaireEpdsTraductionsConnectionLibelle | QuestionnaireEpdsTraductionsConnectionOrdre | QuestionnaireEpdsTraductionsConnectionReponse_1_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_1_Points | QuestionnaireEpdsTraductionsConnectionReponse_2_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_2_Points | QuestionnaireEpdsTraductionsConnectionReponse_3_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_3_Points | QuestionnaireEpdsTraductionsConnectionReponse_4_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_4_Points | QuestionnaireEpdsTraductionsConnectionUpdated_At | QuestionnaireEpdsTraductionsGroupBy | ReponsesEpds | ReponsesEpdsAggregator | ReponsesEpdsAggregatorAvg | ReponsesEpdsAggregatorMax | ReponsesEpdsAggregatorMin | ReponsesEpdsAggregatorSum | ReponsesEpdsConnection | ReponsesEpdsConnectionCompteur | ReponsesEpdsConnectionCreated_At | ReponsesEpdsConnectionGenre | ReponsesEpdsConnectionId | ReponsesEpdsConnectionLangue | ReponsesEpdsConnectionReponse_1 | ReponsesEpdsConnectionReponse_2 | ReponsesEpdsConnectionReponse_3 | ReponsesEpdsConnectionReponse_4 | ReponsesEpdsConnectionReponse_5 | ReponsesEpdsConnectionReponse_6 | ReponsesEpdsConnectionReponse_7 | ReponsesEpdsConnectionReponse_8 | ReponsesEpdsConnectionReponse_9 | ReponsesEpdsConnectionReponse_10 | ReponsesEpdsConnectionScore | ReponsesEpdsConnectionSource | ReponsesEpdsConnectionSource_Widget | ReponsesEpdsConnectionUpdated_At | ReponsesEpdsGroupBy | Temoignage | TemoignageAggregator | TemoignageConnection | TemoignageConnectionChiffre_Choc | TemoignageConnectionCreated_At | TemoignageConnectionId | TemoignageConnectionPublished_At | TemoignageConnectionSource | TemoignageConnectionTexte | TemoignageConnectionTitre | TemoignageConnectionUpdated_At | TemoignageGroupBy | Thematique | ThematiqueAggregator | ThematiqueConnection | ThematiqueConnectionCreated_At | ThematiqueConnectionDescription | ThematiqueConnectionId | ThematiqueConnectionNom | ThematiqueConnectionPublished_At | ThematiqueConnectionUpdated_At | ThematiqueGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Video | VideoAggregator | VideoAggregatorAvg | VideoAggregatorMax | VideoAggregatorMin | VideoAggregatorSum | VideoConnection | VideoConnectionCreated_At | VideoConnectionDescription | VideoConnectionId | VideoConnectionMiniature | VideoConnectionNom | VideoConnectionOrdre | VideoConnectionPublished_At | VideoConnectionThematique | VideoConnectionUpdated_At | VideoConnectionUrl | VideoGroupBy | WidgetEpdsSources | WidgetEpdsSourcesAggregator | WidgetEpdsSourcesConnection | WidgetEpdsSourcesConnectionCreated_At | WidgetEpdsSourcesConnectionId | WidgetEpdsSourcesConnectionNom | WidgetEpdsSourcesConnectionPublished_At | WidgetEpdsSourcesConnectionUpdated_At | WidgetEpdsSourcesGroupBy | CreateArticlePayload | CreateCartographieDsTypePayload | CreateCartographiePoiPayload | CreateCartographieSourcePayload | CreateCartographieTypePayload | CreateCommentairesEpdPayload | CreateContactPayload | CreateDemandeDeContactPayload | CreateEtapePayload | CreateEvenementPayload | CreateInformationsDemographiquePayload | CreateLabelsEpdsTraductionPayload | CreateLocalePayload | CreateParcourPayload | CreateParenthequeDocumentPayload | CreateQuestionnaireEpdPayload | CreateQuestionnaireEpdsTraductionPayload | CreateReponsesEpdPayload | CreateRolePayload | CreateTemoignagePayload | CreateThematiquePayload | CreateUserPayload | CreateVideoPayload | CreateWidgetEpdsSourcePayload | DeleteArticlePayload | DeleteCartographieDsTypePayload | DeleteCartographiePoiPayload | DeleteCartographieSourcePayload | DeleteCartographieTypePayload | DeleteCommentairesEpdPayload | DeleteConfigPayload | DeleteContactPayload | DeleteDemandeDeContactPayload | DeleteEtapePayload | DeleteEvenementPayload | DeleteFilePayload | DeleteInformationsDemographiquePayload | DeleteLabelsEpdsTraductionPayload | DeleteLocalePayload | DeleteParcourPayload | DeleteParenthequeDocumentPayload | DeleteQuestionnaireEpdPayload | DeleteQuestionnaireEpdsTraductionPayload | DeleteReponsesEpdPayload | DeleteRolePayload | DeleteTemoignagePayload | DeleteThematiquePayload | DeleteUserPayload | DeleteVideoPayload | DeleteWidgetEpdsSourcePayload | UpdateArticlePayload | UpdateCartographieDsTypePayload | UpdateCartographiePoiPayload | UpdateCartographieSourcePayload | UpdateCartographieTypePayload | UpdateCommentairesEpdPayload | UpdateConfigPayload | UpdateContactPayload | UpdateDemandeDeContactPayload | UpdateEtapePayload | UpdateEvenementPayload | UpdateInformationsDemographiquePayload | UpdateLabelsEpdsTraductionPayload | UpdateLocalePayload | UpdateParcourPayload | UpdateParenthequeDocumentPayload | UpdateQuestionnaireEpdPayload | UpdateQuestionnaireEpdsTraductionPayload | UpdateReponsesEpdPayload | UpdateRolePayload | UpdateTemoignagePayload | UpdateThematiquePayload | UpdateUserPayload | UpdateVideoPayload | UpdateWidgetEpdsSourcePayload;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -2111,6 +2289,7 @@ export type Mutation = {
   createCartographieSource?: Maybe<CreateCartographieSourcePayload>;
   createCartographieType?: Maybe<CreateCartographieTypePayload>;
   createCommentairesEpd?: Maybe<CreateCommentairesEpdPayload>;
+  createContact?: Maybe<CreateContactPayload>;
   createDemandeDeContact?: Maybe<CreateDemandeDeContactPayload>;
   createEtape?: Maybe<CreateEtapePayload>;
   createEvenement?: Maybe<CreateEvenementPayload>;
@@ -2138,6 +2317,7 @@ export type Mutation = {
   deleteCartographieType?: Maybe<DeleteCartographieTypePayload>;
   deleteCommentairesEpd?: Maybe<DeleteCommentairesEpdPayload>;
   deleteConfig?: Maybe<DeleteConfigPayload>;
+  deleteContact?: Maybe<DeleteContactPayload>;
   deleteDemandeDeContact?: Maybe<DeleteDemandeDeContactPayload>;
   deleteEtape?: Maybe<DeleteEtapePayload>;
   deleteEvenement?: Maybe<DeleteEvenementPayload>;
@@ -2178,6 +2358,7 @@ export type Mutation = {
   updateCartographieType?: Maybe<UpdateCartographieTypePayload>;
   updateCommentairesEpd?: Maybe<UpdateCommentairesEpdPayload>;
   updateConfig?: Maybe<UpdateConfigPayload>;
+  updateContact?: Maybe<UpdateContactPayload>;
   updateDemandeDeContact?: Maybe<UpdateDemandeDeContactPayload>;
   updateEtape?: Maybe<UpdateEtapePayload>;
   updateEvenement?: Maybe<UpdateEvenementPayload>;
@@ -2237,6 +2418,11 @@ export type MutationCreateCartographieTypeArgs = {
 
 export type MutationCreateCommentairesEpdArgs = {
   input?: InputMaybe<CreateCommentairesEpdInput>;
+};
+
+
+export type MutationCreateContactArgs = {
+  input?: InputMaybe<CreateContactInput>;
 };
 
 
@@ -2372,6 +2558,11 @@ export type MutationDeleteCartographieTypeArgs = {
 
 export type MutationDeleteCommentairesEpdArgs = {
   input?: InputMaybe<DeleteCommentairesEpdInput>;
+};
+
+
+export type MutationDeleteContactArgs = {
+  input?: InputMaybe<DeleteContactInput>;
 };
 
 
@@ -2590,6 +2781,11 @@ export type MutationUpdateCommentairesEpdArgs = {
 
 export type MutationUpdateConfigArgs = {
   input?: InputMaybe<UpdateConfigInput>;
+};
+
+
+export type MutationUpdateContactArgs = {
+  input?: InputMaybe<UpdateContactInput>;
 };
 
 
@@ -2956,6 +3152,9 @@ export type Query = {
   commentairesEpds?: Maybe<Array<Maybe<CommentairesEpds>>>;
   commentairesEpdsConnection?: Maybe<CommentairesEpdsConnection>;
   config?: Maybe<Config>;
+  contact?: Maybe<Contacts>;
+  contacts?: Maybe<Array<Maybe<Contacts>>>;
+  contactsConnection?: Maybe<ContactsConnection>;
   demandeDeContact?: Maybe<DemandeDeContact>;
   demandeDeContacts?: Maybe<Array<Maybe<DemandeDeContact>>>;
   demandeDeContactsConnection?: Maybe<DemandeDeContactConnection>;
@@ -3157,6 +3356,29 @@ export type QueryCommentairesEpdsConnectionArgs = {
 
 export type QueryConfigArgs = {
   publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryContactArgs = {
+  id: Scalars['ID'];
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryContactsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Scalars['JSON']>;
+};
+
+
+export type QueryContactsConnectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Scalars['JSON']>;
 };
 
 
@@ -5168,6 +5390,15 @@ export type CreateCommentairesEpdPayload = {
   commentairesEpd?: Maybe<CommentairesEpds>;
 };
 
+export type CreateContactInput = {
+  data?: InputMaybe<ContactInput>;
+};
+
+export type CreateContactPayload = {
+  __typename?: 'createContactPayload';
+  contact?: Maybe<Contacts>;
+};
+
 export type CreateDemandeDeContactInput = {
   data?: InputMaybe<DemandeDeContactInput>;
 };
@@ -5378,6 +5609,15 @@ export type DeleteCommentairesEpdPayload = {
 export type DeleteConfigPayload = {
   __typename?: 'deleteConfigPayload';
   config?: Maybe<Config>;
+};
+
+export type DeleteContactInput = {
+  where?: InputMaybe<InputId>;
+};
+
+export type DeleteContactPayload = {
+  __typename?: 'deleteContactPayload';
+  contact?: Maybe<Contacts>;
 };
 
 export type DeleteDemandeDeContactInput = {
@@ -5717,6 +5957,21 @@ export type EditConfigInput = {
   updated_by?: InputMaybe<Scalars['ID']>;
 };
 
+export type EditContactInput = {
+  commentaire?: InputMaybe<Scalars['String']>;
+  created_by?: InputMaybe<Scalars['ID']>;
+  date_naissance_dernier_enfant?: InputMaybe<Scalars['Date']>;
+  date_prise_contact?: InputMaybe<Scalars['Date']>;
+  departement_code?: InputMaybe<Scalars['String']>;
+  departement_libelle?: InputMaybe<Scalars['String']>;
+  mode?: InputMaybe<Enum_Contacts_Mode>;
+  nombre_enfants?: InputMaybe<Scalars['Int']>;
+  personne_accompagnee?: InputMaybe<Enum_Contacts_Personne_Accompagnee>;
+  prenom?: InputMaybe<Scalars['String']>;
+  provenance?: InputMaybe<Scalars['ID']>;
+  updated_by?: InputMaybe<Scalars['ID']>;
+};
+
 export type EditDemandeDeContactInput = {
   created_by?: InputMaybe<Scalars['ID']>;
   reponses_epds?: InputMaybe<Scalars['ID']>;
@@ -6026,6 +6281,16 @@ export type UpdateConfigInput = {
 export type UpdateConfigPayload = {
   __typename?: 'updateConfigPayload';
   config?: Maybe<Config>;
+};
+
+export type UpdateContactInput = {
+  data?: InputMaybe<EditContactInput>;
+  where?: InputMaybe<InputId>;
+};
+
+export type UpdateContactPayload = {
+  __typename?: 'updateContactPayload';
+  contact?: Maybe<Contacts>;
 };
 
 export type UpdateDemandeDeContactInput = {
