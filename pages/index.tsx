@@ -1,31 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 import { NextPage } from "next";
 
-import { Button } from "@codegouvfr/react-dsfr/Button";
-
-import { signIn, signOut, useSession, getSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import axios from 'axios'
-import { IncomingMessage } from "http";
+import { LoggedState } from "../src/components/LoggedState";
 
 const Home: NextPage = (initialData: any) => {
-  //const [session, loading] = useSession() // strapi V4
-  const { data: session, status } = useSession() // strapi V3
-
   return (
     <>
       <Head>
         <title>1000 premiers jours - Dashboard</title>
       </Head>
 
-      <div>
-        {!session && <>
-          <Button onClick={() => signIn()}>Connexion</Button> Vous n&apos;êtes pas connecté
-        </>}
-        {session && <>
-          <Button onClick={() => signOut()}>Déconnexion</Button> Vous êtes connecté en tant que <b>{session.user.username}</b>
-        </>}
-      </div>
+      <LoggedState />
 
       <div className="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mb-8w fr-mt-8w">
         <div className="fr-col-12 fr-col-md-6">
