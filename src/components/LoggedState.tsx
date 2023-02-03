@@ -1,9 +1,14 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Button from "@codegouvfr/react-dsfr/Button";
+import { useEffect } from "react";
 
 export const LoggedState = ({ showButton = true }): JSX.Element => {
   //const [session, loading] = useSession() // strapi V4
   const { data: session, status } = useSession() // strapi V3
+
+  useEffect(() => {
+    if (session) localStorage.setItem("token", session.token.jwt)
+  }, [session])
 
   return (
     <div className="logged-state">

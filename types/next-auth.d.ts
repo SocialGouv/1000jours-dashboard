@@ -24,6 +24,6 @@ declare module "next-auth/jwt" {
     user: User
     account: Account
     profile: Profile
-    jwt: String
+    jwt: string
   }
 }

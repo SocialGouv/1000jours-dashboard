@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useMutation, useQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
+import { client } from "../apollo-client"
 
 import { useStyles } from "tss-react/dsfr";
 import { LoggedState } from "../src/components/LoggedState";
@@ -24,7 +25,7 @@ export default function AjoutDemande() {
   const { css } = useStyles();
   const widthFitContent = css({ width: "fit-content" })
 
-  const { data: session, status } = useSession()
+  const { status } = useSession()
   const [isLogged, setLogged] = useState<Boolean>()
 
   const [widgetSources, setWidgetSources] = useState<WidgetEpdsSources[]>([])
@@ -36,29 +37,27 @@ export default function AjoutDemande() {
 
   useEffect(() => {
     setLogged(status === "authenticated")
+
+    const getSourcesApi = async () => await getWidgetSourcesRequest()
+    getSourcesApi()
   }, [status])
 
-  const { loading: loadingSource, data: dataSource, error: errorSource } = useQuery(
-    DatabaseApi.GET_WIDGET_SOURCES
+  const [getWidgetSourcesRequest] = useLazyQuery(
+    DatabaseApi.GET_WIDGET_SOURCES, {
+    client: client,
+    onCompleted: (data) => setWidgetSources(sortWidgetSourceByName([...data.widgetEpdsSources])),
+    onError: (err) => console.error(err),
+  }
   );
 
-  const [saveContact, { error, data, loading }] = useMutation(
+  const [saveContactRequest] = useMutation(
     DatabaseApi.SAVE_CONTACT, {
-    variables: contactData
+    client: client,
+    onCompleted: (data) => {
+      console.log(data)
+    },
+    onError: (err) => console.error(err),
   });
-
-  useEffect(() => {
-    if (dataSource)
-      setWidgetSources(sortWidgetSourceByName([...dataSource.widgetEpdsSources]))
-  }, [dataSource, loadingSource, errorSource])
-
-  useEffect(() => {
-    if (contactData) saveContact()
-  }, [contactData])
-
-  useEffect(() => {
-    console.log(loading)
-  }, [data, loading, error])
 
   const createNewContact = async (event: any) => {
     // Stop the form from submitting and refreshing the page.
@@ -77,7 +76,10 @@ export default function AjoutDemande() {
       personneAccompagnee: selectedContactSupport,
       commentaire: target.comment.value
     }
-    setContactData(dataCollected)
+
+    await saveContactRequest({
+      variables: dataCollected
+    })
   }
 
   return <div>
