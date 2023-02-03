@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { client } from "../apollo-client"
-
+import { useRouter } from "next/router";
 import { useStyles } from "tss-react/dsfr";
 import { LoggedState } from "../src/components/LoggedState";
 import DatabaseApi from "../src/services/api/database";
@@ -24,6 +24,7 @@ import Alert from "@codegouvfr/react-dsfr/Alert";
 export default function AjoutDemande() {
   const { css } = useStyles();
   const widthFitContent = css({ width: "fit-content" })
+  const router = useRouter()
 
   const { status } = useSession()
   const [isLogged, setLogged] = useState<Boolean>()
@@ -33,7 +34,7 @@ export default function AjoutDemande() {
   const [selectedContactOrigin, setSelectedContactOrigin] = useState<string>()
   const [selectedContactMode, setSelectedContactMode] = useState<Enum_Contacts_Mode>()
   const [selectedContactSupport, setSelectedContactSupport] = useState<Enum_Contacts_Personne_Accompagnee>()
-  const [contactData, setContactData] = useState<any>()
+  const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
     setLogged(status === "authenticated")
@@ -53,8 +54,9 @@ export default function AjoutDemande() {
   const [saveContactRequest] = useMutation(
     DatabaseApi.SAVE_CONTACT, {
     client: client,
-    onCompleted: (data) => {
-      console.log(data)
+    onCompleted: () => {
+      setLoading(false)
+      goToHome()
     },
     onError: (err) => console.error(err),
   });
@@ -77,8 +79,15 @@ export default function AjoutDemande() {
       commentaire: target.comment.value
     }
 
+    setLoading(true)
     await saveContactRequest({
       variables: dataCollected
+    })
+  }
+
+  const goToHome = () => {
+    router.push({
+      pathname: "/",
     })
   }
 
@@ -161,7 +170,7 @@ export default function AjoutDemande() {
             id: "comment"
           }} />
 
-        <Button type="submit" onClick={() => { }}>Créer le contact</Button>
+        <Button type="submit" onClick={() => { }} disabled={isLoading}>Créer le contact</Button>
       </form>
     }
   </div>
