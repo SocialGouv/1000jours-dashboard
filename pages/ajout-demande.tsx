@@ -94,11 +94,6 @@ export default function AjoutDemande() {
   return <div>
     <LoggedState showButton={false} />
 
-    <Alert
-      title="Page en cours de développement"
-      severity="info"
-    />
-
     {isLogged &&
       <form onSubmit={createNewContact}>
         <Input
