@@ -48,8 +48,7 @@ export default function AjoutDemande() {
     client: client,
     onCompleted: (data) => setWidgetSources(sortWidgetSourceByName([...data.widgetEpdsSources])),
     onError: (err) => console.error(err),
-  }
-  );
+  });
 
   const [saveContactRequest] = useMutation(
     DatabaseApi.SAVE_CONTACT, {

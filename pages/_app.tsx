@@ -140,11 +140,11 @@ function App({ Component, pageProps }: AppProps) {
               isActive: router.asPath === "/ajout-demande",
             },
             {
-              text: "DSFR playground",
+              text: "Liste des demandes",
               linkProps: {
-                href: "/dsfr",
+                href: "/liste-demandes",
               },
-              isActive: router.asPath === "/dsfr",
+              isActive: router.asPath === "/liste-demandes",
             },
             {
               text: "Mui playground",
