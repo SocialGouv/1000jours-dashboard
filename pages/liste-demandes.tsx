@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { MuiDsfrThemeProvider } from "@codegouvfr/react-dsfr/mui";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useIsDark } from "@codegouvfr/react-dsfr/useIsDark";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useSession } from "next-auth/react";
 import { useLazyQuery } from "@apollo/client";
 import DatabaseApi from "../src/services/api/database";
@@ -15,30 +13,21 @@ import { LoggedState } from "../src/components/LoggedState";
 import { Contacts, Enum_Contacts_Personne_Accompagnee } from "../src/__generated__/graphql";
 import { accompagnementEnumToString, dateFormattedToString } from "../src/utils/main.util";
 
-const muiDefaultDarkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
-
-const muiDefaultLightTheme = createTheme({
-  palette: {
-    mode: "light",
-  },
-});
-
 export default function ListeDemandes() {
-  const { isDark, setIsDark } = useIsDark();
-  const [isProviderEnabled, setIsProviderEnabled] = React.useState(true);
-
   const { data: session, status } = useSession() // strapi V3
 
+  const [isLogged, setLogged] = useState<Boolean>()
   const [contacts, setContacts] = useState<Contacts[]>([])
 
   useEffect(() => {
-    const getContactApi = async () => await getContactsRequest()
-    getContactApi()
-  }, [])
+    const isAuth = status === "authenticated"
+    setLogged(isAuth)
+
+    if (isAuth) {
+      const getContactApi = async () => await getContactsRequest()
+      getContactApi()
+    }
+  }, [status])
 
   const [getContactsRequest] = useLazyQuery(
     DatabaseApi.GET_CONTACTS, {
@@ -47,26 +36,20 @@ export default function ListeDemandes() {
     onError: (err) => console.error(err),
   });
 
-  const Children = () => (
-    <>
+  return (
+    <MuiDsfrThemeProvider>
       <LoggedState showButton={false} />
 
-      <Typography sx={{ mt: 2 }} variant="h4">
-        Liste des demandes de contact
-      </Typography>
-      <DataGridDemo contactsList={contacts} />
-    </>
-  );
-
-  return isProviderEnabled ? (
-    <MuiDsfrThemeProvider>
-      <Children />
+      {isLogged &&
+        <>
+          <Typography sx={{ mt: 2 }} variant="h4">
+            Liste des demandes de contact
+          </Typography>
+          <DataGridDemo contactsList={contacts} />
+        </>
+      }
     </MuiDsfrThemeProvider>
-  ) : (
-    <ThemeProvider theme={isDark ? muiDefaultDarkTheme : muiDefaultLightTheme}>
-      <Children />
-    </ThemeProvider>
-  );
+  )
 }
 
 export type GridComponentProps = {
@@ -108,7 +91,7 @@ const DataGridDemo = ({ contactsList }: GridComponentProps): JSX.Element => {
         rows={rows}
         columns={columns}
         pageSize={10}
-        rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[10]}
         checkboxSelection={false}
         disableSelectionOnClick={false}
         experimentalFeatures={{ newEditingApi: true }}
