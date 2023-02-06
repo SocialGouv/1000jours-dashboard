@@ -1,10 +1,10 @@
 global:
-  registry: ghcr.io
+  registry: harbor.fabrique.social.gouv.fr
   imageProject: 1000jours
+  imageRepository: app-dashboard
 
 app:
   ~needs: [build-app]
-  imagePackage: app
   containerPort: 8080
 
 jobs:
@@ -12,7 +12,7 @@ jobs:
     build-app:
       use: build
       with:
+        registrySecretRefName: harbor
         imagePackage: app
-        buildOptions: --single-snapshot --ignore-path=/product_uuid --compressed-caching=false # optim for local builds
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
