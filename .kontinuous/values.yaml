@@ -5,7 +5,6 @@ global:
 
 app:
   ~needs: [build-app]
-  containerPort: 8080
 
 jobs:
   runs:
