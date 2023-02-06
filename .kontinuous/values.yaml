@@ -1,6 +1,6 @@
 global:
   registry: ghcr.io
-  imageProject: socialgouv
+  imageProject: 1000jours
 
 app:
   ~needs: [build-app]
@@ -13,7 +13,6 @@ jobs:
       use: build
       with:
         imagePackage: app
-        registrySecretRefName: harbor
         buildOptions: --single-snapshot --ignore-path=/product_uuid --compressed-caching=false # optim for local builds
         buildArgs:
           GITHUB_SHA: "{{ $.Values.global.sha }}"
