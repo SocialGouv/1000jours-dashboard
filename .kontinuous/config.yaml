@@ -1,4 +1,3 @@
 dependencies:
   fabrique:
     import: SocialGouv/kontinuous/plugins/fabrique
-    #@feat/needs-init-container
