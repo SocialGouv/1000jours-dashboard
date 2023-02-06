@@ -146,13 +146,6 @@ function App({ Component, pageProps }: AppProps) {
               },
               isActive: router.asPath === "/liste-demandes",
             },
-            {
-              text: "Mui playground",
-              linkProps: {
-                href: "/mui",
-              },
-              isActive: router.asPath === "/mui",
-            },
           ]}
           quickAccessItems={[headerFooterDisplayItem]}
         />
