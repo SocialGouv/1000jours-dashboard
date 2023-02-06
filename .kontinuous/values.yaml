@@ -1,5 +1,6 @@
 global:
-  registry: harbor.fabrique.social.gouv.fr
+  registry: ghcr.io
+  imageProject: socialgouv
 
 app:
   ~needs: [build-app]
