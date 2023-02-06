@@ -1,4 +1,4 @@
-project: les1000jours
+projectName: les1000jours
 
 dependencies:
   fabrique:
