@@ -74,12 +74,6 @@ const bottomLinks = [
       href: "/cgu",
     },
   },
-  {
-    text: "Statistiques",
-    linkProps: {
-      href: "/stats",
-    },
-  },
 ];
 
 const client = new ApolloClient({
@@ -165,12 +159,7 @@ function App({ Component, pageProps }: AppProps) {
         <Footer
           brandTop={brandTop}
           accessibility="non compliant"
-          contentDescription={`
-    Ce message est à remplacer par les informations de votre site.
-
-    Comme exemple de contenu, vous pouvez indiquer les informations 
-    suivantes : Le site officiel d’information administrative pour les entreprises.
-                `}
+          contentDescription={`La Fabrique Numérique des Ministères Sociaux`}
           homeLinkProps={homeLinkPops}
           accessibilityLinkProps={{ href: "/accessibilite" }}
           termsLinkProps={{ href: "/mentions-legales" }}
