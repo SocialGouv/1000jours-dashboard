@@ -1,6 +1,6 @@
 import { User } from 'next-auth';
 
 export interface StrapiUser extends User {
-  jwt: String
+  jwt: string
   user: any
 }

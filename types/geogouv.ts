@@ -1,5 +1,5 @@
 export type Departement = {
-  code: number
+  code: string
   nom: string
   codeRegion: number
 }

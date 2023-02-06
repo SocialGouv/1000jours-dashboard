@@ -8,13 +8,15 @@ fileignoreconfig:
 - filename: README.md
   checksum: 8dc48ffdeb5f0ff5987ed48bee751b2551d37960e8dbbfc7c951ed2f48347b4c
 - filename: pages/ajout-demande.tsx
-  checksum: 9f3910cf12b854fa65fc88503bae817f7655f9cfea2e4c85ee3396adbd0f3a95
+  checksum: 003d2db04d4af3b830320847718f11f4c9bccf26f09d2211bf27ff04aaf63e76
 - filename: pages/api/auth/[...nextauth].ts
   checksum: 8c1d12d8b6179d284cce19aa33eaed6839861d85da22b368ba22e19b437e52fb
 - filename: pages/index.tsx
   checksum: abc2a89b85d95e759866b9a7b53ba934aff7b2f65e453e3ef65954320a926b38
 - filename: pages/mui.tsx
   checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
+- filename: src/__generated__/graphql.ts
+  checksum: 841075bc002b0ec4bdd16bb57dfb52aba3a361b5a7f7fc6711255558a3eb8a1a
 - filename: src/components/SelectDepartment.tsx
   checksum: d8074633be1f7eb9bf5fbeb4f387ea7ea087b04a5675bff25e9e252dda5f6913
 scopeconfig:

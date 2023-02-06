@@ -19,7 +19,7 @@ import { Footer } from "@codegouvfr/react-dsfr/Footer";
 import { init } from "@socialgouv/matomo-next";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 // Only in TypeScript projects
 declare module "@codegouvfr/react-dsfr" {
@@ -166,9 +166,7 @@ function App({ Component, pageProps }: AppProps) {
           })}
         >
           <SessionProvider session={pageProps.session}>
-            <ApolloProvider client={client} >
-              <Component {...pageProps} />
-            </ApolloProvider>
+            <Component {...pageProps} />
           </SessionProvider>
         </div>
         <Footer
