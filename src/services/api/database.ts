@@ -9,6 +9,24 @@ const DatabaseApi = {
       }
     }
   `),
+  GET_CONTACTS: gql(/* GraphQL */`
+  query GetContacts {
+    contacts {
+      id
+      prenom
+      nombre_enfants
+      departement_code
+      departement_libelle
+      mode
+      personne_accompagnee
+      date_prise_contact
+      date_naissance_dernier_enfant
+      provenance { nom }
+      commentaire
+      created_at
+    }
+  }
+`),
   SAVE_CONTACT: gql(/* GraphQL */`
     mutation saveContact(
       $prenom: String

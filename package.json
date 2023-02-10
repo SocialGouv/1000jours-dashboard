@@ -41,6 +41,7 @@
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.4.0",
     "axios": "^1.2.4",
+    "date-fns": "^2.29.3",
     "graphql": "^16.6.0",
     "husky": "^8.0.1",
     "is-ci": "^3.0.1",
