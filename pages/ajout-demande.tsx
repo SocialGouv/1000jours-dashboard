@@ -7,8 +7,8 @@ import { useStyles } from "tss-react/dsfr";
 import { LoggedState } from "../src/components/LoggedState";
 import DatabaseApi from "../src/services/api/database";
 import {
-  Enum_Contacts_Mode,
   Enum_Contacts_Personne_Accompagnee,
+  Enum_Contacts_Type_De_Contact,
   WidgetEpdsSources,
 } from "../src/__generated__/graphql";
 import { sortWidgetSourceByName } from "../src/utils/main.util";
@@ -32,7 +32,7 @@ export default function AjoutDemande() {
   const [widgetSources, setWidgetSources] = useState<WidgetEpdsSources[]>([])
   const [selectedDepartment, setSelectedDepartment] = useState<Departement>()
   const [selectedContactOrigin, setSelectedContactOrigin] = useState<string>()
-  const [selectedContactMode, setSelectedContactMode] = useState<Enum_Contacts_Mode>()
+  const [selectedContactMode, setSelectedContactMode] = useState<Enum_Contacts_Type_De_Contact>()
   const [selectedContactSupport, setSelectedContactSupport] = useState<Enum_Contacts_Personne_Accompagnee>()
   const [isLoading, setLoading] = useState(false)
 
@@ -72,8 +72,8 @@ export default function AjoutDemande() {
       departementLibelle: selectedDepartment?.nom,
       departementCode: selectedDepartment?.code,
       datePriseContact: target.contactDate.value,
-      provenance: selectedContactOrigin,
-      mode: selectedContactMode,
+      widgetEpdsSource: selectedContactOrigin,
+      typeDeContact: selectedContactMode,
       personneAccompagnee: selectedContactSupport,
       commentaire: target.comment.value
     }
@@ -172,7 +172,7 @@ export default function AjoutDemande() {
 
 export type ContactModeComponentProps = {
   label: string;
-  setSelectedContactMode: (arg: Enum_Contacts_Mode) => void
+  setSelectedContactMode: (arg: Enum_Contacts_Type_De_Contact) => void
 };
 
 export type ContactSupportComponentProps = {
@@ -183,7 +183,7 @@ export type ContactSupportComponentProps = {
 
 // A remplacer par le composant RadioButton de la lib @codegouvfr/react-dsfr lorsqu'il sera disponible
 const ContactModeComponent = ({ label, setSelectedContactMode }: ContactModeComponentProps): JSX.Element => {
-  const typeContactList = Object.values(Enum_Contacts_Mode)
+  const typeContactList = Object.values(Enum_Contacts_Type_De_Contact)
 
   const handleContactMode = (event: any) => {
     setSelectedContactMode(event.target.value)

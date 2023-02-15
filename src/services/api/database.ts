@@ -1,3 +1,4 @@
+import { Enum_Contacts_Type_De_Contact, Enum_Contacts_Personne_Accompagnee } from './../../__generated__/graphql';
 import gql from 'graphql-tag';
 
 const DatabaseApi = {
@@ -17,11 +18,11 @@ const DatabaseApi = {
       nombre_enfants
       departement_code
       departement_libelle
-      mode
+      type_de_contact
       personne_accompagnee
       date_prise_contact
       date_naissance_dernier_enfant
-      provenance { nom }
+      widget_epds_source { nom }
       commentaire
       created_at
     }
@@ -34,11 +35,11 @@ const DatabaseApi = {
       $commentaire: String
       $departementCode: String
       $departementLibelle: String
-      $mode: ENUM_CONTACTS_MODE
-      $personneAccompagnee: ENUM_CONTACTS_PERSONNE_ACCOMPAGNEE
+      $typeDeContact: Enum_Contacts_Type_De_Contact
+      $personneAccompagnee: Enum_Contacts_Personne_Accompagnee
       $datePriseContact: Date
       $dateNaissanceDernierEnfant: Date
-      $provenance: ID
+      $widgetEpdsSource: ID
       ) {
       createContact(
         input: {
@@ -48,11 +49,11 @@ const DatabaseApi = {
             commentaire: $commentaire
             departement_code: $departementCode
             departement_libelle: $departementLibelle
-            mode: $mode
+            type_de_contact: $typeDeContact
             personne_accompagnee: $personneAccompagnee
             date_prise_contact: $datePriseContact
             date_naissance_dernier_enfant: $dateNaissanceDernierEnfant
-            provenance: $provenance
+            widget_epds_source: $widgetEpdsSource
           }
         }
       ) {

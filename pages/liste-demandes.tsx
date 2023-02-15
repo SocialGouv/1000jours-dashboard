@@ -60,9 +60,9 @@ const DataGridDemo = ({ contactsList }: GridComponentProps): JSX.Element => {
   const columns: GridColDef[] = [
     { headerName: "ID", field: "id", width: 60 },
     { headerName: "Prénom", field: "prenom" },
-    { headerName: "Mode de contact", field: "mode", width: 130 },
+    { headerName: "Mode de contact", field: "typeDeContact", width: 130 },
     { headerName: "Nbr enfants", field: "nbrEnfants" },
-    { headerName: "Provenance", field: "provenance", width: 150 },
+    { headerName: "Provenance", field: "widgetEpdsSource", width: 150 },
     { headerName: "Département", field: "departement", width: 110 },
     { headerName: "Date de création", field: "createAt", width: 130 },
     { headerName: "Accompagnement", field: "accompagnement", width: 150 },
@@ -74,9 +74,9 @@ const DataGridDemo = ({ contactsList }: GridComponentProps): JSX.Element => {
     return {
       id: contact.id,
       prenom: contact.prenom,
-      mode: contact.mode,
+      typeDeContact: contact.type_de_contact,
       nbrEnfants: contact.nombre_enfants ?? 0,
-      provenance: contact.provenance?.nom,
+      widgetEpdsSource: contact.widget_epds_source?.nom,
       departement: contact.departement_code ?? "",
       createAt: dateFormattedToString(new Date(contact.created_at)),
       accompagnement: accompagnementEnumToString(contact.personne_accompagnee as Enum_Contacts_Personne_Accompagnee),

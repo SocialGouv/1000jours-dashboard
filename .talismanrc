@@ -1,6 +1,10 @@
 fileignoreconfig:
 - filename: .env.development
-  checksum: 25aecef75cc324e49b0ebfa514ed9233996881225cd9c0c3e6ec202925540984
+  checksum: 537626a2f1936dc80d3da36a5dcd70d3277ea889e747d4368261e9ede5e9d6e6
+- filename: .env.production
+  checksum: d4e356f7104b91e2ab01e52b22e1f8c82cb363e65fe955c5a119d6ff19beaf3d
+- filename: .env.staging
+  checksum: 58d12cc16918e20873da415691725a6fccfe620449dc978b943447f74af7719a
 - filename: .github/workflows/kontinuous-webhook-delete.yml
   checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
 - filename: .github/workflows/kontinuous-webhook-deploy.yml
@@ -16,7 +20,7 @@ fileignoreconfig:
 - filename: pages/mui.tsx
   checksum: 65dd6ab0469f43924ffc92d26055de14a77b1ef873e0efe69a014b582c38b694
 - filename: src/__generated__/graphql.ts
-  checksum: 841075bc002b0ec4bdd16bb57dfb52aba3a361b5a7f7fc6711255558a3eb8a1a
+  checksum: 195ca91b5f08fecb069cd9185025e695bf0c465451b789891872fd34528cdad7
 - filename: src/components/SelectDepartment.tsx
   checksum: d8074633be1f7eb9bf5fbeb4f387ea7ea087b04a5675bff25e9e252dda5f6913
 scopeconfig:

@@ -45,6 +45,7 @@ export type Article = {
   enbref_3_texte?: Maybe<Scalars['String']>;
   etapes?: Maybe<Array<Maybe<Etape>>>;
   evenements?: Maybe<Array<Maybe<Evenement>>>;
+  handicap?: Maybe<Scalars['Boolean']>;
   id: Scalars['ID'];
   le_saviez_vous?: Maybe<Scalars['String']>;
   lien_1_titre?: Maybe<Scalars['String']>;
@@ -179,6 +180,12 @@ export type ArticleConnectionEnbref_3_Texte = {
   __typename?: 'ArticleConnectionEnbref_3_texte';
   connection?: Maybe<ArticleConnection>;
   key?: Maybe<Scalars['String']>;
+};
+
+export type ArticleConnectionHandicap = {
+  __typename?: 'ArticleConnectionHandicap';
+  connection?: Maybe<ArticleConnection>;
+  key?: Maybe<Scalars['Boolean']>;
 };
 
 export type ArticleConnectionId = {
@@ -322,6 +329,7 @@ export type ArticleGroupBy = {
   enbref_2_texte?: Maybe<Array<Maybe<ArticleConnectionEnbref_2_Texte>>>;
   enbref_3_icone?: Maybe<Array<Maybe<ArticleConnectionEnbref_3_Icone>>>;
   enbref_3_texte?: Maybe<Array<Maybe<ArticleConnectionEnbref_3_Texte>>>;
+  handicap?: Maybe<Array<Maybe<ArticleConnectionHandicap>>>;
   id?: Maybe<Array<Maybe<ArticleConnectionId>>>;
   le_saviez_vous?: Maybe<Array<Maybe<ArticleConnectionLe_Saviez_Vous>>>;
   lien_1_titre?: Maybe<Array<Maybe<ArticleConnectionLien_1_Titre>>>;
@@ -357,6 +365,7 @@ export type ArticleInput = {
   enbref_3_texte?: InputMaybe<Scalars['String']>;
   etapes?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   evenements?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  handicap?: InputMaybe<Scalars['Boolean']>;
   le_saviez_vous?: InputMaybe<Scalars['String']>;
   lien_1_titre?: InputMaybe<Scalars['String']>;
   lien_1_url?: InputMaybe<Scalars['String']>;
@@ -1149,6 +1158,36 @@ export type ComponentCartographieTypes = {
   value?: Maybe<Scalars['String']>;
 };
 
+/** Domaine des questions concernant le repérage des Troubles du Neuro-Développement */
+export type ComponentQuestionnaireTndDomaineTnd = {
+  __typename?: 'ComponentQuestionnaireTndDomaineTnd';
+  id: Scalars['ID'];
+  nom: Scalars['String'];
+  ordre: Scalars['Int'];
+  questions?: Maybe<Array<Maybe<ComponentQuestionnaireTndQuestion>>>;
+};
+
+export type ComponentQuestionnaireTndDomaineTndInput = {
+  nom: Scalars['String'];
+  ordre: Scalars['Int'];
+  questions?: InputMaybe<Array<InputMaybe<ComponentQuestionnaireTndQuestionInput>>>;
+};
+
+/** Question pour le repérage des Troubles du Neuro-Développement */
+export type ComponentQuestionnaireTndQuestion = {
+  __typename?: 'ComponentQuestionnaireTndQuestion';
+  id: Scalars['ID'];
+  image?: Maybe<UploadFile>;
+  nom?: Maybe<Scalars['String']>;
+  ordre?: Maybe<Scalars['Int']>;
+};
+
+export type ComponentQuestionnaireTndQuestionInput = {
+  image?: InputMaybe<Scalars['ID']>;
+  nom?: InputMaybe<Scalars['String']>;
+  ordre?: InputMaybe<Scalars['Int']>;
+};
+
 export type ComponentTraductionLabel = {
   __typename?: 'ComponentTraductionLabel';
   id: Scalars['ID'];
@@ -1185,12 +1224,12 @@ export type ContactInput = {
   date_prise_contact?: InputMaybe<Scalars['Date']>;
   departement_code?: InputMaybe<Scalars['String']>;
   departement_libelle?: InputMaybe<Scalars['String']>;
-  mode?: InputMaybe<Enum_Contacts_Mode>;
   nombre_enfants?: InputMaybe<Scalars['Int']>;
   personne_accompagnee?: InputMaybe<Enum_Contacts_Personne_Accompagnee>;
   prenom?: InputMaybe<Scalars['String']>;
-  provenance?: InputMaybe<Scalars['ID']>;
+  type_de_contact?: InputMaybe<Enum_Contacts_Type_De_Contact>;
   updated_by?: InputMaybe<Scalars['ID']>;
+  widget_epds_source?: InputMaybe<Scalars['ID']>;
 };
 
 /** Liste des demandes de contacts (ajouté par Elise) pour permettre d'avoir un suivi plus facile */
@@ -1203,12 +1242,12 @@ export type Contacts = {
   departement_code?: Maybe<Scalars['String']>;
   departement_libelle?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
-  mode?: Maybe<Enum_Contacts_Mode>;
   nombre_enfants?: Maybe<Scalars['Int']>;
   personne_accompagnee?: Maybe<Enum_Contacts_Personne_Accompagnee>;
   prenom?: Maybe<Scalars['String']>;
-  provenance?: Maybe<WidgetEpdsSources>;
+  type_de_contact?: Maybe<Enum_Contacts_Type_De_Contact>;
   updated_at: Scalars['DateTime'];
+  widget_epds_source?: Maybe<WidgetEpdsSources>;
 };
 
 export type ContactsAggregator = {
@@ -1290,12 +1329,6 @@ export type ContactsConnectionId = {
   key?: Maybe<Scalars['ID']>;
 };
 
-export type ContactsConnectionMode = {
-  __typename?: 'ContactsConnectionMode';
-  connection?: Maybe<ContactsConnection>;
-  key?: Maybe<Scalars['String']>;
-};
-
 export type ContactsConnectionNombre_Enfants = {
   __typename?: 'ContactsConnectionNombre_enfants';
   connection?: Maybe<ContactsConnection>;
@@ -1314,16 +1347,22 @@ export type ContactsConnectionPrenom = {
   key?: Maybe<Scalars['String']>;
 };
 
-export type ContactsConnectionProvenance = {
-  __typename?: 'ContactsConnectionProvenance';
+export type ContactsConnectionType_De_Contact = {
+  __typename?: 'ContactsConnectionType_de_contact';
   connection?: Maybe<ContactsConnection>;
-  key?: Maybe<Scalars['ID']>;
+  key?: Maybe<Scalars['String']>;
 };
 
 export type ContactsConnectionUpdated_At = {
   __typename?: 'ContactsConnectionUpdated_at';
   connection?: Maybe<ContactsConnection>;
   key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ContactsConnectionWidget_Epds_Source = {
+  __typename?: 'ContactsConnectionWidget_epds_source';
+  connection?: Maybe<ContactsConnection>;
+  key?: Maybe<Scalars['ID']>;
 };
 
 export type ContactsGroupBy = {
@@ -1335,12 +1374,12 @@ export type ContactsGroupBy = {
   departement_code?: Maybe<Array<Maybe<ContactsConnectionDepartement_Code>>>;
   departement_libelle?: Maybe<Array<Maybe<ContactsConnectionDepartement_Libelle>>>;
   id?: Maybe<Array<Maybe<ContactsConnectionId>>>;
-  mode?: Maybe<Array<Maybe<ContactsConnectionMode>>>;
   nombre_enfants?: Maybe<Array<Maybe<ContactsConnectionNombre_Enfants>>>;
   personne_accompagnee?: Maybe<Array<Maybe<ContactsConnectionPersonne_Accompagnee>>>;
   prenom?: Maybe<Array<Maybe<ContactsConnectionPrenom>>>;
-  provenance?: Maybe<Array<Maybe<ContactsConnectionProvenance>>>;
+  type_de_contact?: Maybe<Array<Maybe<ContactsConnectionType_De_Contact>>>;
   updated_at?: Maybe<Array<Maybe<ContactsConnectionUpdated_At>>>;
+  widget_epds_source?: Maybe<Array<Maybe<ContactsConnectionWidget_Epds_Source>>>;
 };
 
 /** Lier la demande de contact avec la réponse EPDS */
@@ -1455,17 +1494,18 @@ export enum Enum_Cartographietypes_Categorie {
   Structure = 'structure'
 }
 
-export enum Enum_Contacts_Mode {
-  Chat = 'chat',
-  Email = 'email',
-  Sms = 'sms'
-}
-
 export enum Enum_Contacts_Personne_Accompagnee {
   Aidee = 'aidee',
   EchangeInitial = 'echange_initial',
   NonAccompagnee = 'non_accompagnee',
+  Nouveau = 'nouveau',
   Orientee = 'orientee'
+}
+
+export enum Enum_Contacts_Type_De_Contact {
+  Chat = 'chat',
+  Email = 'email',
+  Sms = 'sms'
 }
 
 export enum Enum_Demandedecontact_Type_De_Contact {
@@ -1724,6 +1764,7 @@ export type Evenement = {
   documents?: Maybe<Array<Maybe<ParenthequeDocuments>>>;
   etapes?: Maybe<Array<Maybe<Etape>>>;
   fin?: Maybe<Scalars['Int']>;
+  handicap?: Maybe<Scalars['Boolean']>;
   id: Scalars['ID'];
   important?: Maybe<Scalars['Boolean']>;
   nom: Scalars['String'];
@@ -1839,6 +1880,12 @@ export type EvenementConnectionFin = {
   key?: Maybe<Scalars['Int']>;
 };
 
+export type EvenementConnectionHandicap = {
+  __typename?: 'EvenementConnectionHandicap';
+  connection?: Maybe<EvenementConnection>;
+  key?: Maybe<Scalars['Boolean']>;
+};
+
 export type EvenementConnectionId = {
   __typename?: 'EvenementConnectionId';
   connection?: Maybe<EvenementConnection>;
@@ -1881,6 +1928,7 @@ export type EvenementGroupBy = {
   debut?: Maybe<Array<Maybe<EvenementConnectionDebut>>>;
   description?: Maybe<Array<Maybe<EvenementConnectionDescription>>>;
   fin?: Maybe<Array<Maybe<EvenementConnectionFin>>>;
+  handicap?: Maybe<Array<Maybe<EvenementConnectionHandicap>>>;
   id?: Maybe<Array<Maybe<EvenementConnectionId>>>;
   important?: Maybe<Array<Maybe<EvenementConnectionImportant>>>;
   nom?: Maybe<Array<Maybe<EvenementConnectionNom>>>;
@@ -1897,6 +1945,7 @@ export type EvenementInput = {
   documents?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   etapes?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   fin?: InputMaybe<Scalars['Int']>;
+  handicap?: InputMaybe<Scalars['Boolean']>;
   important?: InputMaybe<Scalars['Boolean']>;
   nom: Scalars['String'];
   published_at?: InputMaybe<Scalars['DateTime']>;
@@ -2278,7 +2327,7 @@ export type LocaleInput = {
   updated_by?: InputMaybe<Scalars['ID']>;
 };
 
-export type Morph = Article | ArticleAggregator | ArticleAggregatorAvg | ArticleAggregatorMax | ArticleAggregatorMin | ArticleAggregatorSum | ArticleConnection | ArticleConnectionCreated_At | ArticleConnectionEnbref_1_Icone | ArticleConnectionEnbref_1_Texte | ArticleConnectionEnbref_2_Icone | ArticleConnectionEnbref_2_Texte | ArticleConnectionEnbref_3_Icone | ArticleConnectionEnbref_3_Texte | ArticleConnectionId | ArticleConnectionLe_Saviez_Vous | ArticleConnectionLien_1_Titre | ArticleConnectionLien_1_Url | ArticleConnectionLien_2_Titre | ArticleConnectionLien_2_Url | ArticleConnectionLien_3_Titre | ArticleConnectionLien_3_Url | ArticleConnectionLien_4_Titre | ArticleConnectionLien_4_Url | ArticleConnectionMots_Cles | ArticleConnectionNotifications | ArticleConnectionOrdre | ArticleConnectionPublished_At | ArticleConnectionResume | ArticleConnectionTexte_1 | ArticleConnectionTexte_1_Titre | ArticleConnectionTexte_2 | ArticleConnectionTexte_2_Titre | ArticleConnectionTitre | ArticleConnectionUpdated_At | ArticleConnectionVisuel | ArticleGroupBy | CartographieDsTypes | CartographieDsTypesAggregator | CartographieDsTypesConnection | CartographieDsTypesConnectionCartographie_Pois_Type | CartographieDsTypesConnectionCreated_At | CartographieDsTypesConnectionId | CartographieDsTypesConnectionIdentifiant | CartographieDsTypesConnectionUpdated_At | CartographieDsTypesGroupBy | CartographiePoi | CartographiePoiAdresse | CartographiePoiAggregator | CartographiePoiConnection | CartographiePoiConnectionCartographie_Adresses_Json | CartographiePoiConnectionCartographie_References_Json | CartographiePoiConnectionCourriel | CartographiePoiConnectionCreated_At | CartographiePoiConnectionId | CartographiePoiConnectionIdentifiant | CartographiePoiConnectionNom | CartographiePoiConnectionSite_Internet | CartographiePoiConnectionTelephone | CartographiePoiConnectionType | CartographiePoiConnectionUpdated_At | CartographiePoiGroupBy | CartographieSource | CartographieSourceAggregator | CartographieSourceAggregatorAvg | CartographieSourceAggregatorMax | CartographieSourceAggregatorMin | CartographieSourceAggregatorSum | CartographieSourceConnection | CartographieSourceConnectionChamps | CartographieSourceConnectionCreated_At | CartographieSourceConnectionDescription | CartographieSourceConnectionFichier | CartographieSourceConnectionId | CartographieSourceConnectionIdentifiant | CartographieSourceConnectionLignes_Insertion | CartographieSourceConnectionLignes_Total | CartographieSourceConnectionNom | CartographieSourceConnectionPret_A_Traiter | CartographieSourceConnectionRegles | CartographieSourceConnectionRegles_Script | CartographieSourceConnectionSource | CartographieSourceConnectionTraitement | CartographieSourceConnectionType | CartographieSourceConnectionUpdated_At | CartographieSourceConnectionVersion | CartographieSourceGroupBy | CartographieTypes | CartographieTypesAggregator | CartographieTypesConnection | CartographieTypesConnectionCategorie | CartographieTypesConnectionCreated_At | CartographieTypesConnectionDescription | CartographieTypesConnectionId | CartographieTypesConnectionIdentifiant | CartographieTypesConnectionNom | CartographieTypesConnectionUpdated_At | CartographieTypesGroupBy | CommentairesEpds | CommentairesEpdsAggregator | CommentairesEpdsAggregatorAvg | CommentairesEpdsAggregatorMax | CommentairesEpdsAggregatorMin | CommentairesEpdsAggregatorSum | CommentairesEpdsConnection | CommentairesEpdsConnectionCommentaire | CommentairesEpdsConnectionCreated_At | CommentairesEpdsConnectionId | CommentairesEpdsConnectionScore | CommentairesEpdsConnectionUpdated_At | CommentairesEpdsGroupBy | ComponentCartographieAdresse | ComponentCartographieConditionSimple | ComponentCartographieRegleChamp | ComponentCartographieRegleType | ComponentCartographieReglesChamps | ComponentCartographieSourceReference | ComponentCartographieTypes | ComponentTraductionLabel | Config | Contacts | ContactsAggregator | ContactsAggregatorAvg | ContactsAggregatorMax | ContactsAggregatorMin | ContactsAggregatorSum | ContactsConnection | ContactsConnectionCommentaire | ContactsConnectionCreated_At | ContactsConnectionDate_Naissance_Dernier_Enfant | ContactsConnectionDate_Prise_Contact | ContactsConnectionDepartement_Code | ContactsConnectionDepartement_Libelle | ContactsConnectionId | ContactsConnectionMode | ContactsConnectionNombre_Enfants | ContactsConnectionPersonne_Accompagnee | ContactsConnectionPrenom | ContactsConnectionProvenance | ContactsConnectionUpdated_At | ContactsGroupBy | DemandeDeContact | DemandeDeContactAggregator | DemandeDeContactConnection | DemandeDeContactConnectionCreated_At | DemandeDeContactConnectionId | DemandeDeContactConnectionReponses_Epds | DemandeDeContactConnectionType_De_Contact | DemandeDeContactConnectionUpdated_At | DemandeDeContactConnectionWidget_Epds_Source | DemandeDeContactGroupBy | Etape | EtapeAggregator | EtapeAggregatorAvg | EtapeAggregatorMax | EtapeAggregatorMin | EtapeAggregatorSum | EtapeConnection | EtapeConnectionCreated_At | EtapeConnectionDebut | EtapeConnectionDescription | EtapeConnectionFin | EtapeConnectionId | EtapeConnectionNom | EtapeConnectionOrdre | EtapeConnectionPublished_At | EtapeConnectionUpdated_At | EtapeGroupBy | Evenement | EvenementAggregator | EvenementAggregatorAvg | EvenementAggregatorMax | EvenementAggregatorMin | EvenementAggregatorSum | EvenementConnection | EvenementConnectionCreated_At | EvenementConnectionDebut | EvenementConnectionDescription | EvenementConnectionFin | EvenementConnectionId | EvenementConnectionImportant | EvenementConnectionNom | EvenementConnectionPublished_At | EvenementConnectionThematique | EvenementConnectionUpdated_At | EvenementGroupBy | InformationsDemographiques | InformationsDemographiquesAggregator | InformationsDemographiquesConnection | InformationsDemographiquesConnectionAge | InformationsDemographiquesConnectionCode_Postal | InformationsDemographiquesConnectionCreated_At | InformationsDemographiquesConnectionCsp_Code | InformationsDemographiquesConnectionCsp_Libelle | InformationsDemographiquesConnectionDepartement | InformationsDemographiquesConnectionDepartement_Libelle | InformationsDemographiquesConnectionEntourage_Dispo | InformationsDemographiquesConnectionGenre | InformationsDemographiquesConnectionId | InformationsDemographiquesConnectionRegion | InformationsDemographiquesConnectionReponses_Epds | InformationsDemographiquesConnectionSituation | InformationsDemographiquesConnectionUpdated_At | InformationsDemographiquesConnectionVille | InformationsDemographiquesGroupBy | LabelsEpdsTraductions | LabelsEpdsTraductionsAggregator | LabelsEpdsTraductionsConnection | LabelsEpdsTraductionsConnectionCreated_At | LabelsEpdsTraductionsConnectionId | LabelsEpdsTraductionsConnectionLangue | LabelsEpdsTraductionsConnectionPublished_At | LabelsEpdsTraductionsConnectionUpdated_At | LabelsEpdsTraductionsGroupBy | Locale | LocaleAggregator | LocaleConnection | LocaleConnectionCreated_At | LocaleConnectionDrapeau | LocaleConnectionId | LocaleConnectionIdentifiant | LocaleConnectionLibelle_Francais | LocaleConnectionLibelle_Langue | LocaleConnectionPublished_At | LocaleConnectionSens_Lecture_Droite_Vers_Gauche | LocaleConnectionUpdated_At | LocaleGroupBy | Parcours | ParcoursAggregator | ParcoursConnection | ParcoursConnectionCreated_At | ParcoursConnectionDescription | ParcoursConnectionId | ParcoursConnectionNom | ParcoursConnectionPublished_At | ParcoursConnectionUpdated_At | ParcoursGroupBy | ParenthequeDocuments | ParenthequeDocumentsAggregator | ParenthequeDocumentsAggregatorAvg | ParenthequeDocumentsAggregatorMax | ParenthequeDocumentsAggregatorMin | ParenthequeDocumentsAggregatorSum | ParenthequeDocumentsConnection | ParenthequeDocumentsConnectionCreated_At | ParenthequeDocumentsConnectionDescription | ParenthequeDocumentsConnectionFichier | ParenthequeDocumentsConnectionId | ParenthequeDocumentsConnectionNom | ParenthequeDocumentsConnectionOrdre | ParenthequeDocumentsConnectionPublished_At | ParenthequeDocumentsConnectionThematique | ParenthequeDocumentsConnectionUpdated_At | ParenthequeDocumentsGroupBy | QuestionnaireEpds | QuestionnaireEpdsAggregator | QuestionnaireEpdsAggregatorAvg | QuestionnaireEpdsAggregatorMax | QuestionnaireEpdsAggregatorMin | QuestionnaireEpdsAggregatorSum | QuestionnaireEpdsConnection | QuestionnaireEpdsConnectionCreated_At | QuestionnaireEpdsConnectionId | QuestionnaireEpdsConnectionLibelle | QuestionnaireEpdsConnectionLocale | QuestionnaireEpdsConnectionOrdre | QuestionnaireEpdsConnectionReponse_1_Libelle | QuestionnaireEpdsConnectionReponse_1_Points | QuestionnaireEpdsConnectionReponse_2_Libelle | QuestionnaireEpdsConnectionReponse_2_Points | QuestionnaireEpdsConnectionReponse_3_Libelle | QuestionnaireEpdsConnectionReponse_3_Points | QuestionnaireEpdsConnectionReponse_4_Libelle | QuestionnaireEpdsConnectionReponse_4_Points | QuestionnaireEpdsConnectionUpdated_At | QuestionnaireEpdsGroupBy | QuestionnaireEpdsTraductions | QuestionnaireEpdsTraductionsAggregator | QuestionnaireEpdsTraductionsAggregatorAvg | QuestionnaireEpdsTraductionsAggregatorMax | QuestionnaireEpdsTraductionsAggregatorMin | QuestionnaireEpdsTraductionsAggregatorSum | QuestionnaireEpdsTraductionsConnection | QuestionnaireEpdsTraductionsConnectionCreated_At | QuestionnaireEpdsTraductionsConnectionId | QuestionnaireEpdsTraductionsConnectionLangue | QuestionnaireEpdsTraductionsConnectionLibelle | QuestionnaireEpdsTraductionsConnectionOrdre | QuestionnaireEpdsTraductionsConnectionReponse_1_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_1_Points | QuestionnaireEpdsTraductionsConnectionReponse_2_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_2_Points | QuestionnaireEpdsTraductionsConnectionReponse_3_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_3_Points | QuestionnaireEpdsTraductionsConnectionReponse_4_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_4_Points | QuestionnaireEpdsTraductionsConnectionUpdated_At | QuestionnaireEpdsTraductionsGroupBy | ReponsesEpds | ReponsesEpdsAggregator | ReponsesEpdsAggregatorAvg | ReponsesEpdsAggregatorMax | ReponsesEpdsAggregatorMin | ReponsesEpdsAggregatorSum | ReponsesEpdsConnection | ReponsesEpdsConnectionCompteur | ReponsesEpdsConnectionCreated_At | ReponsesEpdsConnectionGenre | ReponsesEpdsConnectionId | ReponsesEpdsConnectionLangue | ReponsesEpdsConnectionReponse_1 | ReponsesEpdsConnectionReponse_2 | ReponsesEpdsConnectionReponse_3 | ReponsesEpdsConnectionReponse_4 | ReponsesEpdsConnectionReponse_5 | ReponsesEpdsConnectionReponse_6 | ReponsesEpdsConnectionReponse_7 | ReponsesEpdsConnectionReponse_8 | ReponsesEpdsConnectionReponse_9 | ReponsesEpdsConnectionReponse_10 | ReponsesEpdsConnectionScore | ReponsesEpdsConnectionSource | ReponsesEpdsConnectionSource_Widget | ReponsesEpdsConnectionUpdated_At | ReponsesEpdsGroupBy | Temoignage | TemoignageAggregator | TemoignageConnection | TemoignageConnectionChiffre_Choc | TemoignageConnectionCreated_At | TemoignageConnectionId | TemoignageConnectionPublished_At | TemoignageConnectionSource | TemoignageConnectionTexte | TemoignageConnectionTitre | TemoignageConnectionUpdated_At | TemoignageGroupBy | Thematique | ThematiqueAggregator | ThematiqueConnection | ThematiqueConnectionCreated_At | ThematiqueConnectionDescription | ThematiqueConnectionId | ThematiqueConnectionNom | ThematiqueConnectionPublished_At | ThematiqueConnectionUpdated_At | ThematiqueGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Video | VideoAggregator | VideoAggregatorAvg | VideoAggregatorMax | VideoAggregatorMin | VideoAggregatorSum | VideoConnection | VideoConnectionCreated_At | VideoConnectionDescription | VideoConnectionId | VideoConnectionMiniature | VideoConnectionNom | VideoConnectionOrdre | VideoConnectionPublished_At | VideoConnectionThematique | VideoConnectionUpdated_At | VideoConnectionUrl | VideoGroupBy | WidgetEpdsSources | WidgetEpdsSourcesAggregator | WidgetEpdsSourcesConnection | WidgetEpdsSourcesConnectionCreated_At | WidgetEpdsSourcesConnectionId | WidgetEpdsSourcesConnectionNom | WidgetEpdsSourcesConnectionPublished_At | WidgetEpdsSourcesConnectionUpdated_At | WidgetEpdsSourcesGroupBy | CreateArticlePayload | CreateCartographieDsTypePayload | CreateCartographiePoiPayload | CreateCartographieSourcePayload | CreateCartographieTypePayload | CreateCommentairesEpdPayload | CreateContactPayload | CreateDemandeDeContactPayload | CreateEtapePayload | CreateEvenementPayload | CreateInformationsDemographiquePayload | CreateLabelsEpdsTraductionPayload | CreateLocalePayload | CreateParcourPayload | CreateParenthequeDocumentPayload | CreateQuestionnaireEpdPayload | CreateQuestionnaireEpdsTraductionPayload | CreateReponsesEpdPayload | CreateRolePayload | CreateTemoignagePayload | CreateThematiquePayload | CreateUserPayload | CreateVideoPayload | CreateWidgetEpdsSourcePayload | DeleteArticlePayload | DeleteCartographieDsTypePayload | DeleteCartographiePoiPayload | DeleteCartographieSourcePayload | DeleteCartographieTypePayload | DeleteCommentairesEpdPayload | DeleteConfigPayload | DeleteContactPayload | DeleteDemandeDeContactPayload | DeleteEtapePayload | DeleteEvenementPayload | DeleteFilePayload | DeleteInformationsDemographiquePayload | DeleteLabelsEpdsTraductionPayload | DeleteLocalePayload | DeleteParcourPayload | DeleteParenthequeDocumentPayload | DeleteQuestionnaireEpdPayload | DeleteQuestionnaireEpdsTraductionPayload | DeleteReponsesEpdPayload | DeleteRolePayload | DeleteTemoignagePayload | DeleteThematiquePayload | DeleteUserPayload | DeleteVideoPayload | DeleteWidgetEpdsSourcePayload | UpdateArticlePayload | UpdateCartographieDsTypePayload | UpdateCartographiePoiPayload | UpdateCartographieSourcePayload | UpdateCartographieTypePayload | UpdateCommentairesEpdPayload | UpdateConfigPayload | UpdateContactPayload | UpdateDemandeDeContactPayload | UpdateEtapePayload | UpdateEvenementPayload | UpdateInformationsDemographiquePayload | UpdateLabelsEpdsTraductionPayload | UpdateLocalePayload | UpdateParcourPayload | UpdateParenthequeDocumentPayload | UpdateQuestionnaireEpdPayload | UpdateQuestionnaireEpdsTraductionPayload | UpdateReponsesEpdPayload | UpdateRolePayload | UpdateTemoignagePayload | UpdateThematiquePayload | UpdateUserPayload | UpdateVideoPayload | UpdateWidgetEpdsSourcePayload;
+export type Morph = Article | ArticleAggregator | ArticleAggregatorAvg | ArticleAggregatorMax | ArticleAggregatorMin | ArticleAggregatorSum | ArticleConnection | ArticleConnectionCreated_At | ArticleConnectionEnbref_1_Icone | ArticleConnectionEnbref_1_Texte | ArticleConnectionEnbref_2_Icone | ArticleConnectionEnbref_2_Texte | ArticleConnectionEnbref_3_Icone | ArticleConnectionEnbref_3_Texte | ArticleConnectionHandicap | ArticleConnectionId | ArticleConnectionLe_Saviez_Vous | ArticleConnectionLien_1_Titre | ArticleConnectionLien_1_Url | ArticleConnectionLien_2_Titre | ArticleConnectionLien_2_Url | ArticleConnectionLien_3_Titre | ArticleConnectionLien_3_Url | ArticleConnectionLien_4_Titre | ArticleConnectionLien_4_Url | ArticleConnectionMots_Cles | ArticleConnectionNotifications | ArticleConnectionOrdre | ArticleConnectionPublished_At | ArticleConnectionResume | ArticleConnectionTexte_1 | ArticleConnectionTexte_1_Titre | ArticleConnectionTexte_2 | ArticleConnectionTexte_2_Titre | ArticleConnectionTitre | ArticleConnectionUpdated_At | ArticleConnectionVisuel | ArticleGroupBy | CartographieDsTypes | CartographieDsTypesAggregator | CartographieDsTypesConnection | CartographieDsTypesConnectionCartographie_Pois_Type | CartographieDsTypesConnectionCreated_At | CartographieDsTypesConnectionId | CartographieDsTypesConnectionIdentifiant | CartographieDsTypesConnectionUpdated_At | CartographieDsTypesGroupBy | CartographiePoi | CartographiePoiAdresse | CartographiePoiAggregator | CartographiePoiConnection | CartographiePoiConnectionCartographie_Adresses_Json | CartographiePoiConnectionCartographie_References_Json | CartographiePoiConnectionCourriel | CartographiePoiConnectionCreated_At | CartographiePoiConnectionId | CartographiePoiConnectionIdentifiant | CartographiePoiConnectionNom | CartographiePoiConnectionSite_Internet | CartographiePoiConnectionTelephone | CartographiePoiConnectionType | CartographiePoiConnectionUpdated_At | CartographiePoiGroupBy | CartographieSource | CartographieSourceAggregator | CartographieSourceAggregatorAvg | CartographieSourceAggregatorMax | CartographieSourceAggregatorMin | CartographieSourceAggregatorSum | CartographieSourceConnection | CartographieSourceConnectionChamps | CartographieSourceConnectionCreated_At | CartographieSourceConnectionDescription | CartographieSourceConnectionFichier | CartographieSourceConnectionId | CartographieSourceConnectionIdentifiant | CartographieSourceConnectionLignes_Insertion | CartographieSourceConnectionLignes_Total | CartographieSourceConnectionNom | CartographieSourceConnectionPret_A_Traiter | CartographieSourceConnectionRegles | CartographieSourceConnectionRegles_Script | CartographieSourceConnectionSource | CartographieSourceConnectionTraitement | CartographieSourceConnectionType | CartographieSourceConnectionUpdated_At | CartographieSourceConnectionVersion | CartographieSourceGroupBy | CartographieTypes | CartographieTypesAggregator | CartographieTypesConnection | CartographieTypesConnectionCategorie | CartographieTypesConnectionCreated_At | CartographieTypesConnectionDescription | CartographieTypesConnectionId | CartographieTypesConnectionIdentifiant | CartographieTypesConnectionNom | CartographieTypesConnectionUpdated_At | CartographieTypesGroupBy | CommentairesEpds | CommentairesEpdsAggregator | CommentairesEpdsAggregatorAvg | CommentairesEpdsAggregatorMax | CommentairesEpdsAggregatorMin | CommentairesEpdsAggregatorSum | CommentairesEpdsConnection | CommentairesEpdsConnectionCommentaire | CommentairesEpdsConnectionCreated_At | CommentairesEpdsConnectionId | CommentairesEpdsConnectionScore | CommentairesEpdsConnectionUpdated_At | CommentairesEpdsGroupBy | ComponentCartographieAdresse | ComponentCartographieConditionSimple | ComponentCartographieRegleChamp | ComponentCartographieRegleType | ComponentCartographieReglesChamps | ComponentCartographieSourceReference | ComponentCartographieTypes | ComponentQuestionnaireTndDomaineTnd | ComponentQuestionnaireTndQuestion | ComponentTraductionLabel | Config | Contacts | ContactsAggregator | ContactsAggregatorAvg | ContactsAggregatorMax | ContactsAggregatorMin | ContactsAggregatorSum | ContactsConnection | ContactsConnectionCommentaire | ContactsConnectionCreated_At | ContactsConnectionDate_Naissance_Dernier_Enfant | ContactsConnectionDate_Prise_Contact | ContactsConnectionDepartement_Code | ContactsConnectionDepartement_Libelle | ContactsConnectionId | ContactsConnectionNombre_Enfants | ContactsConnectionPersonne_Accompagnee | ContactsConnectionPrenom | ContactsConnectionType_De_Contact | ContactsConnectionUpdated_At | ContactsConnectionWidget_Epds_Source | ContactsGroupBy | DemandeDeContact | DemandeDeContactAggregator | DemandeDeContactConnection | DemandeDeContactConnectionCreated_At | DemandeDeContactConnectionId | DemandeDeContactConnectionReponses_Epds | DemandeDeContactConnectionType_De_Contact | DemandeDeContactConnectionUpdated_At | DemandeDeContactConnectionWidget_Epds_Source | DemandeDeContactGroupBy | Etape | EtapeAggregator | EtapeAggregatorAvg | EtapeAggregatorMax | EtapeAggregatorMin | EtapeAggregatorSum | EtapeConnection | EtapeConnectionCreated_At | EtapeConnectionDebut | EtapeConnectionDescription | EtapeConnectionFin | EtapeConnectionId | EtapeConnectionNom | EtapeConnectionOrdre | EtapeConnectionPublished_At | EtapeConnectionUpdated_At | EtapeGroupBy | Evenement | EvenementAggregator | EvenementAggregatorAvg | EvenementAggregatorMax | EvenementAggregatorMin | EvenementAggregatorSum | EvenementConnection | EvenementConnectionCreated_At | EvenementConnectionDebut | EvenementConnectionDescription | EvenementConnectionFin | EvenementConnectionHandicap | EvenementConnectionId | EvenementConnectionImportant | EvenementConnectionNom | EvenementConnectionPublished_At | EvenementConnectionThematique | EvenementConnectionUpdated_At | EvenementGroupBy | InformationsDemographiques | InformationsDemographiquesAggregator | InformationsDemographiquesConnection | InformationsDemographiquesConnectionAge | InformationsDemographiquesConnectionCode_Postal | InformationsDemographiquesConnectionCreated_At | InformationsDemographiquesConnectionCsp_Code | InformationsDemographiquesConnectionCsp_Libelle | InformationsDemographiquesConnectionDepartement | InformationsDemographiquesConnectionDepartement_Libelle | InformationsDemographiquesConnectionEntourage_Dispo | InformationsDemographiquesConnectionGenre | InformationsDemographiquesConnectionId | InformationsDemographiquesConnectionRegion | InformationsDemographiquesConnectionReponses_Epds | InformationsDemographiquesConnectionSituation | InformationsDemographiquesConnectionUpdated_At | InformationsDemographiquesConnectionVille | InformationsDemographiquesGroupBy | LabelsEpdsTraductions | LabelsEpdsTraductionsAggregator | LabelsEpdsTraductionsConnection | LabelsEpdsTraductionsConnectionCreated_At | LabelsEpdsTraductionsConnectionId | LabelsEpdsTraductionsConnectionLangue | LabelsEpdsTraductionsConnectionPublished_At | LabelsEpdsTraductionsConnectionUpdated_At | LabelsEpdsTraductionsGroupBy | Locale | LocaleAggregator | LocaleConnection | LocaleConnectionCreated_At | LocaleConnectionDrapeau | LocaleConnectionId | LocaleConnectionIdentifiant | LocaleConnectionLibelle_Francais | LocaleConnectionLibelle_Langue | LocaleConnectionPublished_At | LocaleConnectionSens_Lecture_Droite_Vers_Gauche | LocaleConnectionUpdated_At | LocaleGroupBy | Parcours | ParcoursAggregator | ParcoursConnection | ParcoursConnectionCreated_At | ParcoursConnectionDescription | ParcoursConnectionId | ParcoursConnectionNom | ParcoursConnectionPublished_At | ParcoursConnectionUpdated_At | ParcoursGroupBy | ParenthequeDocuments | ParenthequeDocumentsAggregator | ParenthequeDocumentsAggregatorAvg | ParenthequeDocumentsAggregatorMax | ParenthequeDocumentsAggregatorMin | ParenthequeDocumentsAggregatorSum | ParenthequeDocumentsConnection | ParenthequeDocumentsConnectionCreated_At | ParenthequeDocumentsConnectionDescription | ParenthequeDocumentsConnectionFichier | ParenthequeDocumentsConnectionId | ParenthequeDocumentsConnectionNom | ParenthequeDocumentsConnectionOrdre | ParenthequeDocumentsConnectionPublished_At | ParenthequeDocumentsConnectionThematique | ParenthequeDocumentsConnectionUpdated_At | ParenthequeDocumentsGroupBy | QuestionnaireEpds | QuestionnaireEpdsAggregator | QuestionnaireEpdsAggregatorAvg | QuestionnaireEpdsAggregatorMax | QuestionnaireEpdsAggregatorMin | QuestionnaireEpdsAggregatorSum | QuestionnaireEpdsConnection | QuestionnaireEpdsConnectionCreated_At | QuestionnaireEpdsConnectionId | QuestionnaireEpdsConnectionLibelle | QuestionnaireEpdsConnectionLocale | QuestionnaireEpdsConnectionOrdre | QuestionnaireEpdsConnectionReponse_1_Libelle | QuestionnaireEpdsConnectionReponse_1_Points | QuestionnaireEpdsConnectionReponse_2_Libelle | QuestionnaireEpdsConnectionReponse_2_Points | QuestionnaireEpdsConnectionReponse_3_Libelle | QuestionnaireEpdsConnectionReponse_3_Points | QuestionnaireEpdsConnectionReponse_4_Libelle | QuestionnaireEpdsConnectionReponse_4_Points | QuestionnaireEpdsConnectionUpdated_At | QuestionnaireEpdsGroupBy | QuestionnaireEpdsTraductions | QuestionnaireEpdsTraductionsAggregator | QuestionnaireEpdsTraductionsAggregatorAvg | QuestionnaireEpdsTraductionsAggregatorMax | QuestionnaireEpdsTraductionsAggregatorMin | QuestionnaireEpdsTraductionsAggregatorSum | QuestionnaireEpdsTraductionsConnection | QuestionnaireEpdsTraductionsConnectionCreated_At | QuestionnaireEpdsTraductionsConnectionId | QuestionnaireEpdsTraductionsConnectionLangue | QuestionnaireEpdsTraductionsConnectionLibelle | QuestionnaireEpdsTraductionsConnectionOrdre | QuestionnaireEpdsTraductionsConnectionReponse_1_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_1_Points | QuestionnaireEpdsTraductionsConnectionReponse_2_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_2_Points | QuestionnaireEpdsTraductionsConnectionReponse_3_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_3_Points | QuestionnaireEpdsTraductionsConnectionReponse_4_Libelle | QuestionnaireEpdsTraductionsConnectionReponse_4_Points | QuestionnaireEpdsTraductionsConnectionUpdated_At | QuestionnaireEpdsTraductionsGroupBy | QuestionnaireTnd | QuestionnaireTndAggregator | QuestionnaireTndAggregatorAvg | QuestionnaireTndAggregatorMax | QuestionnaireTndAggregatorMin | QuestionnaireTndAggregatorSum | QuestionnaireTndConnection | QuestionnaireTndConnectionAlerte_Nb_Domaine | QuestionnaireTndConnectionAlerte_Nb_Non | QuestionnaireTndConnectionCreated_At | QuestionnaireTndConnectionId | QuestionnaireTndConnectionNom | QuestionnaireTndConnectionOrdre | QuestionnaireTndConnectionPublished_At | QuestionnaireTndConnectionUpdated_At | QuestionnaireTndGroupBy | ReponsesEpds | ReponsesEpdsAggregator | ReponsesEpdsAggregatorAvg | ReponsesEpdsAggregatorMax | ReponsesEpdsAggregatorMin | ReponsesEpdsAggregatorSum | ReponsesEpdsConnection | ReponsesEpdsConnectionCompteur | ReponsesEpdsConnectionCreated_At | ReponsesEpdsConnectionGenre | ReponsesEpdsConnectionId | ReponsesEpdsConnectionLangue | ReponsesEpdsConnectionReponse_1 | ReponsesEpdsConnectionReponse_2 | ReponsesEpdsConnectionReponse_3 | ReponsesEpdsConnectionReponse_4 | ReponsesEpdsConnectionReponse_5 | ReponsesEpdsConnectionReponse_6 | ReponsesEpdsConnectionReponse_7 | ReponsesEpdsConnectionReponse_8 | ReponsesEpdsConnectionReponse_9 | ReponsesEpdsConnectionReponse_10 | ReponsesEpdsConnectionScore | ReponsesEpdsConnectionSource | ReponsesEpdsConnectionSource_Widget | ReponsesEpdsConnectionUpdated_At | ReponsesEpdsGroupBy | ReponsesTnd | ReponsesTndAggregator | ReponsesTndAggregatorAvg | ReponsesTndAggregatorMax | ReponsesTndAggregatorMin | ReponsesTndAggregatorSum | ReponsesTndConnection | ReponsesTndConnectionCreated_At | ReponsesTndConnectionId | ReponsesTndConnectionNon | ReponsesTndConnectionOui | ReponsesTndConnectionPublished_At | ReponsesTndConnectionReponses | ReponsesTndConnectionTest | ReponsesTndConnectionUpdated_At | ReponsesTndGroupBy | Temoignage | TemoignageAggregator | TemoignageConnection | TemoignageConnectionChiffre_Choc | TemoignageConnectionCreated_At | TemoignageConnectionId | TemoignageConnectionPublished_At | TemoignageConnectionSource | TemoignageConnectionTexte | TemoignageConnectionTitre | TemoignageConnectionUpdated_At | TemoignageGroupBy | Thematique | ThematiqueAggregator | ThematiqueConnection | ThematiqueConnectionCreated_At | ThematiqueConnectionDescription | ThematiqueConnectionId | ThematiqueConnectionNom | ThematiqueConnectionPublished_At | ThematiqueConnectionUpdated_At | ThematiqueGroupBy | UploadFile | UploadFileAggregator | UploadFileAggregatorAvg | UploadFileAggregatorMax | UploadFileAggregatorMin | UploadFileAggregatorSum | UploadFileConnection | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionCreated_At | UploadFileConnectionExt | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionHeight | UploadFileConnectionId | UploadFileConnectionMime | UploadFileConnectionName | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_Metadata | UploadFileConnectionSize | UploadFileConnectionUpdated_At | UploadFileConnectionUrl | UploadFileConnectionWidth | UploadFileGroupBy | UserPermissionsPasswordPayload | UsersPermissionsLoginPayload | UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleAggregator | UsersPermissionsRoleConnection | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionType | UsersPermissionsRoleGroupBy | UsersPermissionsUser | UsersPermissionsUserAggregator | UsersPermissionsUserConnection | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionCreated_At | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionUpdated_At | UsersPermissionsUserConnectionUsername | UsersPermissionsUserGroupBy | Video | VideoAggregator | VideoAggregatorAvg | VideoAggregatorMax | VideoAggregatorMin | VideoAggregatorSum | VideoConnection | VideoConnectionCreated_At | VideoConnectionDescription | VideoConnectionId | VideoConnectionMiniature | VideoConnectionNom | VideoConnectionOrdre | VideoConnectionPublished_At | VideoConnectionThematique | VideoConnectionUpdated_At | VideoConnectionUrl | VideoGroupBy | WidgetEpdsSources | WidgetEpdsSourcesAggregator | WidgetEpdsSourcesConnection | WidgetEpdsSourcesConnectionCreated_At | WidgetEpdsSourcesConnectionId | WidgetEpdsSourcesConnectionNom | WidgetEpdsSourcesConnectionPublished_At | WidgetEpdsSourcesConnectionUpdated_At | WidgetEpdsSourcesGroupBy | CreateArticlePayload | CreateCartographieDsTypePayload | CreateCartographiePoiPayload | CreateCartographieSourcePayload | CreateCartographieTypePayload | CreateCommentairesEpdPayload | CreateContactPayload | CreateDemandeDeContactPayload | CreateEtapePayload | CreateEvenementPayload | CreateInformationsDemographiquePayload | CreateLabelsEpdsTraductionPayload | CreateLocalePayload | CreateParcourPayload | CreateParenthequeDocumentPayload | CreateQuestionnaireEpdPayload | CreateQuestionnaireEpdsTraductionPayload | CreateQuestionnaireTndPayload | CreateReponsesEpdPayload | CreateReponsesTndPayload | CreateRolePayload | CreateTemoignagePayload | CreateThematiquePayload | CreateUserPayload | CreateVideoPayload | CreateWidgetEpdsSourcePayload | DeleteArticlePayload | DeleteCartographieDsTypePayload | DeleteCartographiePoiPayload | DeleteCartographieSourcePayload | DeleteCartographieTypePayload | DeleteCommentairesEpdPayload | DeleteConfigPayload | DeleteContactPayload | DeleteDemandeDeContactPayload | DeleteEtapePayload | DeleteEvenementPayload | DeleteFilePayload | DeleteInformationsDemographiquePayload | DeleteLabelsEpdsTraductionPayload | DeleteLocalePayload | DeleteParcourPayload | DeleteParenthequeDocumentPayload | DeleteQuestionnaireEpdPayload | DeleteQuestionnaireEpdsTraductionPayload | DeleteQuestionnaireTndPayload | DeleteReponsesEpdPayload | DeleteReponsesTndPayload | DeleteRolePayload | DeleteTemoignagePayload | DeleteThematiquePayload | DeleteUserPayload | DeleteVideoPayload | DeleteWidgetEpdsSourcePayload | UpdateArticlePayload | UpdateCartographieDsTypePayload | UpdateCartographiePoiPayload | UpdateCartographieSourcePayload | UpdateCartographieTypePayload | UpdateCommentairesEpdPayload | UpdateConfigPayload | UpdateContactPayload | UpdateDemandeDeContactPayload | UpdateEtapePayload | UpdateEvenementPayload | UpdateInformationsDemographiquePayload | UpdateLabelsEpdsTraductionPayload | UpdateLocalePayload | UpdateParcourPayload | UpdateParenthequeDocumentPayload | UpdateQuestionnaireEpdPayload | UpdateQuestionnaireEpdsTraductionPayload | UpdateQuestionnaireTndPayload | UpdateReponsesEpdPayload | UpdateReponsesTndPayload | UpdateRolePayload | UpdateTemoignagePayload | UpdateThematiquePayload | UpdateUserPayload | UpdateVideoPayload | UpdateWidgetEpdsSourcePayload;
 
 export type Mutation = {
   __typename?: 'Mutation';
@@ -2300,8 +2349,10 @@ export type Mutation = {
   createParenthequeDocument?: Maybe<CreateParenthequeDocumentPayload>;
   createQuestionnaireEpd?: Maybe<CreateQuestionnaireEpdPayload>;
   createQuestionnaireEpdsTraduction?: Maybe<CreateQuestionnaireEpdsTraductionPayload>;
+  createQuestionnaireTnd?: Maybe<CreateQuestionnaireTndPayload>;
   createReponsesEpd?: Maybe<CreateReponsesEpdPayload>;
   createReponsesEpdsWidget?: Maybe<ReponsesEpds>;
+  createReponsesTnd?: Maybe<CreateReponsesTndPayload>;
   /** Create a new role */
   createRole?: Maybe<CreateRolePayload>;
   createTemoignage?: Maybe<CreateTemoignagePayload>;
@@ -2330,7 +2381,9 @@ export type Mutation = {
   deleteParenthequeDocument?: Maybe<DeleteParenthequeDocumentPayload>;
   deleteQuestionnaireEpd?: Maybe<DeleteQuestionnaireEpdPayload>;
   deleteQuestionnaireEpdsTraduction?: Maybe<DeleteQuestionnaireEpdsTraductionPayload>;
+  deleteQuestionnaireTnd?: Maybe<DeleteQuestionnaireTndPayload>;
   deleteReponsesEpd?: Maybe<DeleteReponsesEpdPayload>;
+  deleteReponsesTnd?: Maybe<DeleteReponsesTndPayload>;
   /** Delete an existing role */
   deleteRole?: Maybe<DeleteRolePayload>;
   deleteTemoignage?: Maybe<DeleteTemoignagePayload>;
@@ -2370,7 +2423,9 @@ export type Mutation = {
   updateParenthequeDocument?: Maybe<UpdateParenthequeDocumentPayload>;
   updateQuestionnaireEpd?: Maybe<UpdateQuestionnaireEpdPayload>;
   updateQuestionnaireEpdsTraduction?: Maybe<UpdateQuestionnaireEpdsTraductionPayload>;
+  updateQuestionnaireTnd?: Maybe<UpdateQuestionnaireTndPayload>;
   updateReponsesEpd?: Maybe<UpdateReponsesEpdPayload>;
+  updateReponsesTnd?: Maybe<UpdateReponsesTndPayload>;
   /** Update an existing role */
   updateRole?: Maybe<UpdateRolePayload>;
   updateTemoignage?: Maybe<UpdateTemoignagePayload>;
@@ -2476,6 +2531,11 @@ export type MutationCreateQuestionnaireEpdsTraductionArgs = {
 };
 
 
+export type MutationCreateQuestionnaireTndArgs = {
+  input?: InputMaybe<CreateQuestionnaireTndInput>;
+};
+
+
 export type MutationCreateReponsesEpdArgs = {
   input?: InputMaybe<CreateReponsesEpdInput>;
 };
@@ -2498,6 +2558,11 @@ export type MutationCreateReponsesEpdsWidgetArgs = {
   score?: InputMaybe<Scalars['Int']>;
   source?: InputMaybe<Enum_Reponsesepds_Source>;
   source_widget_nom: Scalars['String'];
+};
+
+
+export type MutationCreateReponsesTndArgs = {
+  input?: InputMaybe<CreateReponsesTndInput>;
 };
 
 
@@ -2621,8 +2686,18 @@ export type MutationDeleteQuestionnaireEpdsTraductionArgs = {
 };
 
 
+export type MutationDeleteQuestionnaireTndArgs = {
+  input?: InputMaybe<DeleteQuestionnaireTndInput>;
+};
+
+
 export type MutationDeleteReponsesEpdArgs = {
   input?: InputMaybe<DeleteReponsesEpdInput>;
+};
+
+
+export type MutationDeleteReponsesTndArgs = {
+  input?: InputMaybe<DeleteReponsesTndInput>;
 };
 
 
@@ -2845,8 +2920,18 @@ export type MutationUpdateQuestionnaireEpdsTraductionArgs = {
 };
 
 
+export type MutationUpdateQuestionnaireTndArgs = {
+  input?: InputMaybe<UpdateQuestionnaireTndInput>;
+};
+
+
 export type MutationUpdateReponsesEpdArgs = {
   input?: InputMaybe<UpdateReponsesEpdInput>;
+};
+
+
+export type MutationUpdateReponsesTndArgs = {
+  input?: InputMaybe<UpdateReponsesTndInput>;
 };
 
 
@@ -3189,9 +3274,15 @@ export type Query = {
   questionnaireEpdsTraduction?: Maybe<QuestionnaireEpdsTraductions>;
   questionnaireEpdsTraductions?: Maybe<Array<Maybe<QuestionnaireEpdsTraductions>>>;
   questionnaireEpdsTraductionsConnection?: Maybe<QuestionnaireEpdsTraductionsConnection>;
+  questionnaireTnd?: Maybe<QuestionnaireTnd>;
+  questionnaireTnds?: Maybe<Array<Maybe<QuestionnaireTnd>>>;
+  questionnaireTndsConnection?: Maybe<QuestionnaireTndConnection>;
   reponsesEpd?: Maybe<ReponsesEpds>;
   reponsesEpds?: Maybe<Array<Maybe<ReponsesEpds>>>;
   reponsesEpdsConnection?: Maybe<ReponsesEpdsConnection>;
+  reponsesTnd?: Maybe<ReponsesTnd>;
+  reponsesTnds?: Maybe<Array<Maybe<ReponsesTnd>>>;
+  reponsesTndsConnection?: Maybe<ReponsesTndConnection>;
   role?: Maybe<UsersPermissionsRole>;
   /** Retrieve all the existing roles. You can't apply filters on this query. */
   roles?: Maybe<Array<Maybe<UsersPermissionsRole>>>;
@@ -3634,6 +3725,29 @@ export type QueryQuestionnaireEpdsTraductionsConnectionArgs = {
 };
 
 
+export type QueryQuestionnaireTndArgs = {
+  id: Scalars['ID'];
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryQuestionnaireTndsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Scalars['JSON']>;
+};
+
+
+export type QueryQuestionnaireTndsConnectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Scalars['JSON']>;
+};
+
+
 export type QueryReponsesEpdArgs = {
   id: Scalars['ID'];
   publicationState?: InputMaybe<PublicationState>;
@@ -3650,6 +3764,29 @@ export type QueryReponsesEpdsArgs = {
 
 
 export type QueryReponsesEpdsConnectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Scalars['JSON']>;
+};
+
+
+export type QueryReponsesTndArgs = {
+  id: Scalars['ID'];
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryReponsesTndsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<Scalars['JSON']>;
+};
+
+
+export type QueryReponsesTndsConnectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   sort?: InputMaybe<Scalars['String']>;
   start?: InputMaybe<Scalars['Int']>;
@@ -4188,6 +4325,136 @@ export type QuestionnaireEpdsTraductionsGroupBy = {
   updated_at?: Maybe<Array<Maybe<QuestionnaireEpdsTraductionsConnectionUpdated_At>>>;
 };
 
+/** Repérage des Troubles du Neuro-Développement */
+export type QuestionnaireTnd = {
+  __typename?: 'QuestionnaireTnd';
+  alerte_nb_domaine?: Maybe<Scalars['Int']>;
+  alerte_nb_non?: Maybe<Scalars['Int']>;
+  created_at: Scalars['DateTime'];
+  domaines?: Maybe<Array<Maybe<ComponentQuestionnaireTndDomaineTnd>>>;
+  id: Scalars['ID'];
+  nom?: Maybe<Scalars['String']>;
+  ordre?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  updated_at: Scalars['DateTime'];
+};
+
+export type QuestionnaireTndAggregator = {
+  __typename?: 'QuestionnaireTndAggregator';
+  avg?: Maybe<QuestionnaireTndAggregatorAvg>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<QuestionnaireTndAggregatorMax>;
+  min?: Maybe<QuestionnaireTndAggregatorMin>;
+  sum?: Maybe<QuestionnaireTndAggregatorSum>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type QuestionnaireTndAggregatorAvg = {
+  __typename?: 'QuestionnaireTndAggregatorAvg';
+  alerte_nb_domaine?: Maybe<Scalars['Float']>;
+  alerte_nb_non?: Maybe<Scalars['Float']>;
+  ordre?: Maybe<Scalars['Float']>;
+};
+
+export type QuestionnaireTndAggregatorMax = {
+  __typename?: 'QuestionnaireTndAggregatorMax';
+  alerte_nb_domaine?: Maybe<Scalars['Float']>;
+  alerte_nb_non?: Maybe<Scalars['Float']>;
+  ordre?: Maybe<Scalars['Float']>;
+};
+
+export type QuestionnaireTndAggregatorMin = {
+  __typename?: 'QuestionnaireTndAggregatorMin';
+  alerte_nb_domaine?: Maybe<Scalars['Float']>;
+  alerte_nb_non?: Maybe<Scalars['Float']>;
+  ordre?: Maybe<Scalars['Float']>;
+};
+
+export type QuestionnaireTndAggregatorSum = {
+  __typename?: 'QuestionnaireTndAggregatorSum';
+  alerte_nb_domaine?: Maybe<Scalars['Float']>;
+  alerte_nb_non?: Maybe<Scalars['Float']>;
+  ordre?: Maybe<Scalars['Float']>;
+};
+
+export type QuestionnaireTndConnection = {
+  __typename?: 'QuestionnaireTndConnection';
+  aggregate?: Maybe<QuestionnaireTndAggregator>;
+  groupBy?: Maybe<QuestionnaireTndGroupBy>;
+  values?: Maybe<Array<Maybe<QuestionnaireTnd>>>;
+};
+
+export type QuestionnaireTndConnectionAlerte_Nb_Domaine = {
+  __typename?: 'QuestionnaireTndConnectionAlerte_nb_domaine';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type QuestionnaireTndConnectionAlerte_Nb_Non = {
+  __typename?: 'QuestionnaireTndConnectionAlerte_nb_non';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type QuestionnaireTndConnectionCreated_At = {
+  __typename?: 'QuestionnaireTndConnectionCreated_at';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type QuestionnaireTndConnectionId = {
+  __typename?: 'QuestionnaireTndConnectionId';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type QuestionnaireTndConnectionNom = {
+  __typename?: 'QuestionnaireTndConnectionNom';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type QuestionnaireTndConnectionOrdre = {
+  __typename?: 'QuestionnaireTndConnectionOrdre';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type QuestionnaireTndConnectionPublished_At = {
+  __typename?: 'QuestionnaireTndConnectionPublished_at';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type QuestionnaireTndConnectionUpdated_At = {
+  __typename?: 'QuestionnaireTndConnectionUpdated_at';
+  connection?: Maybe<QuestionnaireTndConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type QuestionnaireTndGroupBy = {
+  __typename?: 'QuestionnaireTndGroupBy';
+  alerte_nb_domaine?: Maybe<Array<Maybe<QuestionnaireTndConnectionAlerte_Nb_Domaine>>>;
+  alerte_nb_non?: Maybe<Array<Maybe<QuestionnaireTndConnectionAlerte_Nb_Non>>>;
+  created_at?: Maybe<Array<Maybe<QuestionnaireTndConnectionCreated_At>>>;
+  id?: Maybe<Array<Maybe<QuestionnaireTndConnectionId>>>;
+  nom?: Maybe<Array<Maybe<QuestionnaireTndConnectionNom>>>;
+  ordre?: Maybe<Array<Maybe<QuestionnaireTndConnectionOrdre>>>;
+  published_at?: Maybe<Array<Maybe<QuestionnaireTndConnectionPublished_At>>>;
+  updated_at?: Maybe<Array<Maybe<QuestionnaireTndConnectionUpdated_At>>>;
+};
+
+export type QuestionnaireTndInput = {
+  alerte_nb_domaine?: InputMaybe<Scalars['Int']>;
+  alerte_nb_non?: InputMaybe<Scalars['Int']>;
+  created_by?: InputMaybe<Scalars['ID']>;
+  domaines?: InputMaybe<Array<InputMaybe<ComponentQuestionnaireTndDomaineTndInput>>>;
+  nom?: InputMaybe<Scalars['String']>;
+  ordre?: InputMaybe<Scalars['Int']>;
+  published_at?: InputMaybe<Scalars['DateTime']>;
+  updated_by?: InputMaybe<Scalars['ID']>;
+};
+
 export type ReponsesEpdInput = {
   compteur?: InputMaybe<Scalars['Int']>;
   created_by?: InputMaybe<Scalars['ID']>;
@@ -4448,6 +4715,130 @@ export type ReponsesEpdsGroupBy = {
   source?: Maybe<Array<Maybe<ReponsesEpdsConnectionSource>>>;
   source_widget?: Maybe<Array<Maybe<ReponsesEpdsConnectionSource_Widget>>>;
   updated_at?: Maybe<Array<Maybe<ReponsesEpdsConnectionUpdated_At>>>;
+};
+
+/** Réponses du questionnaire des Troubles du Neuro-Développement */
+export type ReponsesTnd = {
+  __typename?: 'ReponsesTnd';
+  created_at: Scalars['DateTime'];
+  id: Scalars['ID'];
+  non?: Maybe<Scalars['Int']>;
+  oui?: Maybe<Scalars['Int']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  reponses?: Maybe<Scalars['JSON']>;
+  test?: Maybe<Scalars['String']>;
+  updated_at: Scalars['DateTime'];
+};
+
+export type ReponsesTndAggregator = {
+  __typename?: 'ReponsesTndAggregator';
+  avg?: Maybe<ReponsesTndAggregatorAvg>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<ReponsesTndAggregatorMax>;
+  min?: Maybe<ReponsesTndAggregatorMin>;
+  sum?: Maybe<ReponsesTndAggregatorSum>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type ReponsesTndAggregatorAvg = {
+  __typename?: 'ReponsesTndAggregatorAvg';
+  non?: Maybe<Scalars['Float']>;
+  oui?: Maybe<Scalars['Float']>;
+};
+
+export type ReponsesTndAggregatorMax = {
+  __typename?: 'ReponsesTndAggregatorMax';
+  non?: Maybe<Scalars['Float']>;
+  oui?: Maybe<Scalars['Float']>;
+};
+
+export type ReponsesTndAggregatorMin = {
+  __typename?: 'ReponsesTndAggregatorMin';
+  non?: Maybe<Scalars['Float']>;
+  oui?: Maybe<Scalars['Float']>;
+};
+
+export type ReponsesTndAggregatorSum = {
+  __typename?: 'ReponsesTndAggregatorSum';
+  non?: Maybe<Scalars['Float']>;
+  oui?: Maybe<Scalars['Float']>;
+};
+
+export type ReponsesTndConnection = {
+  __typename?: 'ReponsesTndConnection';
+  aggregate?: Maybe<ReponsesTndAggregator>;
+  groupBy?: Maybe<ReponsesTndGroupBy>;
+  values?: Maybe<Array<Maybe<ReponsesTnd>>>;
+};
+
+export type ReponsesTndConnectionCreated_At = {
+  __typename?: 'ReponsesTndConnectionCreated_at';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ReponsesTndConnectionId = {
+  __typename?: 'ReponsesTndConnectionId';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ReponsesTndConnectionNon = {
+  __typename?: 'ReponsesTndConnectionNon';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type ReponsesTndConnectionOui = {
+  __typename?: 'ReponsesTndConnectionOui';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['Int']>;
+};
+
+export type ReponsesTndConnectionPublished_At = {
+  __typename?: 'ReponsesTndConnectionPublished_at';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ReponsesTndConnectionReponses = {
+  __typename?: 'ReponsesTndConnectionReponses';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['JSON']>;
+};
+
+export type ReponsesTndConnectionTest = {
+  __typename?: 'ReponsesTndConnectionTest';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ReponsesTndConnectionUpdated_At = {
+  __typename?: 'ReponsesTndConnectionUpdated_at';
+  connection?: Maybe<ReponsesTndConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ReponsesTndGroupBy = {
+  __typename?: 'ReponsesTndGroupBy';
+  created_at?: Maybe<Array<Maybe<ReponsesTndConnectionCreated_At>>>;
+  id?: Maybe<Array<Maybe<ReponsesTndConnectionId>>>;
+  non?: Maybe<Array<Maybe<ReponsesTndConnectionNon>>>;
+  oui?: Maybe<Array<Maybe<ReponsesTndConnectionOui>>>;
+  published_at?: Maybe<Array<Maybe<ReponsesTndConnectionPublished_At>>>;
+  reponses?: Maybe<Array<Maybe<ReponsesTndConnectionReponses>>>;
+  test?: Maybe<Array<Maybe<ReponsesTndConnectionTest>>>;
+  updated_at?: Maybe<Array<Maybe<ReponsesTndConnectionUpdated_At>>>;
+};
+
+export type ReponsesTndInput = {
+  created_by?: InputMaybe<Scalars['ID']>;
+  non?: InputMaybe<Scalars['Int']>;
+  oui?: InputMaybe<Scalars['Int']>;
+  published_at?: InputMaybe<Scalars['DateTime']>;
+  reponses?: InputMaybe<Scalars['JSON']>;
+  test?: InputMaybe<Scalars['String']>;
+  updated_by?: InputMaybe<Scalars['ID']>;
 };
 
 export type RoleInput = {
@@ -5489,6 +5880,15 @@ export type CreateQuestionnaireEpdsTraductionPayload = {
   questionnaireEpdsTraduction?: Maybe<QuestionnaireEpdsTraductions>;
 };
 
+export type CreateQuestionnaireTndInput = {
+  data?: InputMaybe<QuestionnaireTndInput>;
+};
+
+export type CreateQuestionnaireTndPayload = {
+  __typename?: 'createQuestionnaireTndPayload';
+  questionnaireTnd?: Maybe<QuestionnaireTnd>;
+};
+
 export type CreateReponsesEpdInput = {
   data?: InputMaybe<ReponsesEpdInput>;
 };
@@ -5496,6 +5896,15 @@ export type CreateReponsesEpdInput = {
 export type CreateReponsesEpdPayload = {
   __typename?: 'createReponsesEpdPayload';
   reponsesEpd?: Maybe<ReponsesEpds>;
+};
+
+export type CreateReponsesTndInput = {
+  data?: InputMaybe<ReponsesTndInput>;
+};
+
+export type CreateReponsesTndPayload = {
+  __typename?: 'createReponsesTndPayload';
+  reponsesTnd?: Maybe<ReponsesTnd>;
 };
 
 export type CreateRoleInput = {
@@ -5719,6 +6128,15 @@ export type DeleteQuestionnaireEpdsTraductionPayload = {
   questionnaireEpdsTraduction?: Maybe<QuestionnaireEpdsTraductions>;
 };
 
+export type DeleteQuestionnaireTndInput = {
+  where?: InputMaybe<InputId>;
+};
+
+export type DeleteQuestionnaireTndPayload = {
+  __typename?: 'deleteQuestionnaireTndPayload';
+  questionnaireTnd?: Maybe<QuestionnaireTnd>;
+};
+
 export type DeleteReponsesEpdInput = {
   where?: InputMaybe<InputId>;
 };
@@ -5726,6 +6144,15 @@ export type DeleteReponsesEpdInput = {
 export type DeleteReponsesEpdPayload = {
   __typename?: 'deleteReponsesEpdPayload';
   reponsesEpd?: Maybe<ReponsesEpds>;
+};
+
+export type DeleteReponsesTndInput = {
+  where?: InputMaybe<InputId>;
+};
+
+export type DeleteReponsesTndPayload = {
+  __typename?: 'deleteReponsesTndPayload';
+  reponsesTnd?: Maybe<ReponsesTnd>;
 };
 
 export type DeleteRoleInput = {
@@ -5793,6 +6220,7 @@ export type EditArticleInput = {
   enbref_3_texte?: InputMaybe<Scalars['String']>;
   etapes?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   evenements?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  handicap?: InputMaybe<Scalars['Boolean']>;
   le_saviez_vous?: InputMaybe<Scalars['String']>;
   lien_1_titre?: InputMaybe<Scalars['String']>;
   lien_1_url?: InputMaybe<Scalars['String']>;
@@ -5944,6 +6372,20 @@ export type EditComponentCartographieTypeInput = {
   value?: InputMaybe<Scalars['String']>;
 };
 
+export type EditComponentQuestionnaireTndDomaineTndInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  nom?: InputMaybe<Scalars['String']>;
+  ordre?: InputMaybe<Scalars['Int']>;
+  questions?: InputMaybe<Array<InputMaybe<EditComponentQuestionnaireTndQuestionInput>>>;
+};
+
+export type EditComponentQuestionnaireTndQuestionInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  image?: InputMaybe<Scalars['ID']>;
+  nom?: InputMaybe<Scalars['String']>;
+  ordre?: InputMaybe<Scalars['Int']>;
+};
+
 export type EditComponentTraductionLabelInput = {
   id?: InputMaybe<Scalars['ID']>;
   label?: InputMaybe<Scalars['String']>;
@@ -5964,12 +6406,12 @@ export type EditContactInput = {
   date_prise_contact?: InputMaybe<Scalars['Date']>;
   departement_code?: InputMaybe<Scalars['String']>;
   departement_libelle?: InputMaybe<Scalars['String']>;
-  mode?: InputMaybe<Enum_Contacts_Mode>;
   nombre_enfants?: InputMaybe<Scalars['Int']>;
   personne_accompagnee?: InputMaybe<Enum_Contacts_Personne_Accompagnee>;
   prenom?: InputMaybe<Scalars['String']>;
-  provenance?: InputMaybe<Scalars['ID']>;
+  type_de_contact?: InputMaybe<Enum_Contacts_Type_De_Contact>;
   updated_by?: InputMaybe<Scalars['ID']>;
+  widget_epds_source?: InputMaybe<Scalars['ID']>;
 };
 
 export type EditDemandeDeContactInput = {
@@ -6006,6 +6448,7 @@ export type EditEvenementInput = {
   documents?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   etapes?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   fin?: InputMaybe<Scalars['Int']>;
+  handicap?: InputMaybe<Scalars['Boolean']>;
   important?: InputMaybe<Scalars['Boolean']>;
   nom?: InputMaybe<Scalars['String']>;
   published_at?: InputMaybe<Scalars['DateTime']>;
@@ -6125,6 +6568,17 @@ export type EditQuestionnaireEpdsTraductionInput = {
   updated_by?: InputMaybe<Scalars['ID']>;
 };
 
+export type EditQuestionnaireTndInput = {
+  alerte_nb_domaine?: InputMaybe<Scalars['Int']>;
+  alerte_nb_non?: InputMaybe<Scalars['Int']>;
+  created_by?: InputMaybe<Scalars['ID']>;
+  domaines?: InputMaybe<Array<InputMaybe<EditComponentQuestionnaireTndDomaineTndInput>>>;
+  nom?: InputMaybe<Scalars['String']>;
+  ordre?: InputMaybe<Scalars['Int']>;
+  published_at?: InputMaybe<Scalars['DateTime']>;
+  updated_by?: InputMaybe<Scalars['ID']>;
+};
+
 export type EditReponsesEpdInput = {
   compteur?: InputMaybe<Scalars['Int']>;
   created_by?: InputMaybe<Scalars['ID']>;
@@ -6143,6 +6597,16 @@ export type EditReponsesEpdInput = {
   score?: InputMaybe<Scalars['Int']>;
   source?: InputMaybe<Enum_Reponsesepds_Source>;
   source_widget?: InputMaybe<Scalars['ID']>;
+  updated_by?: InputMaybe<Scalars['ID']>;
+};
+
+export type EditReponsesTndInput = {
+  created_by?: InputMaybe<Scalars['ID']>;
+  non?: InputMaybe<Scalars['Int']>;
+  oui?: InputMaybe<Scalars['Int']>;
+  published_at?: InputMaybe<Scalars['DateTime']>;
+  reponses?: InputMaybe<Scalars['JSON']>;
+  test?: InputMaybe<Scalars['String']>;
   updated_by?: InputMaybe<Scalars['ID']>;
 };
 
@@ -6393,6 +6857,16 @@ export type UpdateQuestionnaireEpdsTraductionPayload = {
   questionnaireEpdsTraduction?: Maybe<QuestionnaireEpdsTraductions>;
 };
 
+export type UpdateQuestionnaireTndInput = {
+  data?: InputMaybe<EditQuestionnaireTndInput>;
+  where?: InputMaybe<InputId>;
+};
+
+export type UpdateQuestionnaireTndPayload = {
+  __typename?: 'updateQuestionnaireTndPayload';
+  questionnaireTnd?: Maybe<QuestionnaireTnd>;
+};
+
 export type UpdateReponsesEpdInput = {
   data?: InputMaybe<EditReponsesEpdInput>;
   where?: InputMaybe<InputId>;
@@ -6401,6 +6875,16 @@ export type UpdateReponsesEpdInput = {
 export type UpdateReponsesEpdPayload = {
   __typename?: 'updateReponsesEpdPayload';
   reponsesEpd?: Maybe<ReponsesEpds>;
+};
+
+export type UpdateReponsesTndInput = {
+  data?: InputMaybe<EditReponsesTndInput>;
+  where?: InputMaybe<InputId>;
+};
+
+export type UpdateReponsesTndPayload = {
+  __typename?: 'updateReponsesTndPayload';
+  reponsesTnd?: Maybe<ReponsesTnd>;
 };
 
 export type UpdateRoleInput = {
