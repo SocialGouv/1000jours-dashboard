@@ -66,20 +66,6 @@ yarn test # tests unitairs exécutés dans la console
 yarn test:e2e # tests e2e : ouverture de cypress et l'exécution est lancé dans une fenêtre chrome
 ```
 
-##### Hasura
-
-Lancer les seeds :
-
-```sh
-yarn hasura seed apply --file books.sql --project ./hasura --database-name default --endpoint http://127.0.0.1:8082 --admin-secret myadminsecretkey
-```
-
-Mettre à jour les metadatas et migrations :
-
-Lancer la console avec `yarn hasura console --project ./hasura --endpoint http://127.0.0.1:8082 --admin-secret myadminsecretkey`. Les modifs faites dans l'UI seront reportées dans les dossiers `hasura/metadata` et `hasura/migrations`
-
-Cf [migrations documentation](https://hasura.io/docs/latest/migrations-metadata-seeds/manage-migrations/)
-
 ##### FranceConnect
 
 Cf https://partenaires.franceconnect.gouv.fr/fcp/fournisseur-service
