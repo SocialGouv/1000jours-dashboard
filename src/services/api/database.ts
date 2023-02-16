@@ -1,4 +1,3 @@
-import { Enum_Contacts_Type_De_Contact, Enum_Contacts_Personne_Accompagnee } from './../../__generated__/graphql';
 import gql from 'graphql-tag';
 
 const DatabaseApi = {

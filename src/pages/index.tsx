@@ -4,7 +4,7 @@ import { NextPage } from "next";
 
 import { getSession } from "next-auth/react";
 import axios from 'axios'
-import { LoggedState } from "../src/components/LoggedState";
+import { LoggedState } from "../components/LoggedState";
 
 const Home: NextPage = (initialData: any) => {
   return (
