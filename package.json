@@ -40,7 +40,6 @@
     "@mui/x-date-pickers": "^5.0.11",
     "@sentry/nextjs": "^6.17.9",
     "@socialgouv/matomo-next": "^1.4.0",
-    "@types/jest": "^29.4.0",
     "axios": "^1.2.4",
     "cross-fetch": "^3.1.5",
     "date-fns": "^2.29.3",
@@ -54,7 +53,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.57.1",
-    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "tss-react": "^4.5.2"
   },
