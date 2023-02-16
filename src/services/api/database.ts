@@ -35,8 +35,8 @@ const DatabaseApi = {
       $commentaire: String
       $departementCode: String
       $departementLibelle: String
-      $typeDeContact: Enum_Contacts_Type_De_Contact
-      $personneAccompagnee: Enum_Contacts_Personne_Accompagnee
+      $typeDeContact: ENUM_CONTACTS_TYPE_DE_CONTACT
+      $personneAccompagnee: ENUM_CONTACTS_PERSONNE_ACCOMPAGNEE
       $datePriseContact: Date
       $dateNaissanceDernierEnfant: Date
       $widgetEpdsSource: ID
