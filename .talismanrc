@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: .env.development
   checksum: 537626a2f1936dc80d3da36a5dcd70d3277ea889e747d4368261e9ede5e9d6e6
 - filename: .env.production
-  checksum: d4e356f7104b91e2ab01e52b22e1f8c82cb363e65fe955c5a119d6ff19beaf3d
+  checksum: f637af0490922bb505af81510c5c7a54d14bbbc29d14f1ec3f21d2c28bb91407
 - filename: .env.staging
   checksum: 58d12cc16918e20873da415691725a6fccfe620449dc978b943447f74af7719a
 - filename: .github/workflows/kontinuous-webhook-delete.yml
