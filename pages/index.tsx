@@ -2,11 +2,9 @@ import React from "react";
 import Head from "next/head";
 import { NextPage } from "next";
 
-import { getSession } from "next-auth/react";
-import axios from 'axios'
 import { LoggedState } from "../src/components/LoggedState";
 
-const Home: NextPage = (initialData: any) => {
+const Home: NextPage = () => {
   return (
     <>
       <Head>
@@ -31,44 +29,13 @@ const Home: NextPage = (initialData: any) => {
         <div className="fr-col-12 fr-col-offset-md-1 fr-col-md-4">
           <img
             className="fr-mt-2w"
-            src="https://dummyimage.com/300x300/188cf2/fff.png&amp;text=logo+1"
-            alt="My description"
+            src={"/logo-1000j-blues.svg"}
+            alt="Logo 1000 premiers jours"
           />
-        </div>
-
-        <h1>Liste des articles</h1>
-        <div>
-          {initialData.articles && initialData.articles.map((each: any, index: number) => {
-            return (
-              <div key={index}>
-                <h5>{each.titre}</h5>
-              </div>
-            )
-          })}
         </div>
       </div>
     </>
   );
 };
-
-export async function getStaticProps({ req }: any) {
-  let headers = {}
-  const session = await getSession({ req });
-
-  if (session) {
-    headers = { Authorization: `Bearer ${session.token.jwt}` };
-  }
-  let articles = [];
-  try {
-    let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/articles`, {
-      headers: headers,
-    })
-    articles = data;
-  } catch (e) {
-    articles = [];
-  }
-
-  return { props: { articles: articles } }
-}
 
 export default Home;
