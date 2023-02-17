@@ -1,8 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import { NextPage } from "next";
-
-import { LoggedState } from "../src/components/LoggedState";
+import { LoggedState } from "../components/LoggedState";
 
 const Home: NextPage = () => {
   return (

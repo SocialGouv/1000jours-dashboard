@@ -2,7 +2,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { MentionPart } from "../src/components/MentionPart";
+import { MentionPart } from "../components/MentionPart";
 
 const MentionsLegales: NextPage = () => {
   return (

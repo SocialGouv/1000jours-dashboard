@@ -6,12 +6,12 @@ import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useSession } from "next-auth/react";
 import { useLazyQuery } from "@apollo/client";
-import DatabaseApi from "../src/services/api/database";
-import { client } from "../apollo-client";
+import DatabaseApi from "../services/api/database";
+import { client } from "../utils/apollo-client";
 
-import { LoggedState } from "../src/components/LoggedState";
-import { Contacts, Enum_Contacts_Personne_Accompagnee } from "../src/__generated__/graphql";
-import { accompagnementEnumToString, dateFormattedToString } from "../src/utils/main.util";
+import { LoggedState } from "../components/LoggedState";
+import { Contacts, Enum_Contacts_Personne_Accompagnee } from "../__generated__/graphql";
+import { accompagnementEnumToString, dateFormattedToString } from "../utils/main.util";
 
 export default function ListeDemandes() {
   const { data: session, status } = useSession() // strapi V3

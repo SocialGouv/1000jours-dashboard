@@ -1,24 +1,23 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useLazyQuery, useMutation } from '@apollo/client';
-import { client } from "../apollo-client"
+import { useMutation, useQuery } from '@apollo/client';
+import { client } from "../utils/apollo-client"
 import { useRouter } from "next/router";
 import { useStyles } from "tss-react/dsfr";
-import { LoggedState } from "../src/components/LoggedState";
-import DatabaseApi from "../src/services/api/database";
+import { LoggedState } from "../components/LoggedState";
+import DatabaseApi from "../services/api/database";
 import {
   Enum_Contacts_Personne_Accompagnee,
   Enum_Contacts_Type_De_Contact,
   WidgetEpdsSources,
-} from "../src/__generated__/graphql";
-import { sortWidgetSourceByName } from "../src/utils/main.util";
-import { Departement } from "../types/geogouv";
+} from "../__generated__/graphql";
+import { sortWidgetSourceByName } from "../utils/main.util";
+import { Departement } from "../../types/geogouv";
 
-import { SelectDepartment } from "../src/components/SelectDepartment";
+import { SelectDepartment } from "../components/SelectDepartment";
 import { Input } from "@codegouvfr/react-dsfr/Input";
 import Select from "@codegouvfr/react-dsfr/Select";
 import Button from "@codegouvfr/react-dsfr/Button";
-import Alert from "@codegouvfr/react-dsfr/Alert";
 
 
 export default function AjoutDemande() {
@@ -38,12 +37,9 @@ export default function AjoutDemande() {
 
   useEffect(() => {
     setLogged(status === "authenticated")
-
-    const getSourcesApi = async () => await getWidgetSourcesRequest()
-    getSourcesApi()
   }, [status])
 
-  const [getWidgetSourcesRequest] = useLazyQuery(
+  useQuery(
     DatabaseApi.GET_WIDGET_SOURCES, {
     client: client,
     onCompleted: (data) => setWidgetSources(sortWidgetSourceByName([...data.widgetEpdsSources])),
