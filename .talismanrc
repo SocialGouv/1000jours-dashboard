@@ -4,7 +4,7 @@ fileignoreconfig:
 - filename: .env.production
   checksum: 4b7835ad6d2dbad0ea3bef4ce74572b4c240bfeb8206c262a023ec761230cde8
 - filename: .env.staging
-  checksum: 58d12cc16918e20873da415691725a6fccfe620449dc978b943447f74af7719a
+  checksum: dfb6aba79d6014044452a2a35a5a06309d83deb205913ed1c3d7595446f28eb9
 - filename: .github/workflows/kontinuous-webhook-delete.yml
   checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
 - filename: .github/workflows/kontinuous-webhook-deploy.yml
