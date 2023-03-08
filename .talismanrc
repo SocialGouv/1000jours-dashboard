@@ -4,7 +4,7 @@ fileignoreconfig:
 - filename: .env.production
   checksum: 4b7835ad6d2dbad0ea3bef4ce74572b4c240bfeb8206c262a023ec761230cde8
 - filename: .env.staging
-  checksum: 58d12cc16918e20873da415691725a6fccfe620449dc978b943447f74af7719a
+  checksum: 17df4049e6eb0ed5739ec1ca728d4814daf32abf61808da61690cbb860998e19
 - filename: .github/workflows/kontinuous-webhook-delete.yml
   checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
 - filename: .github/workflows/kontinuous-webhook-deploy.yml
@@ -27,6 +27,8 @@ fileignoreconfig:
   checksum: 71806037df785505323b21435e6a8e68f8de1b29628fa07bdbf9d276e39f950b
 - filename: src/components/SelectDepartment.tsx
   checksum: d8074633be1f7eb9bf5fbeb4f387ea7ea087b04a5675bff25e9e252dda5f6913
+- filename: src/pages/api/auth/[...nextauth].ts
+  checksum: a2914245d78595c05d9a2a535bc4d1fecc0e27420a168c4f6632c7c3fe73a23d
 scopeconfig:
 - scope: node
 version: "1.0"
