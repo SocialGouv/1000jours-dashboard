@@ -1,10 +1,10 @@
 fileignoreconfig:
 - filename: .env.development
-  checksum: 537626a2f1936dc80d3da36a5dcd70d3277ea889e747d4368261e9ede5e9d6e6
+  checksum: e905474b733d5faba96c67f2380926d1c5d182aaf9bb6fd7edd481db3331ff8e
 - filename: .env.production
   checksum: 4b7835ad6d2dbad0ea3bef4ce74572b4c240bfeb8206c262a023ec761230cde8
 - filename: .env.staging
-  checksum: dfb6aba79d6014044452a2a35a5a06309d83deb205913ed1c3d7595446f28eb9
+  checksum: 3ba3dab5fe42494a51b50b0ea08ee7fcb99d9e753076b70788cd2bb110311eb6
 - filename: .github/workflows/kontinuous-webhook-delete.yml
   checksum: 6debf4f640d4ed9cb39bb19445214ab52dcb23fb7da12feeb85070816d7ee52a
 - filename: .github/workflows/kontinuous-webhook-deploy.yml
@@ -27,6 +27,8 @@ fileignoreconfig:
   checksum: 71806037df785505323b21435e6a8e68f8de1b29628fa07bdbf9d276e39f950b
 - filename: src/components/SelectDepartment.tsx
   checksum: d8074633be1f7eb9bf5fbeb4f387ea7ea087b04a5675bff25e9e252dda5f6913
+- filename: src/pages/api/auth/[...nextauth].ts
+  checksum: b8b4d9aa2ff38004e6c7dd736caa63b9032541358b0de3d2d795b0dd33be8991
 scopeconfig:
 - scope: node
 version: "1.0"
