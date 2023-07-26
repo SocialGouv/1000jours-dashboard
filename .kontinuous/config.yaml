@@ -1,5 +1,10 @@
 projectName: les1000jours
+ciNamespace: ci-les1000jours
 
 dependencies:
   fabrique:
-    import: SocialGouv/kontinuous/plugins/fabrique
+    extends:
+    - name: ovh
+      ifEnv: [dev,preprod]
+    - name: buildkit-service
+      ifEnv: [dev,preprod]
