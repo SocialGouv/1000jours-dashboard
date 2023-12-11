@@ -32,9 +32,12 @@ const MentionsLegales: NextPage = () => {
             description="Ce site est hébergé par :"
           >
             <p className="fr-mb-2w">
-              Microsoft Azure <br />
-              39 quai du président Roosevelt <br />
-              92130 Issy les Moulineaux
+              <a target="_blank" href="https://www.ovh.com" rel="noreferrer">
+                OVH SAS
+              </a>
+              <br />
+              Siège social : 2 rue Kellermann - 59100 Roubaix - France.
+              <br />
             </p>
           </MentionPart>
           <MentionPart
@@ -47,17 +50,20 @@ const MentionsLegales: NextPage = () => {
           >
             <h3>Signaler un dysfonctionnement</h3>
             <p className="fr-mb-2w">
-              Si vous rencontrez un défaut d’accessibilité vous empêchant d’accéder à un contenu
-              ou une fonctionnalité du site, merci de nous en faire part.
+              Si vous rencontrez un défaut d’accessibilité vous empêchant
+              d’accéder à un contenu ou une fonctionnalité du site, merci de
+              nous en faire part.
               <br />
-              Si vous n’obtenez pas de réponse rapide de notre part, vous êtes en droit de faire
-              parvenir vos doléances ou une demande de saisine au Défenseur des droits.
+              Si vous n’obtenez pas de réponse rapide de notre part, vous êtes
+              en droit de faire parvenir vos doléances ou une demande de saisine
+              au Défenseur des droits.
             </p>
 
             <p>
               En savoir plus
               <br />
-              Pour en savoir plus sur la politique d’accessibilité numérique de l’État :
+              Pour en savoir plus sur la politique d’accessibilité numérique de
+              l’État :
               <a
                 href="http://references.modernisation.gouv.fr/accessibilite-numerique"
                 target="_blank"
