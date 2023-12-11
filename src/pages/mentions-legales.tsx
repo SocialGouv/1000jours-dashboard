@@ -32,7 +32,7 @@ const MentionsLegales: NextPage = () => {
             description="Ce site est hébergé par :"
           >
             <p className="fr-mb-2w">
-              <a target="_blank" href="https://www.ovh.com">
+              <a target="_blank" href="https://www.ovh.com" rel="noreferrer">
                 OVH SAS
               </a>
               <br />
