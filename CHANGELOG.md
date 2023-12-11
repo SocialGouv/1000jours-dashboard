@@ -1,3 +1,51 @@
+# [1.1.0](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.0.0...v1.1.0) (2023-12-11)
+
+
+### Bug Fixes
+
+* Erreur serveur next-auth ([#33](https://github.com/SocialGouv/1000jours-dashboard/issues/33)) ([1869a8b](https://github.com/SocialGouv/1000jours-dashboard/commit/1869a8b6256b1d6ee5c8dc7d52e9cb12c5669ba1))
+* sentry env ([#41](https://github.com/SocialGouv/1000jours-dashboard/issues/41)) ([0bd1942](https://github.com/SocialGouv/1000jours-dashboard/commit/0bd194241a63204f08d069d5be77c9914498d6c6))
+* **ajout:** composant déprécié ([1e2b2ca](https://github.com/SocialGouv/1000jours-dashboard/commit/1e2b2caf13d740488d32f8ec402b61dd86f09ad3))
+* **ajout:** rebase ([15914fb](https://github.com/SocialGouv/1000jours-dashboard/commit/15914fb0cf2a63c1d1f10f3ef082d4b4af5c792c))
+* **ajout:** retour de PR ([8f0e097](https://github.com/SocialGouv/1000jours-dashboard/commit/8f0e0976e667f2e82c25f5bcef269f025dd843df))
+* **ajout:** talisman ([b325326](https://github.com/SocialGouv/1000jours-dashboard/commit/b325326b0bbb8f826db1a150cb43f9d9cd3afb8c))
+* **ajout:** type ([03d4fed](https://github.com/SocialGouv/1000jours-dashboard/commit/03d4fedff69e191989701df5932a1386e3417295))
+* **bo:** maj back-office et env ([f64b8d0](https://github.com/SocialGouv/1000jours-dashboard/commit/f64b8d0b3ee60c8d14b8c497984915ec75cbd466))
+* **bo:** type ([773d375](https://github.com/SocialGouv/1000jours-dashboard/commit/773d375103a2c0f7204d2938c5d2c03efa412bb2))
+* deploy ([1757fac](https://github.com/SocialGouv/1000jours-dashboard/commit/1757fac82228721c8c95d0a595067bfbfbf24b95))
+* docker ([d7d201b](https://github.com/SocialGouv/1000jours-dashboard/commit/d7d201bfc345466a0ef54ad30ccb5651eb7360b1))
+
+
+### Features
+
+* ajout de nouveau test , maj packages, bug session aborted résolu ([#22](https://github.com/SocialGouv/1000jours-dashboard/issues/22)) ([cffc155](https://github.com/SocialGouv/1000jours-dashboard/commit/cffc155e9dbac53d05055f6f8bfd267bc7155f00))
+* ovh for dev, preprod ([#36](https://github.com/SocialGouv/1000jours-dashboard/issues/36)) ([30e2c6e](https://github.com/SocialGouv/1000jours-dashboard/commit/30e2c6ef48340ad906141600259da46883047bb8))
+* prod ovh ([#43](https://github.com/SocialGouv/1000jours-dashboard/issues/43)) ([08fc44f](https://github.com/SocialGouv/1000jours-dashboard/commit/08fc44f9c221c8d62b6f89fd8ff5eb2cfb7a8f69))
+* **ajout:** affichage si loggé ([3b7ae2b](https://github.com/SocialGouv/1000jours-dashboard/commit/3b7ae2b9153a7c1647cc16aecb25f8ff33cae611))
+* **ajout:** branchement BO ([249890a](https://github.com/SocialGouv/1000jours-dashboard/commit/249890af23fdd92889cf0d6062057937313bd222))
+* **ajout:** call api avec token ([6959941](https://github.com/SocialGouv/1000jours-dashboard/commit/6959941d9396b2882545ba5de4b97f98096e9237))
+* **ajout:** collect des données ([438a797](https://github.com/SocialGouv/1000jours-dashboard/commit/438a79734422d6d8a5d3be956bf82de2ffc421f5))
+* **ajout:** creation de la page ([e60e5da](https://github.com/SocialGouv/1000jours-dashboard/commit/e60e5dadb82fd372cd81be07378a88574af0807b))
+* **ajout:** modification de la question d'accompagnement ([64a216c](https://github.com/SocialGouv/1000jours-dashboard/commit/64a216c012239d82ede21c0c2137c6450600653e))
+* **ajout:** redirection ([df6b1c7](https://github.com/SocialGouv/1000jours-dashboard/commit/df6b1c73c74daba9aa87409ef310c9083c8c3021))
+* **ajout:** supression de l'alerte ([cc9faad](https://github.com/SocialGouv/1000jours-dashboard/commit/cc9faada7a7138af0b933ee1c1e675fe34d74992))
+* **auth:** erreur de type ([a1472ab](https://github.com/SocialGouv/1000jours-dashboard/commit/a1472ab3d6fe4e575e0f95feda33b7541f3c4925))
+* **auth:** error getStaticProps ([8c21a1a](https://github.com/SocialGouv/1000jours-dashboard/commit/8c21a1a84168167cb9ab7d003081244a0385a844))
+* **auth:** intégration de l'auth ([25980e0](https://github.com/SocialGouv/1000jours-dashboard/commit/25980e0a28b296e7823143e479c6c6dde382f3b4))
+* **auth:** intégration de l'auth ([f9ca5ea](https://github.com/SocialGouv/1000jours-dashboard/commit/f9ca5eab9cb5a56da70d1faf0087d4f9bb946fe2))
+* **auth:** maj readme ([d9963dd](https://github.com/SocialGouv/1000jours-dashboard/commit/d9963dd0e942ab9eec3d11811063e6a36f4aa761))
+* **auth:** page d'accueil ([4c02e3b](https://github.com/SocialGouv/1000jours-dashboard/commit/4c02e3b39bdfdb646618d91e7b8be12f6c6cf55f))
+* **auth:** suppr console.log ([56c4dbb](https://github.com/SocialGouv/1000jours-dashboard/commit/56c4dbb86ee89b16e15172f8f8460385f2f35c7a))
+* **auth:** type ([6a7d2d9](https://github.com/SocialGouv/1000jours-dashboard/commit/6a7d2d90e2cd87bd98acbf9fcd4c8e41b3fdc124))
+* **auth:** type ([eb4f37a](https://github.com/SocialGouv/1000jours-dashboard/commit/eb4f37a31c4afca07d192cff162cc7e00446fcbb))
+* **auth:** type ([8f82119](https://github.com/SocialGouv/1000jours-dashboard/commit/8f821196c07c0e4834d77ef73dcde1eaf83f80ff))
+* **home:** env ([10f8fad](https://github.com/SocialGouv/1000jours-dashboard/commit/10f8fad69fe6c15bdf800d15302af1d9d31d1c8f))
+* **home:** maj mentions légales ([51644e0](https://github.com/SocialGouv/1000jours-dashboard/commit/51644e055d64d8474688ab04090ee4837fb98766))
+* **home:** nettoyage home ([32c2e9d](https://github.com/SocialGouv/1000jours-dashboard/commit/32c2e9d7ce8b619db90e79bb9ffb104195049f28))
+* **home:** suppr de la page stats ([d7604c6](https://github.com/SocialGouv/1000jours-dashboard/commit/d7604c691e1975728a819d4d4a6b0de2fb4024b2))
+* **liste:** affichage si auth valide ([c677708](https://github.com/SocialGouv/1000jours-dashboard/commit/c677708bb3a4527dd4901c7ca7c7598967034d6c))
+* **liste:** ajout de la page liste ([632b459](https://github.com/SocialGouv/1000jours-dashboard/commit/632b45956ac9102e043b9afaa5d67fd80aef0c36))
+
 # 1.0.0 (2023-01-20)
 
 
