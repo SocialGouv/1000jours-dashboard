@@ -6,8 +6,8 @@
     "predev": "only-include-used-icons",
     "prebuild": "node -r @swc-node/register scripts/prebuild.ts && yarn only-include-used-icons",
     "only-include-used-icons": "node node_modules/@codegouvfr/react-dsfr/bin/only-include-used-icons.js",
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node --stack-size=2000 node_modules/.bin/next dev",
+    "build": "node --stack-size=2000 node_modules/.bin/next build",
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
@@ -86,5 +86,6 @@
     "start-server-and-test": "^1.14.0",
     "storybook-dark-mode": "^2.0.5",
     "typescript": "^4.9.4"
-  }
+  },
+  "packageManager": "yarn@3.7.0"
 }
