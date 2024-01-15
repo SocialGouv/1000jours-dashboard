@@ -1,3 +1,16 @@
+## [1.1.1](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.0...v1.1.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* wip ([b78c052](https://github.com/SocialGouv/1000jours-dashboard/commit/b78c0529176e8880a2874fc4139eacb46e0f7ee2))
+* wip ([6e4f185](https://github.com/SocialGouv/1000jours-dashboard/commit/6e4f185a1f0f801dad2ac15f6177f3a031c9aa25))
+* wip ([7af03e4](https://github.com/SocialGouv/1000jours-dashboard/commit/7af03e4124e1ed198d65b53c3f819f03446d0c4b))
+* wip ([f009b71](https://github.com/SocialGouv/1000jours-dashboard/commit/f009b718e81b7d84ba03340c1a554f09814f1332))
+* wip ([b8a7e7b](https://github.com/SocialGouv/1000jours-dashboard/commit/b8a7e7b6228641be360319ad36c24645283723fc))
+* yarn berry + yarn fetch + docker opti ([82fc557](https://github.com/SocialGouv/1000jours-dashboard/commit/82fc55760e3a2ee613aeb03c8c8bb80ebc602cae))
+* yarn berry + yarn fetch + docker opti ([977d44e](https://github.com/SocialGouv/1000jours-dashboard/commit/977d44e438d545d803a00042f0f97c3a32d8ffe9))
+
 # [1.1.0](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.0.0...v1.1.0) (2023-12-11)
 
 
