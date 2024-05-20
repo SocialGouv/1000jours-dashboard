@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.1...v1.1.2) (2024-05-20)
+
+
+### Bug Fixes
+
+* mise à jour du footer 'react-dsfr' ([2812e7d](https://github.com/SocialGouv/1000jours-dashboard/commit/2812e7dec6527cab9b1b00b909a022e51c923112))
+
 ## [1.1.1](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.0...v1.1.1) (2024-01-15)
 
 
