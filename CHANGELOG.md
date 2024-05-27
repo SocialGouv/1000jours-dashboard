@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.2...v1.1.3) (2024-05-27)
+
+
+### Bug Fixes
+
+* footer link (politique-confidentialite) ([6c169ad](https://github.com/SocialGouv/1000jours-dashboard/commit/6c169ad0113a3edc4ad245f5d8873b374909995b))
+
 ## [1.1.2](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.1...v1.1.2) (2024-05-20)
 
 
