@@ -68,6 +68,12 @@ const homeLinkPops = {
 
 const bottomLinks = [
   {
+    text: "Données personnelles",
+    linkProps: {
+      href: "/politique-confidentialite",
+    },
+  },
+  {
     text: "Conditions d'utilisation",
     linkProps: {
       href: "/cgu",
@@ -162,7 +168,6 @@ function App({ Component, pageProps }: AppProps) {
           homeLinkProps={homeLinkPops}
           accessibilityLinkProps={{ href: "/accessibilite" }}
           termsLinkProps={{ href: "/mentions-legales" }}
-          personalDataLinkProps={{ href: "/politique-confidentialite" }}
           bottomItems={[...bottomLinks, headerFooterDisplayItem]}
         />
         <Display />
