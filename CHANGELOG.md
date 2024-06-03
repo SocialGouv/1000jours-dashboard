@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.3...v1.1.4) (2024-06-03)
+
+
+### Bug Fixes
+
+* autoscale prod ([5da41a7](https://github.com/SocialGouv/1000jours-dashboard/commit/5da41a7e7f6e401e380e43b771746a9344e93bce))
+
 ## [1.1.3](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.2...v1.1.3) (2024-05-27)
 
 
