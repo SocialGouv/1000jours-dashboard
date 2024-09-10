@@ -1,7 +1,11 @@
 app:
-  autoscale:
-    enabled: true
-
+  resources:
+        requests:
+      cpu: 100m
+      memory: 386Mi
+    limits:
+      cpu: 200m
+      memory: 512Mi
 jobs:
   runs:
     build-app:
