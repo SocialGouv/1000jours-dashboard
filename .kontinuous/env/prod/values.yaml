@@ -1,6 +1,6 @@
 app:
   resources:
-        requests:
+    requests:
       cpu: 100m
       memory: 386Mi
     limits:
