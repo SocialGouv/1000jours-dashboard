@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.4...v1.1.5) (2024-10-02)
+
+
+### Bug Fixes
+
+* bump ([7a132a5](https://github.com/SocialGouv/1000jours-dashboard/commit/7a132a5486f4a5ae169e10f4648a79e7f32c4764))
+
 ## [1.1.4](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.3...v1.1.4) (2024-06-03)
 
 
