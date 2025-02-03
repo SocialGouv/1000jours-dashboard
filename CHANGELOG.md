@@ -1,3 +1,11 @@
+## [1.1.6](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.5...v1.1.6) (2025-02-03)
+
+
+### Bug Fixes
+
+* **ci-cd:** use token-bureau ([c802a85](https://github.com/SocialGouv/1000jours-dashboard/commit/c802a8517921241dface487f51ef1eab24d2bebc))
+* **ci-cd:** use token-bureau ([18732ec](https://github.com/SocialGouv/1000jours-dashboard/commit/18732ec5fcc907fff9cca2bd5659da7871c7c156))
+
 ## [1.1.5](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.4...v1.1.5) (2024-10-02)
 
 
