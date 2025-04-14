@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.8...v1.1.9) (2025-04-14)
+
+
+### Bug Fixes
+
+* nextjsupgrade - https://github.com/vercel/next.js/issues/50191#issuecomment-1871520190 - https://github.com/vercel/next.js/discussions/17820 ([433e567](https://github.com/SocialGouv/1000jours-dashboard/commit/433e5672e95c228e37e270a8e7c2dd86252176ad)), closes [/github.com/vercel/next.js/issues/50191#issuecomment-1871520190](https://github.com//github.com/vercel/next.js/issues/50191/issues/issuecomment-1871520190)
+
 ## [1.1.8](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.7...v1.1.8) (2025-04-14)
 
 
