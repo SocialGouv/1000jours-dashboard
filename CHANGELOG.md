@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.6...v1.1.7) (2025-04-14)
+
+
+### Bug Fixes
+
+* nextjs cve ([8a2ecd0](https://github.com/SocialGouv/1000jours-dashboard/commit/8a2ecd0e430758af3c9e4be448b5396993f2a1a6))
+
 ## [1.1.6](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.5...v1.1.6) (2025-02-03)
 
 
