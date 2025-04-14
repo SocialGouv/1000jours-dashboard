@@ -1,10 +1,6 @@
-const { withSentryConfig } = require("@sentry/nextjs");
-
 const { version } = require("./package.json");
 
 const ContentSecurityPolicy = require("./csp.config");
-
-const withTM = require("next-transpile-modules")(["@codegouvfr/react-dsfr"]);
 
 /** @type {import('next').NextConfig} */
 const moduleExports = {
@@ -22,14 +18,14 @@ const moduleExports = {
     disableClientWebpackPlugin: true,
     disableServerWebpackPlugin: true,
   },
+  transpilePackages: ["@codegouvfr/react-dsfr"],
   env: {
     NEXT_PUBLIC_APP_VERSION: version,
-    NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA,
-    NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: process.env.PRODUCTION,
+    NEXT_PUBLIC_APP_VERSION_COMMIT: process.env.GITHUB_SHA || "development",
+    NEXT_PUBLIC_IS_PRODUCTION_DEPLOYMENT: process.env.PRODUCTION || "false",
     CONTENT_SECURITY_POLICY: ContentSecurityPolicy,
   },
 };
 
-module.exports = {
-  ...withTM(withSentryConfig(moduleExports, { silent: true })),
-};
+// Disable Sentry for local builds
+module.exports = moduleExports;

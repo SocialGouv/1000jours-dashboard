@@ -3949,7 +3949,6 @@ __metadata:
     next: 13.5.9
     next-auth: ^4.18.10
     next-seo: ^5.1.0
-    next-transpile-modules: ^10.0.0
     node-talisman: ^1.28.0
     react: 18.2.0
     react-dom: 18.2.0
@@ -15483,15 +15482,6 @@ __metadata:
     react: ">=16.0.0"
     react-dom: ">=16.0.0"
   checksum: 05b0769d9c9abcc6a0179e5d724e87b1a3a7591a9c2caa4ef5b791769fcf868cb97fbcd90264106101cf7fbc073b0375ab90026aa519d2e899fbabea12cafbfb
-  languageName: node
-  linkType: hard
-
-"next-transpile-modules@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "next-transpile-modules@npm:10.0.0"
-  dependencies:
-    enhanced-resolve: "npm:^5.10.0"
-  checksum: 3300fc7081f63b2c9487588db7cbe718f209dfd2111adec22d9c8af0e3c8ade2d95fd45f91e045546d78d98cafc78a49431de9a623360d33831b5e694bf007c9
   languageName: node
   linkType: hard
 
