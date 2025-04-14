@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.7...v1.1.8) (2025-04-14)
+
+
+### Bug Fixes
+
+* ci namespace ([b6edc91](https://github.com/SocialGouv/1000jours-dashboard/commit/b6edc91c6ba7a79f9f84832547964fc625dc070a))
+
 ## [1.1.7](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.6...v1.1.7) (2025-04-14)
 
 
