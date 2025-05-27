@@ -5,16 +5,5 @@ global:
 
 app:
   ~chart: app
-  ~needs: [build-app]
   containerPort: 3000
   probesPath: /healthz
-
-jobs:
-  runs:
-    build-app:
-      use: build
-      with:
-        registrySecretRefName: harbor
-        imagePackage: app
-        buildArgs:
-          GITHUB_SHA: "{{ $.Values.global.sha }}"

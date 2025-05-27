@@ -6,9 +6,3 @@ app:
     limits:
       cpu: 200m
       memory: 512Mi
-jobs:
-  runs:
-    build-app:
-      with:
-        buildArgs:
-          PRODUCTION: "true"
