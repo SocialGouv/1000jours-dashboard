@@ -1,7 +1,6 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
   imageProject: 1000jours
-  imageRepository: app-dashboard
 
 app:
   ~chart: app
