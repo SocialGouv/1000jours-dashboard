@@ -1,3 +1,11 @@
+## [1.1.10](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.9...v1.1.10) (2025-05-27)
+
+
+### Bug Fixes
+
+* buildkit in gh ([91ca241](https://github.com/SocialGouv/1000jours-dashboard/commit/91ca2412442cbcbdefc37abfd1d418461a35916e))
+* buildkit in gh ([b6bbbe3](https://github.com/SocialGouv/1000jours-dashboard/commit/b6bbbe3be16c5fef410559db30bdb94ad149931e))
+
 ## [1.1.9](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.8...v1.1.9) (2025-04-14)
 
 
