@@ -1,20 +1,8 @@
 global:
   registry: harbor.fabrique.social.gouv.fr
   imageProject: 1000jours
-  imageRepository: app-dashboard
 
 app:
   ~chart: app
-  ~needs: [build-app]
   containerPort: 3000
   probesPath: /healthz
-
-jobs:
-  runs:
-    build-app:
-      use: build
-      with:
-        registrySecretRefName: harbor
-        imagePackage: app
-        buildArgs:
-          GITHUB_SHA: "{{ $.Values.global.sha }}"
