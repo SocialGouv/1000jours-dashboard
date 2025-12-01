@@ -13,19 +13,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Restore cache
-        uses: actions/cache@v3
+
+      - name: Setup Node.js 24.6.0
+        uses: actions/setup-node@v4
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: 24.6.0
+
+      - name: Install pnpm 10.24.0
+        run: |
+          corepack enable || true
+          corepack prepare pnpm@10.24.0 --activate || npm install -g pnpm@10.24.0
+          pnpm --version
+
       - name: Install dependencies
-        run: |
-          yarn --immutable
+        run: pnpm install --frozen-lockfile
+
       - name: Test code
-        run: |
-          yarn test
+        run: pnpm test
