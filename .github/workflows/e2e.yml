@@ -25,9 +25,12 @@ jobs:
           corepack prepare pnpm@10.24.0 --activate || npm install -g pnpm@10.24.0
           pnpm --version
 
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install-command: pnpm install --frozen-lockfile
+          install: false
           build: pnpm build
           start: pnpm start
