@@ -1,3 +1,11 @@
+## [1.1.11](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.10...v1.1.11) (2025-12-01)
+
+
+### Bug Fixes
+
+* pnpm migration ([60e8a44](https://github.com/SocialGouv/1000jours-dashboard/commit/60e8a449bd8896924a7ec001949c4d58c8d0f008))
+* pnpm migration ([f04edd3](https://github.com/SocialGouv/1000jours-dashboard/commit/f04edd3445d569da629903006e8afc0b96f7bb91))
+
 ## [1.1.10](https://github.com/SocialGouv/1000jours-dashboard/compare/v1.1.9...v1.1.10) (2025-05-27)
 
 
