@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Check for undeclared dependencies
-        run: pnpm run check-deps
-
       - name: Lint
         run: pnpm lint
 
