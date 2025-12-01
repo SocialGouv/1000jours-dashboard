@@ -44,8 +44,8 @@ Après avoir cloné le projet :
 :warning: Avant de lancer le projet, vous devez installer `gomplate`
 
 ```bash
-yarn # to install dependencies
-yarn dev # to run in dev mode
+pnpm install # to install dependencies
+pnpm dev # to run in dev mode
 ```
 
 ### Gestion des environnements
@@ -62,8 +62,8 @@ Le fichier `.env.development` est utilisé pour l'environnement de développemen
 
 Lancer les tests en local :
 ```bash
-yarn test # tests unitairs exécutés dans la console
-yarn test:e2e # tests e2e : ouverture de cypress et l'exécution est lancé dans une fenêtre chrome
+pnpm test # tests unitairs exécutés dans la console
+pnpm test:e2e # tests e2e : ouverture de cypress et l'exécution est lancé dans une fenêtre chrome
 ```
 
 ##### FranceConnect

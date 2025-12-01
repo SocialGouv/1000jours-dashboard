@@ -13,22 +13,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Restore cache
-        uses: actions/cache@v3
+
+      - name: Setup Node.js 24.6.0 with pnpm cache
+        uses: actions/setup-node@v4
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          node-version: 24.6.0
+          cache: pnpm
+
+      - name: Enable pnpm via corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.24.0 --activate
+
       - name: Install dependencies
-        run: |
-          yarn --immutable
+        run: pnpm install --frozen-lockfile
+
+      - name: Check for undeclared dependencies
+        run: pnpm run check-deps
+
       - name: Lint
-        run: |
-          yarn lint
+        run: pnpm lint
 
   docker:
     name: Lint Dockerfile

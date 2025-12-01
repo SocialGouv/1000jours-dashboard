@@ -13,8 +13,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Setup Node.js 24.6.0 with pnpm cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.6.0
+          cache: pnpm
+
+      - name: Enable pnpm via corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.24.0 --activate
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          build: yarn build
-          start: yarn start
+          install-command: pnpm install --frozen-lockfile
+          build: pnpm build
+          start: pnpm start
