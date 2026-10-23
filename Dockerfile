@@ -1,4 +1,4 @@
-ARG NODE_VERSION=24.6.0-alpine
+ARG NODE_VERSION=24.22.1-alpine
 
 # deps stage: cacheable, depends only on pnpm-lock.yaml + .npmrc + package.json
 FROM node:$NODE_VERSION AS deps
